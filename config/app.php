@@ -58,6 +58,25 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Accounting Framework
+    |--------------------------------------------------------------------------
+    |
+    | Définit le référentiel comptable utilisé pour initialiser le plan de
+    | comptes lors de la création d'une nouvelle entreprise.
+    |
+    | Valeurs disponibles :
+    |   "generic"   → Plan GAAP/IFRS générique (défaut, anglo-saxon)
+    |   "syscohada" → Plan SYSCOHADA révisé 2017 (zone OHADA — 17 États)
+    |
+    | Configurez dans .env :
+    |   ACCOUNTING_FRAMEWORK=syscohada
+    |
+    */
+
+    'accounting_framework' => env('ACCOUNTING_FRAMEWORK', 'generic'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application URL
     |--------------------------------------------------------------------------
     |

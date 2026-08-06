@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils'
 import { Bold, Italic, Underline as UnderlineIcon, Strikethrough, Highlighter, AlignLeft, AlignCenter, AlignRight, AlignJustify, List, ListOrdered, Quote, Undo, Redo, Link as LinkIcon, Palette } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
-interface RichTextEditorProps {
+interface RichTextEditorProps { className?: string; rows?: number; required?: boolean;
   content?: string
   onChange?: (content: string) => void
   placeholder?: string

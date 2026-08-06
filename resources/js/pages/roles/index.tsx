@@ -239,7 +239,7 @@ export default function Index() {
                                                             <Shield className="h-5 w-5 text-primary" />
                                                         </div>
                                                         <div>
-                                                            <h3 className="font-semibold text-base text-gray-900">{role.label}</h3>
+                                                            <h3 className="font-semibold text-base text-gray-900">{t(role.label)}</h3>
                                                         </div>
                                                     </div>
                                                     <div className="flex gap-1">

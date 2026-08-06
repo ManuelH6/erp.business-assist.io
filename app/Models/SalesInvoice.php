@@ -58,12 +58,12 @@ class SalesInvoice extends Model
 
     public function customerDetails(): BelongsTo
     {
-        return $this->belongsTo(\Workdo\Account\Models\Customer::class, 'customer_id', 'user_id');
+        return $this->belongsTo(\Workhub\Account\Models\Customer::class, 'customer_id', 'user_id');
     }
 
     public function paymentAllocations(): HasMany
     {
-        return $this->hasMany(\Workdo\Account\Models\CustomerPaymentAllocation::class, 'invoice_id');
+        return $this->hasMany(\Workhub\Account\Models\CustomerPaymentAllocation::class, 'invoice_id');
     }
 
     public function salesReturns(): HasMany

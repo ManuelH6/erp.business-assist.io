@@ -1,0 +1,25 @@
+{
+    "name": "workhub/paypal",
+    "description": "Description for paypal package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Paypal\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Paypal\\Providers\\PaypalServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "name": "workhub/form-builder",
+    "description": "Description for form-builder package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\FormBuilder\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\FormBuilder\\Providers\\FormBuilderServiceProvider"
+            ]
+        }
+    }
+}

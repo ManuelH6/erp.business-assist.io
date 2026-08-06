@@ -1,0 +1,25 @@
+{
+    "name": "workhub/google-captcha",
+    "description": "Description for google-captcha package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\GoogleCaptcha\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\GoogleCaptcha\\Providers\\GoogleCaptchaServiceProvider"
+            ]
+        }
+    }
+}

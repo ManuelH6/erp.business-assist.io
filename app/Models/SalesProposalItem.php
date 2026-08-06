@@ -37,7 +37,7 @@ class SalesProposalItem extends Model
 
     public function product(): BelongsTo
     {
-        return $this->belongsTo(\Workdo\ProductService\Models\ProductServiceItem::class, 'product_id');
+        return $this->belongsTo(\Workhub\ProductService\Models\ProductServiceItem::class, 'product_id');
     }
 
     public function taxes(): HasMany

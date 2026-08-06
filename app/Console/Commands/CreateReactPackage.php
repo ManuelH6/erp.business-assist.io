@@ -30,10 +30,10 @@ class CreateReactPackage extends Command
         $this->packageName = $name;
         $this->packageLower = strtolower($name);
         $this->packageKebab = $this->camelToKebab($name);
-        $this->namespace = "Workdo\\{$name}";
+        $this->namespace = "Workhub\\{$name}";
         $this->tableName = $this->packageLower . '_items';
 
-        $packagePath = base_path("packages/workdo/{$name}");
+        $packagePath = base_path("packages/workhub/{$name}");
 
         if (File::exists($packagePath)) {
             $this->error("Package {$name} already exists!");

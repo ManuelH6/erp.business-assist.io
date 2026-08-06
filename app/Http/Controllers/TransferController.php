@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Transfer;
 use App\Models\Warehouse;
-use Workdo\ProductService\Models\ProductServiceItem;
-use Workdo\ProductService\Models\WarehouseStock;
+use Workhub\ProductService\Models\ProductServiceItem;
+use Workhub\ProductService\Models\WarehouseStock;
 use App\Http\Requests\StoreTransferRequest;
 use App\Events\CreateTransfer;
 use App\Events\DestroyTransfer;

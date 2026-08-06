@@ -25,17 +25,17 @@ class DefultSetting extends Seeder
             'logo_light' => 'logo_light.png',
             'logo_dark' => 'logo_dark.png',
             'favicon' => 'favicon.png',
-            'titleText' => !empty(env('APP_NAME')) ? env('APP_NAME') : 'ERPGo SaaS',
-            'footerText' => 'Copyright © ' . (!empty(env('APP_NAME')) ? env('APP_NAME') : 'ERPGo SaaS'),
+            'titleText' => !empty(env('APP_NAME')) ? env('APP_NAME') : 'Assist Hub',
+            'footerText' => 'Copyright © ' . (!empty(env('APP_NAME')) ? env('APP_NAME') : 'Assist Hub'),
             'sidebarVariant' => 'inset',
             'sidebarStyle' => 'plain',
             'layoutDirection' => 'ltr',
             'themeMode' => 'light',
-            'themeColor' => 'green',
-            'customColor' => '#10b77f',
+            'themeColor' => 'blue',
+            'customColor' => '#022B3A',
 
             // System Settings
-            'defaultLanguage' => 'en',
+            'defaultLanguage' => 'fr',
             'dateFormat' => 'Y-m-d',
             'timeFormat' => 'H:i',
             'calendarStartDay' => '0',
@@ -45,8 +45,8 @@ class DefultSetting extends Seeder
             'termsConditionsUrl' => '',
 
             // Currency Settings
-            'defaultCurrency' => 'USD',
-            'currencySymbol' => '$',
+            'defaultCurrency' => 'XOF',
+            'currencySymbol' => 'FCFA',
             'currency_format' => '2',
             'decimalFormat' => '2',
             'decimalSeparator' => '.',
@@ -56,8 +56,8 @@ class DefultSetting extends Seeder
             'currencySymbolPosition' => 'left',
 
             // SEO Settings
-            'metaKeywords' => 'erpgo, workdo, dashboard, admin, panel, management',
-            'metaTitle' => !empty(env('APP_NAME')) ? env('APP_NAME') . ' - Dashboard' : 'ERPGo SaaS - Dashboard',
+            'metaKeywords' => 'assisthub, workhub, dashboard, admin, panel, management',
+            'metaTitle' => !empty(env('APP_NAME')) ? env('APP_NAME') . ' - Dashboard' : 'Assist Hub - Dashboard',
             'metaDescription' => 'Modern dashboard and management system built with Laravel and React',
             'metaImage' => 'meta_image.png',
 

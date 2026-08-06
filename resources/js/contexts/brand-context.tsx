@@ -32,24 +32,24 @@ export function BrandProvider({ children }: { children: ReactNode }) {
   const isSuperAdmin = auth?.user?.roles?.includes('superadmin');
 
   let globalSettings;
-  if(isSuperAdmin != undefined) {
-        globalSettings = isSuperAdmin ? adminAllSetting : companyAllSetting;
-    } else {
-        globalSettings = adminAllSetting ;
-    }
+  if (isSuperAdmin != undefined) {
+    globalSettings = isSuperAdmin ? adminAllSetting : companyAllSetting;
+  } else {
+    globalSettings = adminAllSetting;
+  }
 
   const settings: BrandSettings = {
     logo_dark: globalSettings?.logo_dark || '',
     logo_light: globalSettings?.logo_light || '',
     favicon: globalSettings?.favicon || '',
-    titleText: globalSettings?.titleText || 'WorkDo',
-    footerText: globalSettings?.footerText || `© ${new Date().getFullYear()} WorkDo. All rights reserved.`,
+    titleText: globalSettings?.titleText || 'WorkHub',
+    footerText: globalSettings?.footerText || `© ${new Date().getFullYear()} WorkHub. All rights reserved.`,
     sidebarVariant: globalSettings?.sidebarVariant || 'inset',
     sidebarStyle: globalSettings?.sidebarStyle || 'plain',
     layoutDirection: globalSettings?.layoutDirection || 'ltr',
     themeMode: globalSettings?.themeMode || 'light',
-    themeColor: globalSettings?.themeColor || 'green',
-    customColor: globalSettings?.customColor || '#10b77f',
+    themeColor: globalSettings?.themeColor || 'orange',
+    customColor: globalSettings?.customColor || '#F97316',
   };
 
   const getPreviewUrl = (path: string) => {
@@ -57,17 +57,23 @@ export function BrandProvider({ children }: { children: ReactNode }) {
   };
 
   const themeColors = {
-    blue: '#3b82f6',
-    green: '#10b77f',
+    blue: '#022B3A',
+    green: '#F97316',
     purple: '#8b5cf6',
-    orange: '#f97316',
+    orange: '#F97316',
     red: '#ef4444'
   };
 
   const getPrimaryColor = () => {
-    return settings.themeColor === 'custom'
-      ? settings.customColor || '#10b77f'
-      : themeColors[settings.themeColor as keyof typeof themeColors] || '#10b77f';
+    let color = settings.themeColor === 'custom'
+      ? settings.customColor || '#F97316'
+      : themeColors[settings.themeColor as keyof typeof themeColors] || '#F97316';
+
+    // Force override if database still has the default green
+    if (color === '#10b77f') {
+      color = '#F97316';
+    }
+    return color;
   };
 
   useEffect(() => {
@@ -142,9 +148,10 @@ export function BrandProvider({ children }: { children: ReactNode }) {
     }
 
     if (settings.sidebarStyle === 'colored' || settings.sidebarStyle === 'gradient') {
+      const sidebarColor = '#022B3A'; // Deep Blue
       const sidebarBg = settings.sidebarStyle === 'colored'
-        ? primaryColor
-        : `linear-gradient(135deg, ${primaryColor} 0%, ${primaryColor}80 100%)`;
+        ? sidebarColor
+        : `linear-gradient(135deg, ${sidebarColor} 0%, ${sidebarColor}80 100%)`;
 
       existingStyle.textContent = `
 
@@ -165,13 +172,13 @@ export function BrandProvider({ children }: { children: ReactNode }) {
   }, [settings.themeColor, settings.customColor, settings.layoutDirection, settings.themeMode]);
 
   const getSidebarStyles = (): React.CSSProperties => {
-    const primaryColor = getPrimaryColor();
+    const sidebarColor = '#022B3A'; // Deep Blue
 
     if (settings.sidebarStyle === 'colored') {
-      return { backgroundColor: primaryColor };
+      return { backgroundColor: sidebarColor };
     } else if (settings.sidebarStyle === 'gradient') {
       return {
-        background: `linear-gradient(135deg, ${primaryColor} 0%, ${primaryColor}80 100%)`
+        background: `linear-gradient(135deg, ${sidebarColor} 0%, ${sidebarColor}80 100%)`
       };
     }
     return {};

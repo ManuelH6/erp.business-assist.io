@@ -36,13 +36,13 @@ export default function NoRecordsFound({
         auth.user?.permissions?.includes(createPermission) : true;
 
     const displayDescription = hasFilters ? 
-        (filteredDescription || t('No records match your current filters or search criteria.')) :
-        description;
+        (filteredDescription ? t(filteredDescription) : t('No records match your current filters or search criteria.')) :
+        (description ? t(description) : undefined);
 
     return (
         <div className={`flex flex-col items-center justify-center text-center ${className}`}>
             <Icon className="h-16 w-16 text-muted-foreground mb-4" />
-            <h3 className="text-lg font-semibold mb-2">{title}</h3>
+            <h3 className="text-lg font-semibold mb-2">{t(title)}</h3>
             {displayDescription && (
                 <p className="text-muted-foreground mb-4">{displayDescription}</p>
             )}
@@ -56,7 +56,7 @@ export default function NoRecordsFound({
                 hasCreatePermission && onCreateClick && (
                     <Button onClick={onCreateClick}>
                         <Plus className="h-4 w-4 mr-2" />
-                        {createButtonText || t('Create')}
+                        {createButtonText ? t(createButtonText) : t('Create')}
                     </Button>
                 )
             )}

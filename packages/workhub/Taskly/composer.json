@@ -1,0 +1,25 @@
+{
+    "name": "workhub/taskly",
+    "description": "Description for taskly package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Taskly\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Taskly\\Providers\\TasklyServiceProvider"
+            ]
+        }
+    }
+}

@@ -118,7 +118,7 @@ export default function Register() {
                         disabled={processing}
                         data-test="register-user-button"
                     >
-                        {processing ? 'Loading...' : t('CREATE ACCOUNT')}
+                        {processing ? t('Loading...') : t('CREATE ACCOUNT')}
                     </Button>
                 </div>
 

@@ -27,7 +27,9 @@ class PlanModuleCheck
         // Skip check for superadmin
         if ($user->hasRole('superadmin')) {
             return $next($request);
-        } elseif ($user->hasRole('company')) {
+        }
+        /* Temporarily disable subscription checks
+        elseif ($user->hasRole('company')) {
             if (($user->plan_expire_date && now()->gt($user->plan_expire_date)) || ($user->active_plan == 0)) {
                 // Plan expired - only allow essential plan routes
                 $allowedRoutes = ['users.leave-impersonation','plans.index', 'plans.subscribe', 'plans.start-trial', 'plans.apply-coupon', 'payment.*.store','payment.*.status', 'bank-transfer.index','plans.assign-free'];
@@ -45,6 +47,7 @@ class PlanModuleCheck
                     ->with('error', 'Company plan has expired. Please contact your administrator.');
             }
         }
+        */
 
         if($moduleName != null)
         {

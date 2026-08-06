@@ -37,14 +37,9 @@ class RoleController extends Controller
     public function create()
     {
         if(Auth::user()->can('create-roles')){
-            $hiddenModules = !Auth::user()->hasRole('superadmin') ? \App\Models\User::$company_hidden_modules : [];
-
             $allPermissions = Auth::user()->getAllPermissions()->select('id', 'name', 'label', 'add_on', 'module');
             $permissions = $allPermissions->groupBy('add_on')
-                ->filter(function ($addOnPermissions, $addOn) use ($hiddenModules) {
-                    if (in_array($addOn, $hiddenModules)) {
-                        return false;
-                    }
+                ->filter(function ($addOnPermissions, $addOn) {
                     return $addOn === 'general' || Module_is_active($addOn);
                 })
                 ->map(function ($addOnPermissions) {
@@ -76,14 +71,9 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         if(Auth::user()->can('edit-roles')){
-            $hiddenModules = !Auth::user()->hasRole('superadmin') ? \App\Models\User::$company_hidden_modules : [];
-
             $allPermissions = Auth::user()->getAllPermissions()->select('id', 'name', 'label', 'add_on', 'module','editable');
             $permissions = $allPermissions->groupBy('add_on')
-                ->filter(function ($addOnPermissions, $addOn) use ($hiddenModules) {
-                    if (in_array($addOn, $hiddenModules)) {
-                        return false;
-                    }
+                ->filter(function ($addOnPermissions, $addOn) {
                     return $addOn === 'general' || Module_is_active($addOn);
                 })
                 ->map(function ($addOnPermissions) {

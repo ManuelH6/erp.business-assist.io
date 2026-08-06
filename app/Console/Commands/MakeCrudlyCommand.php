@@ -34,10 +34,10 @@ Example: --fields="title:textbox:required,content:textarea:required" --relations
 
         // Validate package if provided
         if ($package) {
-            $packagePath = base_path("packages/workdo/{$package}");
+            $packagePath = base_path("packages/workhub/{$package}");
             if (!is_dir($packagePath)) {
                 $availablePackages = [];
-                $packagesDir = base_path('packages/workdo');
+                $packagesDir = base_path('packages/workhub');
                 if (is_dir($packagesDir)) {
                     $availablePackages = array_filter(scandir($packagesDir), function($item) use ($packagesDir) {
                         return $item !== '.' && $item !== '..' && is_dir($packagesDir . '/' . $item);

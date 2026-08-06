@@ -1,0 +1,25 @@
+{
+    "name": "workhub/calendar",
+    "description": "Description for calendar package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Calendar\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Calendar\\Providers\\CalendarServiceProvider"
+            ]
+        }
+    }
+}

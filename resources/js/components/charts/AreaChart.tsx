@@ -46,10 +46,10 @@ export const AreaChart: React.FC<AreaChartProps> = ({
             </linearGradient>
           </defs>
         )}
-        {showGrid && <CartesianGrid vertical={false} />}
+        {showGrid && <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" opacity={0.6} />}
         <XAxis dataKey={xAxisKey} tickLine={false} axisLine={false} tickMargin={8} />
         <YAxis tickLine={false} axisLine={false} tickMargin={8} />
-        {showTooltip && <Tooltip />}
+        {showTooltip && <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)' }} />}
         {showLegend && <Legend />}
         {areas.length > 0 ? areas.map((area) => (
           <Area

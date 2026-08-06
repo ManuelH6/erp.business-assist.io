@@ -9,7 +9,6 @@
         "anhskohbo/no-captcha": "^3.7",
         "bacon/bacon-qr-code": "^3.0",
         "google/apiclient": "^2.18",
-        "guzzlehttp/guzzle": "^7.10",
         "inertiajs/inertia-laravel": "^2.0",
         "larabug/larabug": "^3.5",
         "laravel/framework": "^12.0",
@@ -23,7 +22,6 @@
         "phpoffice/phpspreadsheet": "^5.1",
         "pragmarx/google2fa-laravel": "^2.3",
         "pusher/pusher-php-server": "^7.2",
-        "razorpay/razorpay": "^2.9",
         "salla/zatca": "^3.0",
         "spatie/laravel-google-calendar": "^3.8",
         "spatie/laravel-medialibrary": "^11.14",
@@ -50,7 +48,8 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Workdo\\LandingPage\\": "packages/workdo/LandingPage/src/"
+            "Workhub\\LandingPage\\": "packages/workhub/LandingPage/src/",
+            "Workhub\\Syscohada\\": "packages/workhub/Syscohada/src/"
         },
         "files": [
             "app/Helpers/Helper.php"
@@ -64,7 +63,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php -r \"file_exists('public/packages') || @symlink(realpath('packages'), 'public/packages');\""
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""

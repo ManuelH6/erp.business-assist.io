@@ -1,0 +1,25 @@
+{
+    "name": "workhub/twilio",
+    "description": "Description for twilio package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Twilio\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Twilio\\Providers\\TwilioServiceProvider"
+            ]
+        }
+    }
+}

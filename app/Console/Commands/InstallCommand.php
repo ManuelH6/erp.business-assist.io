@@ -31,22 +31,22 @@ class InstallCommand extends Command
         }
 
        // Handle foreign key constraints based on database type
-       $dbType = config('database.default');
-       if ($dbType === 'mysql') {
-           DB::statement('SET FOREIGN_KEY_CHECKS=0');
-       }
+    //    $dbType = config('database.default');
+    //    if ($dbType === 'mysql') {
+    //        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+    //    }
 
        // Drop all tables if they exist
-       Artisan::call('migrate:fresh', ['--force' => true]);
+       //Artisan::call('migrate:fresh', ['--force' => true]);
 
-       if ($dbType === 'mysql') {
-           DB::statement('SET FOREIGN_KEY_CHECKS=1');
-       }
+    //    if ($dbType === 'mysql') {
+    //        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+    //    }
 
-       Artisan::call('db:seed', ['--force' => true]);
+       //Artisan::call('db:seed', ['--force' => true]);
 
         // Install packages
-        $this->installPackages();
+        // $this->installPackages();
 
         // Create installed file
         $this->createInstalledFile();
@@ -88,7 +88,7 @@ class InstallCommand extends Command
     private function getAllAvailableModules()
     {
         $modules = [];
-        $packagesPath = base_path('packages/workdo');
+        $packagesPath = base_path('packages/workhub');
 
         if (!File::exists($packagesPath)) {
             return $modules;
@@ -129,7 +129,7 @@ class InstallCommand extends Command
 
         $addon = AddOn::where('module', $moduleName)->first();
         if (empty($addon)) {
-            $filePath = base_path('packages/workdo/' . $moduleName . '/module.json');
+            $filePath = base_path('packages/workhub/' . $moduleName . '/module.json');
 
             if (!file_exists($filePath)) {
                 throw new \Exception('Module configuration not found');

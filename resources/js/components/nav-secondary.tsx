@@ -1,5 +1,6 @@
 import * as React from "react"
 import { type LucideIcon } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 import {
   SidebarGroup,
@@ -19,6 +20,8 @@ export function NavSecondary({
     icon: LucideIcon
   }[]
 } & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
+  const { t } = useTranslation();
+
   return (
     <SidebarGroup {...props}>
       <SidebarGroupContent>
@@ -28,7 +31,7 @@ export function NavSecondary({
               <SidebarMenuButton asChild size="sm">
                 <a href={item.url}>
                   <item.icon />
-                  <span>{item.title}</span>
+                  <span>{t(item.title)}</span>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>

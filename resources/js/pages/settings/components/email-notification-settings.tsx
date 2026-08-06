@@ -106,9 +106,7 @@ export default function EmailNotificationSettings({
               {filteredModules.map((module) => (
                   <TabsContent key={module} value={module}>
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {(notifications[module] || []).filter((notification: Notification) =>
-                          auth.user?.permissions?.includes(notification.permissions)
-                      ).map((notification: Notification) => (
+                    {(notifications[module] || []).map((notification: Notification) => (
                           <div key={notification.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                           <span className="font-medium text-gray-3900">
                               {notification.action}

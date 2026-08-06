@@ -69,7 +69,7 @@ export default function Edit() {
 
 
     const templateForm = useForm({
-        from: emailTemplate.from || 'ERPGo SaaS',
+        from: emailTemplate.from || 'Assist Hub',
     });
 
     const contentForm = useForm({

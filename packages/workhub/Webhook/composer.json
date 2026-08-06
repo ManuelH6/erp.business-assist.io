@@ -1,0 +1,25 @@
+{
+    "name": "workhub/webhook",
+    "description": "Description for webhook package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Webhook\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Webhook\\Providers\\WebhookServiceProvider"
+            ]
+        }
+    }
+}

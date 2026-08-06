@@ -41,7 +41,7 @@ export const BarChart: React.FC<BarChartProps> = ({
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RechartsBarChart data={data} margin={horizontal ? { left: 80, right: 12 } : { left: 12, right: 12 }} {...layout}>
-        {showGrid && <CartesianGrid vertical={false} />}
+        {showGrid && <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" opacity={0.6} />}
         {horizontal ? (
           <>
             <XAxis type="number" domain={negative ? ['dataMin', 'dataMax'] : [0, 'dataMax']} tickLine={false} axisLine={false} />
@@ -53,7 +53,7 @@ export const BarChart: React.FC<BarChartProps> = ({
             <YAxis domain={negative ? ['dataMin', 'dataMax'] : [0, 'dataMax']} tickLine={false} axisLine={false} tickMargin={8} />
           </>
         )}
-        {showTooltip && <Tooltip />}
+        {showTooltip && <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)' }} cursor={{ fill: 'rgba(0,0,0,0.05)' }} />}
         {showLegend && <Legend />}
         {bars.length > 0 ? bars.map((bar) => (
           <Bar

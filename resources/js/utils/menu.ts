@@ -18,7 +18,7 @@ const getPackageMenuItems = (userRoles: string[], activatedPackages: string[], t
     const menuItems: NavItem[] = [];
     const menuType = userRoles.includes('superadmin') ? 'superadmin-menu' : 'company-menu';
 
-    const allModules = import.meta.glob('../../../packages/workdo/*/src/Resources/js/menus/*.ts', { eager: true });
+    const allModules = import.meta.glob('../../../packages/workhub/*/src/Resources/js/menus/*.ts', { eager: true });
 
     // Ensure activatedPackages is an array before iterating
     if (!Array.isArray(activatedPackages)) {
@@ -26,7 +26,7 @@ const getPackageMenuItems = (userRoles: string[], activatedPackages: string[], t
     }
 
     activatedPackages.forEach(packageName => {
-        const menuPath = `../../../packages/workdo/${packageName}/src/Resources/js/menus/${menuType}.ts`;
+        const menuPath = `../../../packages/workhub/${packageName}/src/Resources/js/menus/${menuType}.ts`;
         const module = allModules[menuPath] as any;
 
         if (module) {

@@ -40,36 +40,43 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
     return (
     <Sidebar
-      variant={settings.sidebarVariant as any}
-      side={settings.layoutDirection === 'rtl' ? 'right' : 'left'}
-      collapsible="icon"
-      className={sidebarProps.className}
-      style={sidebarProps.style}
-      data-sidebar-style={settings.sidebarStyle}
-      {...props}
+        variant={settings.sidebarVariant as any}
+        side={settings.layoutDirection === 'rtl' ? 'right' : 'left'}
+        collapsible="icon"
+        className={sidebarProps.className}
+        style={sidebarProps.style}
+        {...props}
     >
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild className="hover:!bg-transparent active:!bg-transparent !transition-none hover:!translate-x-0">
-              <Link href={route('dashboard')} className="flex items-center !py-4 h-auto justify-center">
+            <SidebarMenuButton size="lg" asChild>
+              <Link href={route('dashboard')} className="flex items-center !py-4 h-auto justify-start px-3">
                 {/* Logo for expanded sidebar */}
-                <div className="group-data-[collapsible=icon]:hidden flex items-center">
+                <div className="group-data-[collapsible=icon]:hidden flex items-center gap-2.5">
                   {(() => {
                     const isDark = document.documentElement.classList.contains('dark');
                     const currentLogo = isDark ? settings.logo_light : settings.logo_dark;
                     const { getPreviewUrl } = useBrand();
                     const displayUrl = currentLogo ? getPreviewUrl(currentLogo) : '';
 
+                    const isSidebarDark = settings.sidebarStyle === 'colored' || settings.sidebarStyle === 'gradient' || isDark;
+                    const textColorClass = isSidebarDark ? 'text-white' : 'text-[#022B3A]';
+
                     return displayUrl ? (
-                      <img
-                        src={displayUrl}
-                        alt="Logo"
-                        className="w-auto max-w-[180px] transition-all duration-200"
-                      />
+                      <div className="flex items-center gap-2">
+                        <img
+                          src={displayUrl}
+                          alt="Logo"
+                          className="h-9 w-auto transition-all duration-200"
+                        />
+                        <span className={`font-bold text-xl tracking-tight ${textColorClass}`}>
+                          Assist Hub
+                        </span>
+                      </div>
                     ) : (
-                      <div className="h-12 text-inherit font-semibold flex items-center text-lg tracking-tight">
-                        {settings.titleText || 'WorkDo'}
+                      <div className={`h-12 font-bold flex items-center text-xl tracking-tight ${textColorClass}`}>
+                        {settings.titleText || 'Assist Hub'}
                       </div>
                     );
                   })()}
@@ -89,7 +96,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       />
                     ) : (
                       <div className="h-8 w-8 bg-primary text-white rounded flex items-center justify-center font-bold shadow-sm">
-                        W
+                        A
                       </div>
                     );
                   })()}

@@ -20,7 +20,7 @@ class PackageSeeder extends Seeder
         if(empty($userId)){
           $userId = User::where('email', 'company@example.com')->first()->id;
         }
-        $path = base_path('packages/workdo');
+        $path = base_path('packages/workhub');
         $devPackagePath = \Illuminate\Support\Facades\File::directories($path);
 
         foreach ($devPackagePath as $package) {
@@ -58,9 +58,17 @@ class PackageSeeder extends Seeder
         foreach ($allEnabled as $key => $value) {
             try {
                 Artisan::call('package:seed', ['packageName' => $value]);
-                $this->command->info("{$value} Seeder Run Successfully!");
+                if ($this->command) {
+                    $this->command->info("{$value} Seeder Run Successfully!");
+                } else {
+                    echo "{$value} Seeder Run Successfully!\n";
+                }
             } catch (\Throwable $th) {
-                $this->command->error("Failed to seed package '{$value}': " . $th->getMessage());
+                if ($this->command) {
+                    $this->command->error("Failed to seed package '{$value}': " . $th->getMessage());
+                } else {
+                    echo "Failed to seed package '{$value}': " . $th->getMessage() . "\n";
+                }
             }
         }
 

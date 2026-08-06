@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Workdo\ProductService\Models\WarehouseStock;
+use Workhub\ProductService\Models\WarehouseStock;
 
 class StoreTransferRequest extends FormRequest
 {

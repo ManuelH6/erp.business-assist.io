@@ -11,12 +11,12 @@ export const useFormFields = (hookName: string, data: any, setData: any, errors:
     try {
         const { auth } = usePage().props as any;
         const activatedPackages = auth?.user?.activatedPackages || [];
-        const allModules = import.meta.glob('../../../packages/workdo/*/src/Resources/js/fields/fields.tsx', { eager: true });
+        const allModules = import.meta.glob('../../../packages/workhub/*/src/Resources/js/fields/fields.tsx', { eager: true });
 
         const fields: FormField[] = [];
 
         activatedPackages.forEach((packageName: string) => {
-            const fieldPath = `../../../packages/workdo/${packageName}/src/Resources/js/fields/fields.tsx`;
+            const fieldPath = `../../../packages/workhub/${packageName}/src/Resources/js/fields/fields.tsx`;
             const module = allModules[fieldPath] as any;
             
             if (module && module[hookName]) {

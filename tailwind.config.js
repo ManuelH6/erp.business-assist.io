@@ -1,10 +1,12 @@
+import tailwindcssAnimate from 'tailwindcss-animate';
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: ["class"],
   content: [
       "./resources/views/**/*.blade.php",
       "./resources/js/**/*.tsx",
-      "./packages/workdo/*/src/Resources/js/**/*.tsx",
+      "./packages/workhub/*/src/Resources/js/**/*.tsx",
   ],
   prefix: "",
   theme: {
@@ -16,6 +18,9 @@ module.exports = {
   		}
   	},
   	extend: {
+  		fontFamily: {
+  			sans: ['Inter', 'sans-serif'],
+  		},
   		colors: {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
@@ -59,6 +64,14 @@ module.exports = {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
+  			},
+  			success: {
+  				DEFAULT: 'hsl(var(--success))',
+  				foreground: 'hsl(var(--success-foreground))'
+  			},
+  			warning: {
+  				DEFAULT: 'hsl(var(--warning))',
+  				foreground: 'hsl(var(--warning-foreground))'
   			}
   		},
   		borderRadius: {
@@ -90,5 +103,5 @@ module.exports = {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 }

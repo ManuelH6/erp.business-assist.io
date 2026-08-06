@@ -23,7 +23,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
-use Workdo\ProductService\Models\ProductServiceItem;
+use Workhub\ProductService\Models\ProductServiceItem;
 
 class SalesProposalController extends Controller
 {

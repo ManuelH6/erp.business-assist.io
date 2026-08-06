@@ -50,7 +50,7 @@ class SalesInvoiceReturn extends Model
 
     public function customerDetails(): BelongsTo
     {
-        return $this->belongsTo(\Workdo\Account\Models\Customer::class, 'customer_id', 'user_id');
+        return $this->belongsTo(\Workhub\Account\Models\Customer::class, 'customer_id', 'user_id');
     }
 
     public function originalInvoice(): BelongsTo

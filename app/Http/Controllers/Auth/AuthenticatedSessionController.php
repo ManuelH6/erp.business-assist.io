@@ -45,27 +45,12 @@ class AuthenticatedSessionController extends Controller
 
         if (Auth::check() && Auth::user()->hasRole('superadmin')) {
             try {
-                $hasUpdates = false;
-
-                // 1. Check for migrations
                 $output = Artisan::call('migrate:status');
                 $result = Artisan::output();
+
+                // Check if there are pending migrations
                 if (strpos($result, 'Pending') !== false) {
-                    $hasUpdates = true;
-                }
-
-                // 2. Check for new packages
-                if (!$hasUpdates) {
-                    $packagesPath = base_path('packages/workdo');
-                    $folderCount = count(glob($packagesPath . '/*', GLOB_ONLYDIR));
-                    $dbCount = \App\Models\AddOn::count();
-                    
-                    if ($folderCount > $dbCount) {
-                        $hasUpdates = true;
-                    }
-                }
-
-                if ($hasUpdates) {
+                    // Redirect to updater if not already on updater route
                     return redirect()->route('updater.index');
                 }
             } catch (\Exception $e) {

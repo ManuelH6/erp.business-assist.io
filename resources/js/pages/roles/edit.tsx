@@ -65,7 +65,7 @@ export default function Edit() {
                 {label: t('Roles'), url: route('roles.index')},
                 {label: t('Edit Role')}
             ]}
-            pageTitle={`${t('Edit Role')}: ${role.label}`}
+            pageTitle={`${t('Edit Role')}: ${t(role.label)}`}
             backUrl={route('roles.index')}
             className="overflow-hidden"
         >
@@ -113,7 +113,7 @@ export default function Edit() {
                                 <TabsList className="mb-3 w-full justify-start overflow-x-auto overflow-y-hidden h-auto p-1">
                                     {filteredFeatures.map((addOn) => (
                                         <TabsTrigger key={addOn} value={addOn} className="capitalize whitespace-nowrap flex-shrink-0">
-                                            {getPackageAlias(addOn)}
+                                            {t(getPackageAlias(addOn) || addOn)}
                                         </TabsTrigger>
                                     ))}
 
@@ -140,7 +140,7 @@ export default function Edit() {
                                                             }
                                                         />
                                                         <Label htmlFor={`module-${module}`} className="font-medium capitalize">
-                                                            {module}
+                                                            {t(module)}
                                                         </Label>
                                                     </div>
                                                     <div className="grid grid-cols-3 gap-2">
@@ -154,7 +154,7 @@ export default function Edit() {
                                                                     }
                                                                 />
                                                                 <Label htmlFor={permission.name} className="text-sm">
-                                                                    {permission.label}
+                                                                    {t(permission.label)}
                                                                 </Label>
                                                             </div>
                                                         ))}

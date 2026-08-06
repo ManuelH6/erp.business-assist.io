@@ -45,7 +45,7 @@ class PlanController extends Controller
                     return [
                         'module' => $addon->module,
                         'alias' => $addon->name,
-                        'image' => $addon->image ?: url('/packages/workdo/' . $addon->module . '/favicon.png'),
+                        'image' => $addon->image ?: url('/packages/workhub/' . $addon->module . '/favicon.png'),
                         'monthly_price' => $addon->monthly_price ?? 0,
                         'yearly_price' => $addon->yearly_price ?? 0,
                     ];
@@ -87,13 +87,6 @@ class PlanController extends Controller
                         $paymentAmount = $latestOrder ? $latestOrder->price : 0;
                         $currency = $latestOrder ? $latestOrder->currency : (admin_setting('defaultCurrency') ?? 'USD');
 
-                        $isExpired = false;
-                        if (!empty($user->plan_expire_date) && $user->plan_expire_date < now()->format('Y-m-d')) {
-                            $isExpired = true;
-                        } elseif (!empty($user->trial_expire_date) && $user->trial_expire_date < now()->format('Y-m-d')) {
-                            $isExpired = true;
-                        }
-
                         $currentSubscription = [
                             'plan_name' => $activePlanObj->name,
                             'duration' => $duration,
@@ -102,10 +95,6 @@ class PlanController extends Controller
                             'currency' => $currency,
                             'is_free' => $activePlanObj->free_plan == 1
                         ];
-
-                        if($isExpired){
-                            $currentSubscription = null;
-                        }
                     }
                 }
             }
@@ -141,7 +130,7 @@ class PlanController extends Controller
                     return [
                         'module' => $addon->module,
                         'alias' => $addon->name,
-                        'image' => $addon->image ?: url('/packages/workdo/' . $addon->module . '/favicon.png'),
+                        'image' => $addon->image ?: url('/packages/workhub/' . $addon->module . '/favicon.png'),
                     ];
                 })->values()->toArray();
             } else {
@@ -154,7 +143,7 @@ class PlanController extends Controller
                     return [
                         'module' => $addon->module,
                         'alias' => $addon->name,
-                        'image' => $addon->image ?: url('/packages/workdo/' . $addon->module . '/favicon.png'),
+                        'image' => $addon->image ?: url('/packages/workhub/' . $addon->module . '/favicon.png'),
                     ];
                 })->values()->toArray();
             }
@@ -221,7 +210,7 @@ class PlanController extends Controller
                     return [
                         'module' => $addon->module,
                         'alias' => $addon->name,
-                        'image' => $addon->image ?: url('/packages/workdo/' . $addon->module . '/favicon.png'),
+                        'image' => $addon->image ?: url('/packages/workhub/' . $addon->module . '/favicon.png'),
                     ];
                 })->values()->toArray();
             } else {
@@ -234,7 +223,7 @@ class PlanController extends Controller
                     return [
                         'module' => $addon->module,
                         'alias' => $addon->name,
-                        'image' => $addon->image ?: url('/packages/workdo/' . $addon->module . '/favicon.png'),
+                        'image' => $addon->image ?: url('/packages/workhub/' . $addon->module . '/favicon.png'),
                     ];
                 })->values()->toArray();
             }
@@ -371,7 +360,7 @@ class PlanController extends Controller
                     return [
                         'module' => $addon->module,
                         'alias' => $addon->name,
-                        'image' => $addon->image ?: url('/packages/workdo/' . $addon->module . '/favicon.png'),
+                        'image' => $addon->image ?: url('/packages/workhub/' . $addon->module . '/favicon.png'),
                         'monthly_price' => $addon->monthly_price ?? 0,
                         'yearly_price' => $addon->yearly_price ?? 0,
                     ];

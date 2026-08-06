@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
 
         $userId = User::where('email', 'company@example.com')->first()->id;
         User::CompanySetting($userId);
+        
+        // Initialize modules and assign plan to company
+        (new PackageSeeder())->run($userId);
 
         if(config('app.run_demo_seeder'))
         {
@@ -42,9 +45,6 @@ class DatabaseSeeder extends Seeder
             (new DemoBankTransferSeeder())->run($userId);
             (new DemoCouponDetailsSeeder())->run($userId);
             (new MessengerSeeder())->run();
-
-             // temporary
-            // (new PackageSeeder())->run($userId);
 
             // in this seeder product
             (new DemoTransferSeeder())->run($userId);

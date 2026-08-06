@@ -1,0 +1,25 @@
+{
+    "name": "workhub/goal",
+    "description": "Description for goal package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Goal\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Goal\\Providers\\GoalServiceProvider"
+            ]
+        }
+    }
+}

@@ -4,9 +4,11 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { ChevronDown } from 'lucide-react';
 import { NavItem } from '@/types';
+import { useTranslation } from 'react-i18next';
 
 export function NavMain({ items = [], searchQuery = "" }: { items: NavItem[], searchQuery?: string }) {
     const page = usePage();
+    const { t } = useTranslation();
 
     // Filter items based on search query
     const filterItems = (items: NavItem[], query: string): NavItem[] => {
@@ -86,9 +88,9 @@ export function NavMain({ items = [], searchQuery = "" }: { items: NavItem[], se
                                 <Collapsible asChild defaultOpen={shouldBeActive} className="group/collapsible group-data-[collapsible=icon]:hidden">
                                     <div>
                                         <CollapsibleTrigger asChild>
-                                            <SidebarMenuButton tooltip={item.title} isActive={shouldBeActive} data-current={false}>
+                                            <SidebarMenuButton tooltip={t(item.title)} isActive={shouldBeActive} data-current={false}>
                                                 {item.icon && <item.icon />}
-                                                <span>{item.title}</span>
+                                                <span>{t(item.title)}</span>
                                                 <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
                                             </SidebarMenuButton>
                                         </CollapsibleTrigger>
@@ -107,7 +109,7 @@ export function NavMain({ items = [], searchQuery = "" }: { items: NavItem[], se
                                                                         <CollapsibleTrigger asChild>
                                                                             <SidebarMenuSubButton isActive={subItemShouldBeActive} data-current={false}>
                                                                                 {subItem.icon && <subItem.icon className="h-4 w-4" />}
-                                                                                <span>{subItem.title}</span>
+                                                                                <span>{t(subItem.title)}</span>
                                                                                 <ChevronDown className="ml-auto h-3 w-3 transition-transform group-data-[state=open]/subcollapsible:rotate-180" />
                                                                             </SidebarMenuSubButton>
                                                                         </CollapsibleTrigger>
@@ -125,7 +127,7 @@ export function NavMain({ items = [], searchQuery = "" }: { items: NavItem[], se
                                                                                         >
                                                                                             <Link href={subSubItem.href!}>
                                                                                                 {subSubItem.icon && <subSubItem.icon className="h-3 w-3" />}
-                                                                                                <span>{subSubItem.title}</span>
+                                                                                                <span>{t(subSubItem.title)}</span>
                                                                                             </Link>
                                                                                         </SidebarMenuSubButton>
                                                                                     </SidebarMenuSubItem>
@@ -147,7 +149,7 @@ export function NavMain({ items = [], searchQuery = "" }: { items: NavItem[], se
                                                             >
                                                                 <Link href={subItem.href!}>
                                                                     {subItem.icon && <subItem.icon className="h-4 w-4" />}
-                                                                    <span>{subItem.title}</span>
+                                                                    <span>{t(subItem.title)}</span>
                                                                 </Link>
                                                             </SidebarMenuSubButton>
                                                         </SidebarMenuSubItem>
@@ -163,11 +165,11 @@ export function NavMain({ items = [], searchQuery = "" }: { items: NavItem[], se
                                     <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
                                             <SidebarMenuButton
-                                                tooltip={item.title}
+                                                tooltip={t(item.title)}
                                                 isActive={shouldBeActive}
                                             >
                                                 {item.icon && <item.icon />}
-                                                <span>{item.title}</span>
+                                                <span>{t(item.title)}</span>
                                             </SidebarMenuButton>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent side="right" align="start" className="w-48">
@@ -178,7 +180,7 @@ export function NavMain({ items = [], searchQuery = "" }: { items: NavItem[], se
                                                             <DropdownMenuTrigger asChild>
                                                                 <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
                                                                     {subItem.icon && <subItem.icon className="h-4 w-4" />}
-                                                                    <span>{subItem.title}</span>
+                                                                    <span>{t(subItem.title)}</span>
                                                                     <ChevronDown className="ml-auto h-3 w-3" />
                                                                 </DropdownMenuItem>
                                                             </DropdownMenuTrigger>
@@ -187,7 +189,7 @@ export function NavMain({ items = [], searchQuery = "" }: { items: NavItem[], se
                                                                     <DropdownMenuItem key={subSubItem.title} asChild>
                                                                         <Link href={subSubItem.href!} className="flex items-center gap-2">
                                                                             {subSubItem.icon && <subSubItem.icon className="h-3 w-3" />}
-                                                                            <span className="text-sm">{subSubItem.title}</span>
+                                                                            <span className="text-sm">{t(subSubItem.title)}</span>
                                                                         </Link>
                                                                     </DropdownMenuItem>
                                                                 ))}
@@ -200,7 +202,7 @@ export function NavMain({ items = [], searchQuery = "" }: { items: NavItem[], se
                                                     <DropdownMenuItem key={subItem.title} asChild>
                                                         <Link href={subItem.href!} className="flex items-center gap-2">
                                                             {subItem.icon && <subItem.icon className="h-4 w-4" />}
-                                                            <span>{subItem.title}</span>
+                                                            <span>{t(subItem.title)}</span>
                                                         </Link>
                                                     </DropdownMenuItem>
                                                 );
@@ -218,11 +220,11 @@ export function NavMain({ items = [], searchQuery = "" }: { items: NavItem[], se
                                 asChild
                                 isActive={shouldBeActive}
                                 data-current={false}
-                                tooltip={item.title}
+                                tooltip={t(item.title)}
                             >
                                 <Link href={item.href!}>
                                     {item.icon && <item.icon />}
-                                    <span>{item.title}</span>
+                                    <span>{t(item.title)}</span>
                                 </Link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>

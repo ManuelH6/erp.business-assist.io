@@ -1,0 +1,25 @@
+{
+    "name": "workhub/quotation",
+    "description": "Description for quotation package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Quotation\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Quotation\\Providers\\QuotationServiceProvider"
+            ]
+        }
+    }
+}

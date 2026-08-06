@@ -136,7 +136,7 @@ if (!function_exists('getCompanyAllSetting')) {
                     'custom_color' => 'customColor'
                 ];
                 
-                $cookieName = 'theme_settings_' . (Auth::check() ? creatorId() : $user->id);
+                $cookieName = 'theme_settings_' . creatorId();
                 if (\Cookie::get($cookieName)) {
                     $cookieData = json_decode(\Cookie::get($cookieName), true);
                     if (is_array($cookieData)) {
@@ -573,13 +573,6 @@ if (! function_exists('isLandingPageEnabled')) {
 if (!function_exists('upload_file')) {
     function upload_file($request, $key_name, $name, $path)
     {
-        if (config('app.is_demo', false)) {
-            return [
-                'flag' => 1,
-                'msg' => 'success',
-                'url' => $path . '/dummy-file.jpg'
-            ];
-        }
         try {
 
             $config = StorageConfigService::getStorageConfig();
@@ -635,13 +628,6 @@ if (!function_exists('upload_file')) {
 if (!function_exists('upload_base64_file')) {
     function upload_base64_file($base64_string, $name, $path)
     {
-        if (config('app.is_demo', false)) {
-            return [
-                'flag' => 1,
-                'msg' => 'success',
-                'url' => $path . '/dummy-file.jpg'
-            ];
-        }
         try {
             $config = StorageConfigService::getStorageConfig();
 

@@ -1,0 +1,25 @@
+{
+    "name": "workhub/account",
+    "description": "Description for account package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Account\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Account\\Providers\\AccountServiceProvider"
+            ]
+        }
+    }
+}

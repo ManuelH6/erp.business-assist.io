@@ -8,10 +8,9 @@ import { Button } from '@/components/ui/button';
 interface Props {
     hasUpdates: boolean;
     pendingMigrations: string[];
-    newPackages?: string[];
 }
 
-export default function UpdaterIndex({ hasUpdates, pendingMigrations, newPackages = [] }: Props) {
+export default function UpdaterIndex({ hasUpdates, pendingMigrations }: Props) {
     const { t } = useTranslation();
     const [updating, setUpdating] = useState(false);
     const [completed, setCompleted] = useState(false);
@@ -82,35 +81,18 @@ export default function UpdaterIndex({ hasUpdates, pendingMigrations, newPackage
                                             {t('The following database migrations are pending and need to be executed:')}
                                         </p>
 
-                                        {pendingMigrations.length > 0 && (
-                                            <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-4">
-                                                <h4 className="font-medium text-blue-900 mb-2">
-                                                    {t('Migrations to run')} ({pendingMigrations.length}):
-                                                </h4>
-                                                <div className="max-h-40 overflow-y-auto">
-                                                    {pendingMigrations.map((migration, index) => (
-                                                        <div key={index} className="text-sm text-blue-800 py-1">
-                                                            • {migration}
-                                                        </div>
-                                                    ))}
-                                                </div>
+                                        <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
+                                            <h4 className="font-medium text-blue-900 mb-2">
+                                                {t('Migrations to run')} ({pendingMigrations.length}):
+                                            </h4>
+                                            <div className="max-h-40 overflow-y-auto">
+                                                {pendingMigrations.map((migration, index) => (
+                                                    <div key={index} className="text-sm text-blue-800 py-1">
+                                                        • {migration}
+                                                    </div>
+                                                ))}
                                             </div>
-                                        )}
-
-                                        {newPackages.length > 0 && (
-                                            <div className="bg-purple-50 border border-purple-200 rounded-md p-4">
-                                                <h4 className="font-medium text-purple-900 mb-2">
-                                                    {t('New Modules to install')} ({newPackages.length}):
-                                                </h4>
-                                                <div className="max-h-40 overflow-y-auto">
-                                                    {newPackages.map((pkg, index) => (
-                                                        <div key={index} className="text-sm text-purple-800 py-1">
-                                                            • {pkg}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        )}
+                                        </div>
                                     </div>
 
                                     <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4 mb-6">

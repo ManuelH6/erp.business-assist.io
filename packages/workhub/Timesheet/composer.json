@@ -1,0 +1,25 @@
+{
+    "name": "workhub/timesheet",
+    "description": "Description for timesheet package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Timesheet\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Timesheet\\Providers\\TimesheetServiceProvider"
+            ]
+        }
+    }
+}

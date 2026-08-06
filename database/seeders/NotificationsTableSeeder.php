@@ -26,14 +26,14 @@ class NotificationsTableSeeder extends Seeder
         $permissions = [
             'manage-users',
               // add your permissions here
-            'manage-sales-invoices',
-            'manage-sales-invoices',
-            'manage-customer-payments',
-            'manage-sales-proposals',
-            'manage-helpdesk-tickets',
-            'manage-helpdesk-tickets',
-            'manage-purchase-invoices',
-            'manage-vendor-payments',
+            'invoice send',
+            'invoice manage',
+            'invoice payment create',
+            'proposal send',
+            'helpdesk manage',
+            'helpdesk manage',
+            'purchase send',
+            'purchase payment create',
 
         ];
         foreach($notifications as $key=>$n){

@@ -146,7 +146,6 @@ class DemoModeMiddleware
                 'newsletter-subscribers.destroy',
                 'email.notification.setting.store',
                 'ai-assistant.settings.store',
-                'ai-assistant.generate',
                 'contract-settings.store',
                 'twilio.settings.store',
                 'payment.stripe.store',

@@ -62,12 +62,12 @@ class HomeController extends Controller
 
     private function regularDashboard()
     {
-        $packagesPath = base_path('packages/workdo');
+        $packagesPath = base_path('packages/workhub');
 
         // find dashboard menu from all  active package and redirect if found
         if (is_dir($packagesPath)) {
             foreach (glob($packagesPath . '/*/src/Resources/js/menus/company-menu.ts') as $menuFile) {
-                preg_match('/packages\/workdo\/([^\/]+)\//', $menuFile, $moduleMatch);
+                preg_match('/packages\/workhub\/([^\/]+)\//', $menuFile, $moduleMatch);
                 $moduleName = $moduleMatch[1] ?? null;
                     $content = file_get_contents($menuFile);
                     if (preg_match("/parent:\s*['\"]dashboard['\"]/", $content)) {

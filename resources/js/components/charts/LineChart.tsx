@@ -3,7 +3,7 @@ import { LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid, Tool
 
 interface LineChartProps {
   data: any[];
-  dataKey: string;
+  dataKey?: string;
   xAxisKey: string;
   color?: string;
   type?: 'monotone' | 'linear' | 'step' | 'stepBefore' | 'stepAfter';
@@ -35,15 +35,15 @@ export const LineChart: React.FC<LineChartProps> = ({
   height = 350,
   lines = [],
   customDots = false,
-  strokeWidth = 2
+  strokeWidth = 3
 }) => {
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RechartsLineChart data={data} margin={{ left: 12, right: 12 }}>
-        {showGrid && <CartesianGrid vertical={false} />}
-        <XAxis dataKey={xAxisKey} tickLine={false} axisLine={false} tickMargin={8} />
-        <YAxis tickLine={false} axisLine={false} tickMargin={8} />
-        {showTooltip && <Tooltip />}
+        {showGrid && <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" opacity={0.6} />}
+        <XAxis dataKey={xAxisKey} tickLine={false} axisLine={false} tickMargin={12} tick={{ fill: '#6b7280', fontSize: 12 }} />
+        <YAxis tickLine={false} axisLine={false} tickMargin={12} tick={{ fill: '#6b7280', fontSize: 12 }} />
+        {showTooltip && <Tooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)' }} />}
         {showLegend && <Legend />}
         {lines.length > 0 ? lines.map((line) => (
           <Line
@@ -54,6 +54,7 @@ export const LineChart: React.FC<LineChartProps> = ({
             stroke={line.color}
             strokeWidth={strokeWidth}
             dot={showDots}
+            activeDot={{ r: 6, strokeWidth: 0 }}
           />
         )) : (
           <Line
@@ -62,6 +63,7 @@ export const LineChart: React.FC<LineChartProps> = ({
             stroke={color}
             strokeWidth={strokeWidth}
             dot={showDots}
+            activeDot={{ r: 6, strokeWidth: 0 }}
           />
         )}
       </RechartsLineChart>

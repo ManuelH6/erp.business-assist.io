@@ -1,0 +1,27 @@
+{
+    "name": "workhub/syscohada",
+    "description": "Module SYSCOHADA révisé 2017 — Plan comptable OHADA pour Assist Hub",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "workhub/account": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Syscohada\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Syscohada\\Providers\\SyscohadaServiceProvider"
+            ]
+        }
+    }
+}

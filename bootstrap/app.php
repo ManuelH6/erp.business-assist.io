@@ -24,12 +24,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'api.json' => \App\Http\Middleware\ApiForceJson::class
         ]);
 
-        $middleware->validateCsrfTokens(
-            except: [
-                'iyzipay/*',
-                'easebuzz/*',
-            ]
-        );
+        //
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

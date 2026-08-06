@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'system' => 'ERPGo SaaS',
-    'system_version' => '9.5',
+    'system' => 'Assisthub',
+    'system_version' => '9.2',
 ];

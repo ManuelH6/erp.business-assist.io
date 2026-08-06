@@ -163,7 +163,7 @@ export default function Login({
                         disabled={processing}
                         data-test="login-button"
                     >
-                        {processing ? 'Loading...' : t('SIGN IN')}
+                        {processing ? t('Loading...') : t('SIGN IN')}
                     </Button>
 
                     {loginButtons.length > 0 && (

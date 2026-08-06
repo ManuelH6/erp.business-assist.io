@@ -2,7 +2,7 @@
 
 return [
     'currencies' => [
-        ['id' => 1, 'name' => 'US Dollar', 'code' => 'USD', 'symbol' => '$', 'is_default' => true],
+        ['id' => 1, 'name' => 'US Dollar', 'code' => 'USD', 'symbol' => '$', 'is_default' => false],
         ['id' => 2, 'name' => 'Euro', 'code' => 'EUR', 'symbol' => '€', 'is_default' => false],
         ['id' => 3, 'name' => 'British Pound', 'code' => 'GBP', 'symbol' => '£', 'is_default' => false],
         ['id' => 4, 'name' => 'Japanese Yen', 'code' => 'JPY', 'symbol' => '¥', 'is_default' => false],
@@ -57,7 +57,7 @@ return [
         ['id' => 53, 'name' => 'Cambodian Riel', 'code' => 'KHR', 'symbol' => '៛', 'is_default' => false],
         ['id' => 54, 'name' => 'Cape Verdean Escudo', 'code' => 'CVE', 'symbol' => '$', 'is_default' => false],
         ['id' => 55, 'name' => 'Cayman Islands Dollar', 'code' => 'KYD', 'symbol' => '$', 'is_default' => false],
-        ['id' => 56, 'name' => 'Central African CFA Franc', 'code' => 'XAF', 'symbol' => 'Fr', 'is_default' => false],
+        ['id' => 56, 'name' => 'Central African CFA Franc', 'code' => 'XAF', 'symbol' => 'FCFA', 'is_default' => false],
         ['id' => 57, 'name' => 'CFP Franc', 'code' => 'XPF', 'symbol' => 'Fr', 'is_default' => false],
         ['id' => 58, 'name' => 'Chilean Peso', 'code' => 'CLP', 'symbol' => '$', 'is_default' => false],
         ['id' => 59, 'name' => 'Colombian Peso', 'code' => 'COP', 'symbol' => '$', 'is_default' => false],
@@ -153,7 +153,7 @@ return [
         ['id' => 149, 'name' => 'Vanuatu Vatu', 'code' => 'VUV', 'symbol' => 'Vt', 'is_default' => false],
         ['id' => 150, 'name' => 'Venezuelan Bolívar', 'code' => 'VES', 'symbol' => 'Bs.S.', 'is_default' => false],
         ['id' => 151, 'name' => 'Vietnamese Dong', 'code' => 'VND', 'symbol' => '₫', 'is_default' => false],
-        ['id' => 152, 'name' => 'West African CFA Franc', 'code' => 'XOF', 'symbol' => 'Fr', 'is_default' => false],
+        ['id' => 152, 'name' => 'West African CFA Franc', 'code' => 'XOF', 'symbol' => 'FCFA', 'is_default' => true],
         ['id' => 153, 'name' => 'Yemeni Rial', 'code' => 'YER', 'symbol' => '﷼', 'is_default' => false],
         ['id' => 154, 'name' => 'Zambian Kwacha', 'code' => 'ZMW', 'symbol' => 'ZK', 'is_default' => false],
         ['id' => 155, 'name' => 'Zimbabwean Dollar', 'code' => 'ZWL', 'symbol' => '$', 'is_default' => false],

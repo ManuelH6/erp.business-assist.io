@@ -1,0 +1,25 @@
+{
+    "name": "workhub/aiassistant",
+    "description": "Description for aiassistant package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\AIAssistant\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\AIAssistant\\Providers\\AIAssistantServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "name": "workhub/stripe",
+    "description": "Description for stripe package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Stripe\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Stripe\\Providers\\StripeServiceProvider"
+            ]
+        }
+    }
+}

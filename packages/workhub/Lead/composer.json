@@ -1,0 +1,25 @@
+{
+    "name": "workhub/lead",
+    "description": "Description for lead package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Lead\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Lead\\Providers\\LeadServiceProvider"
+            ]
+        }
+    }
+}

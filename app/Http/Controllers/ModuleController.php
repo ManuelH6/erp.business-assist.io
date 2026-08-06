@@ -56,10 +56,10 @@ class ModuleController extends Controller
             } else {
                 $addon = AddOn::where('module', $request->name)->first();
                 if (empty($addon)) {
-                    Artisan::call('migrate --path=/packages/workdo/' . $request->name . '/src/Database/Migrations --force');
+                    Artisan::call('migrate --path=/packages/workhub/' . $request->name . '/src/Database/Migrations --force');
                     Artisan::call('package:seed ' . $request->name);
 
-                    $filePath = base_path('packages/workdo/' . $request->name . '/module.json');
+                    $filePath = base_path('packages/workhub/' . $request->name . '/module.json');
                     $jsonContent = file_get_contents($filePath);
                     $data = json_decode($jsonContent, true);
 
@@ -78,7 +78,7 @@ class ModuleController extends Controller
                 $module = (new Module())->find($request->name);
                 $check_parent_module = $this->Check_Parent_Module($module);
                 if ($check_parent_module['status'] == true) {
-                    Artisan::call('migrate --path=/packages/workdo/' . $request->name . '/src/Database/Migrations --force');
+                    Artisan::call('migrate --path=/packages/workhub/' . $request->name . '/src/Database/Migrations --force');
                     Artisan::call('package:seed ' . $request->name);
                     $module = (new Module())->find($request->name);
                     $module->enable();
@@ -143,7 +143,7 @@ class ModuleController extends Controller
     private function getAllModules()
     {
         $modules = [];
-        $packagesPath = base_path('packages/workdo');
+        $packagesPath = base_path('packages/workhub');
 
         if (!File::exists($packagesPath)) {
             return $modules;
@@ -165,7 +165,7 @@ class ModuleController extends Controller
                         'alias' =>  $addon ? $addon->name :$moduleData['alias'],
                         'description' => $moduleData['description'] ?? '',
                         'version' => $moduleData['version'] ?? '1.0.0',
-                        'image' => url('/packages/workdo/' . $moduleName . '/favicon.png'),
+                        'image' => url('/packages/workhub/' . $moduleName . '/favicon.png'),
                         'is_enabled' => $addon ? $addon->is_enable : false,
                         'package_name' => $moduleData['package_name'] ?? null,
                         'display' => $moduleData['display'] ?? true,
@@ -241,7 +241,7 @@ class ModuleController extends Controller
             throw new \Exception("Unable to open ZIP file: {$file->getClientOriginalName()}");
         }
 
-        $tempPath = base_path('packages/workdo/tmp_' . uniqid());
+        $tempPath = base_path('packages/workhub/tmp_' . uniqid());
         $zip->extractTo($tempPath);
         $zip->close();
 
@@ -265,7 +265,7 @@ class ModuleController extends Controller
             throw new \Exception("Invalid module.json: {$file->getClientOriginalName()}");
         }
 
-        $extractPath = base_path('packages/workdo/' . $moduleData['name']);
+        $extractPath = base_path('packages/workhub/' . $moduleData['name']);
         $this->createDirectory($extractPath);
         $this->moveExtractedFiles($tempPath . '/' . $rootFolderName, $extractPath);
         $this->deleteDirectory($tempPath);
@@ -386,7 +386,7 @@ class ModuleController extends Controller
                 $modules[] = [
                     'module' => $userModule->module,
                     'alias' => $addon->name,
-                    'image' => url('/packages/workdo/' . $userModule->module . '/favicon.png'),
+                    'image' => url('/packages/workhub/' . $userModule->module . '/favicon.png'),
                     'monthly_price' => $addon->monthly_price,
                     'yearly_price' => $addon->yearly_price
                 ];

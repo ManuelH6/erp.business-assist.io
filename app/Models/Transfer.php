@@ -36,6 +36,6 @@ class Transfer extends Model
 
     public function product()
     {
-        return $this->belongsTo(\Workdo\ProductService\Models\ProductServiceItem::class, 'product_id');
+        return $this->belongsTo(\Workhub\ProductService\Models\ProductServiceItem::class, 'product_id');
     }
 }

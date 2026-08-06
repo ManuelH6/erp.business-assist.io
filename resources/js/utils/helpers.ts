@@ -126,8 +126,8 @@ const getImagePath = (path: string, pageProps?: any): string => {
   if (!path || typeof path !== 'string') return '';
   if (path.startsWith('http')) return path;
 
-  // Handle workdo package paths or storage/media paths - use baseUrl directly
-  if (path.includes('packages/workdo') || path.includes('storage/media')) {
+  // Handle workhub package paths or storage/media paths - use baseUrl directly
+  if (path.includes('packages/workhub') || path.includes('storage/media')) {
     let baseUrl;
     if (pageProps?.baseUrl) {
       baseUrl = pageProps.baseUrl;

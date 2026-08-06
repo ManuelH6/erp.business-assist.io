@@ -32,46 +32,46 @@ export default function SuperAdminDashboard({ stats, chartData }: SuperAdminDash
 
             {/* Stats Cards */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Card className="relative overflow-hidden bg-gradient-to-r from-green-50 to-green-100 border-green-200">
+                <Card className="relative overflow-hidden bg-gradient-to-br from-white to-green-50/50 dark:from-slate-900 dark:to-green-900/20 border-green-100/50">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-green-700">{t('Total Orders')}</CardTitle>
+                        <CardTitle className="text-sm font-semibold uppercase tracking-wider text-green-700">{t('Total Orders')}</CardTitle>
                         <ShoppingCart className="h-8 w-8 text-green-700 opacity-80" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold text-green-700">{stats.total_orders}</div>
+                        <div className="text-3xl font-extrabold tracking-tight text-green-700">{stats.total_orders}</div>
                         <p className="text-xs text-green-700 opacity-80 mt-1">{t('All orders')}</p>
                     </CardContent>
                 </Card>
 
-                <Card className="relative overflow-hidden bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200">
+                <Card className="relative overflow-hidden bg-gradient-to-br from-white to-blue-50/50 dark:from-slate-900 dark:to-blue-900/20 border-blue-100/50">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-blue-700">{t('Order Payments')}</CardTitle>
+                        <CardTitle className="text-sm font-semibold uppercase tracking-wider text-blue-700">{t('Order Payments')}</CardTitle>
                         <CreditCard className="h-8 w-8 text-blue-700 opacity-80" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold text-blue-700">{formatCurrency(stats.order_payments)}</div>
+                        <div className="text-3xl font-extrabold tracking-tight text-blue-700">{formatCurrency(stats.order_payments)}</div>
                         <p className="text-xs text-blue-700 opacity-80 mt-1">{t('Total payments')}</p>
                     </CardContent>
                 </Card>
 
-                <Card className="relative overflow-hidden bg-gradient-to-r from-purple-50 to-purple-100 border-purple-200">
+                <Card className="relative overflow-hidden bg-gradient-to-br from-white to-purple-50/50 dark:from-slate-900 dark:to-purple-900/20 border-purple-100/50">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-purple-700">{t('Total Plans')}</CardTitle>
+                        <CardTitle className="text-sm font-semibold uppercase tracking-wider text-purple-700">{t('Total Plans')}</CardTitle>
                         <Crown className="h-8 w-8 text-purple-700 opacity-80" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold text-purple-700">{stats.total_plans}</div>
+                        <div className="text-3xl font-extrabold tracking-tight text-purple-700">{stats.total_plans}</div>
                         <p className="text-xs text-purple-700 opacity-80 mt-1">{t('Available plans')}</p>
                     </CardContent>
                 </Card>
 
-                <Card className="relative overflow-hidden bg-gradient-to-r from-orange-50 to-orange-100 border-orange-200">
+                <Card className="relative overflow-hidden bg-gradient-to-br from-white to-orange-50/50 dark:from-slate-900 dark:to-orange-900/20 border-orange-100/50">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-orange-700">{t('Total Companies')}</CardTitle>
+                        <CardTitle className="text-sm font-semibold uppercase tracking-wider text-orange-700">{t('Total Companies')}</CardTitle>
                         <Building2 className="h-8 w-8 text-orange-700 opacity-80" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold text-orange-700">{stats.total_companies}</div>
+                        <div className="text-3xl font-extrabold tracking-tight text-orange-700">{stats.total_companies}</div>
                         <p className="text-xs text-orange-700 opacity-80 mt-1">{t('Registered companies')}</p>
                     </CardContent>
                 </Card>

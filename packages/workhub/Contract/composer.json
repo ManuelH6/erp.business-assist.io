@@ -1,0 +1,25 @@
+{
+    "name": "workhub/contract",
+    "description": "Description for contract package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Contract\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Contract\\Providers\\ContractServiceProvider"
+            ]
+        }
+    }
+}

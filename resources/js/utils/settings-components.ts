@@ -20,12 +20,12 @@ const coreComponents = {
 // Auto-load package components
 const getPackageComponents = (activatedPackages: string[]) => {
   try {
-    const modules = import.meta.glob('../../../packages/workdo/*/src/Resources/js/settings/components/*.tsx');
+    const modules = import.meta.glob('../../../packages/workhub/*/src/Resources/js/settings/components/*.tsx');
     const packageComponents: Record<string, any> = {};
 
     activatedPackages.forEach(packageName => {
       Object.entries(modules).forEach(([path, moduleLoader]) => {
-        if (path.includes(`/packages/workdo/${packageName}/`)) {
+        if (path.includes(`/packages/workhub/${packageName}/`)) {
           const match = path.match(/\/([^/]+)\.tsx$/);
           if (match) {
             const componentName = match[1];

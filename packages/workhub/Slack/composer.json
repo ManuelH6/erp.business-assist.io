@@ -1,0 +1,25 @@
+{
+    "name": "workhub/slack",
+    "description": "Description for slack package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Slack\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Slack\\Providers\\SlackServiceProvider"
+            ]
+        }
+    }
+}

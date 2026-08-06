@@ -1,5 +1,5 @@
 import { Head, router } from '@inertiajs/react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import AuthenticatedLayout from '@/layouts/authenticated-layout';
 import SubscriptionLayout from './subscription-layout';
@@ -40,16 +40,11 @@ interface Props {
 export default function Subscribe({ plan, activeModules, userActiveModules, bankTransferEnabled, bankTransferInstructions, planExpireDate, initialPeriod = 'monthly' }: Props) {
     const { t } = useTranslation();
     const [pricingPeriod, setPricingPeriod] = useState<'monthly' | 'yearly'>(initialPeriod);
-
-    useEffect(() => {
-        if (initialPeriod) {
-            setPricingPeriod(initialPeriod);
-        }
-    }, [initialPeriod]);
+    
 
     const handleSubscribe = (subscriptionData: any) => {
         console.log('Processing subscription:', subscriptionData);
-
+        
         // Here you would make the API call to process the subscription
         router.post(route('subscriptions.store'), subscriptionData, {
             onSuccess: () => {
@@ -79,19 +74,21 @@ export default function Subscribe({ plan, activeModules, userActiveModules, bank
                         <div className="flex items-center">
                             <button
                                 onClick={() => setPricingPeriod('monthly')}
-                                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${pricingPeriod === 'monthly'
-                                    ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
-                                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                                    }`}
+                                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                                    pricingPeriod === 'monthly'
+                                        ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
+                                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                                }`}
                             >
                                 {t('Monthly')}
                             </button>
                             <button
                                 onClick={() => setPricingPeriod('yearly')}
-                                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${pricingPeriod === 'yearly'
-                                    ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
-                                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                                    }`}
+                                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                                    pricingPeriod === 'yearly'
+                                        ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
+                                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                                }`}
                             >
                                 {t('Yearly')}
                             </button>

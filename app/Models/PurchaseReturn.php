@@ -50,7 +50,7 @@ class PurchaseReturn extends Model
 
     public function vendorDetails(): BelongsTo
     {
-        return $this->belongsTo(\Workdo\Account\Models\Vendor::class, 'vendor_id', 'user_id');
+        return $this->belongsTo(\Workhub\Account\Models\Vendor::class, 'vendor_id', 'user_id');
     }
 
     public function originalInvoice(): BelongsTo

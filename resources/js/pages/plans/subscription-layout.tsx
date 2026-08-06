@@ -50,38 +50,38 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
     const { t } = useTranslation();
     const { auth } = usePage().props as any;
     const [moduleSearch, setModuleSearch] = useState('');
-
+    
     // Get subscription details using the helper function
     const subscriptionDetail = getSubscriptionDetails(auth?.user?.id);
-
+    
     const [couponCode, setCouponCode] = useState('');
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(bankTransferEnabled ? 'bank_transfer' : null);
     const [receiptFile, setReceiptFile] = useState<File | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [couponDiscount, setCouponDiscount] = useState<{ amount: number, finalAmount: number } | null>(null);
+    const [couponDiscount, setCouponDiscount] = useState<{amount: number, finalAmount: number} | null>(null);
     const [couponError, setCouponError] = useState<string>('');
     const [isApplyingCoupon, setIsApplyingCoupon] = useState(false);
     const [fileError, setFileError] = useState<string>('');
-
+    
     // Add payment method buttons hook
-    const paymentButtons = usePageButtons('paymentMethodBtn', {
+    const paymentButtons = usePageButtons('paymentMethodBtn', {        
         selectedMethod: selectedPaymentMethod,
         onMethodChange: setSelectedPaymentMethod
-    }, true);
+    },true);
 
     const filteredModules = allModules.filter(module => {
         const matchesSearch = module.alias.toLowerCase().includes(moduleSearch.toLowerCase()) ||
             module.module.toLowerCase().includes(moduleSearch.toLowerCase());
-
+        
         return matchesSearch && plan.modules?.includes(module.module);
     });
 
     const applyCouponWithAmount = async (amount: number) => {
         if (!couponCode.trim()) return;
-
+        
         setIsApplyingCoupon(true);
         setCouponError('');
-
+        
         try {
             const response = await fetch(route('plans.apply-coupon'), {
                 method: 'POST',
@@ -94,9 +94,9 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                     total_amount: amount
                 })
             });
-
+            
             const data = await response.json();
-
+            
             if (data.success) {
                 setCouponDiscount({
                     amount: data.discount_amount,
@@ -121,11 +121,11 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
     // Calculate subtotal without discount
     const subtotal = useMemo(() => {
         if (plan.free_plan) return 0;
-
-        const basePrice = pricingPeriod === 'monthly'
+        
+        const basePrice = pricingPeriod === 'monthly' 
             ? Number(plan?.package_price_monthly || 0)
             : Number(plan?.package_price_yearly || 0);
-
+        
         return basePrice;
     }, [plan.free_plan, pricingPeriod, plan?.package_price_monthly, plan?.package_price_yearly]);
 
@@ -140,12 +140,12 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
             setFileError(t('Please upload payment receipt'));
             return;
         }
-
+        
         setFileError('');
 
         if (selectedPaymentMethod === 'bank_transfer' && (receiptFile || dynamicTotal <= 0)) {
             setIsSubmitting(true);
-
+            
             const formData = new FormData();
             formData.append('plan_id', plan.id.toString());
             formData.append('time_period', pricingPeriod === 'monthly' ? 'Month' : 'Year');
@@ -153,11 +153,11 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                 formData.append('payment_receipt', receiptFile);
             }
             formData.append('user_module_input', (plan.modules || []).join(','));
-
+            
             if (couponCode) {
                 formData.append('coupon_code', couponCode);
             }
-
+            
             router.post(route('payment.bank-transfer.store'), formData, {
                 forceFormData: true,
                 onFinish: () => setIsSubmitting(false),
@@ -170,15 +170,15 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
             });
         } else if (selectedPaymentMethod && paymentButtons.some(button => button.id.includes(selectedPaymentMethod))) {
             setIsSubmitting(true);
-
+            
             const selectedButton = paymentButtons.find(button => button.id.includes(selectedPaymentMethod));
             const dataUrl = (selectedButton as any)?.dataUrl;
-
+            
             if (dataUrl) {
                 const form = document.createElement('form');
                 form.method = 'POST';
                 form.action = dataUrl;
-
+                
                 const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
                 if (csrfToken) {
                     const csrfInput = document.createElement('input');
@@ -187,7 +187,7 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                     csrfInput.value = csrfToken;
                     form.appendChild(csrfInput);
                 }
-
+                
                 const formData = {
                     plan_id: plan.id,
                     user_id: auth?.user?.id,
@@ -195,7 +195,7 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                     user_module_input: (plan.modules || []).join(','),
                     coupon_code: couponCode || ''
                 };
-
+                
                 Object.entries(formData).forEach(([key, value]) => {
                     const input = document.createElement('input');
                     input.type = 'hidden';
@@ -203,7 +203,7 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                     input.value = value;
                     form.appendChild(input);
                 });
-
+                
                 document.body.appendChild(form);
                 form.submit();
             }
@@ -213,7 +213,7 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                 planId: plan.id,
                 totalPrice: dynamicTotal
             };
-
+            
             onSubscribe(subscriptionData);
         }
     };
@@ -225,10 +225,10 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                 {/* Current Plan */}
                 <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t('Plan Details')}</h3>
-                    <div className="space-y-3">
+                    <div className="space-y-3">                         
                         <div className="flex justify-between">
                             <span className="text-gray-600 dark:text-gray-400">{t('Users')}</span>
-                            <span className="font-medium text-gray-900 dark:text-white">
+                            <span className="font-medium text-gray-900 dark:text-white">           
                                 {plan.number_of_users === -1 ? t('Unlimited users') : `${plan.number_of_users} ${t('users')}`}
                             </span>
                         </div>
@@ -241,20 +241,10 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                         <div className="flex justify-between">
                             <span className="text-gray-600 dark:text-gray-400">{t('Plan Expire Date')}</span>
                             <span className="font-medium text-gray-900 dark:text-white">
-                                {plan.free_plan
-                                    ? t('Lifetime')
-                                    : formatDate(
-                                        (() => {
-                                            const d = new Date();
-                                            if (pricingPeriod === 'yearly') {
-                                                d.setFullYear(d.getFullYear() + 1);
-                                            } else {
-                                                d.setMonth(d.getMonth() + 1);
-                                            }
-                                            return d.toISOString().split('T')[0];
-                                        })()
-                                    )
-                                }
+                                 {subscriptionDetail.status 
+                                        ? (subscriptionDetail.plan_expire_date ? formatDate(subscriptionDetail.plan_expire_date) : '-')
+                                        : (planExpireDate ? formatDate(planExpireDate) : '-')
+                                 }
                             </span>
                         </div>
                     </div>
@@ -267,16 +257,16 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                         <SearchInput
                             value={moduleSearch}
                             onChange={setModuleSearch}
-                            onSearch={() => { }}
+                            onSearch={() => {}}
                             placeholder={t('Search features...')}
                             className="w-48"
                         />
                     </div>
                     <div className="max-h-64 overflow-y-auto">
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">                            
                             {filteredModules.map((module) => (
-                                <div
-                                    key={module.module}
+                                <div 
+                                    key={module.module} 
                                     className="flex items-center gap-3 p-4 border rounded hover:bg-muted/50"
                                 >
                                     <img src={getPackageFavicon(module.module)} alt="" className="w-8 h-8 border rounded" />
@@ -287,7 +277,7 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                             ))}
                         </div>
                     </div>
-                </div>
+                </div>  
             </div>
 
             {/* Right Side - Subscription */}
@@ -295,7 +285,7 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
                     {t('Subscribe to Plan')}
                 </h3>
-
+                
                 <div className="space-y-6">
                     <div>
                         <Label htmlFor="coupon_code_regular">{t('Coupon Code')}</Label>
@@ -306,9 +296,9 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                                 value={couponCode}
                                 onChange={(e) => setCouponCode(e.target.value)}
                             />
-                            <Button
-                                variant="outline"
-                                size="sm"
+                            <Button 
+                                variant="outline" 
+                                size="sm" 
                                 onClick={handleApplyCoupon}
                                 disabled={isApplyingCoupon || !couponCode.trim()}
                             >
@@ -375,13 +365,13 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                                             <div className="text-sm text-gray-600 dark:text-gray-400">{t('Pay via bank transfer')}</div>
                                         </Label>
                                     </div>
-                                )}
-
+                                )}                                
+                                
                                 {paymentButtons.map((button) => (
                                     <div key={button.id}>{button.component}</div>
                                 ))}
                             </RadioGroup>
-
+                            
                             {selectedPaymentMethod === 'bank_transfer' && (
                                 <Card>
                                     <CardHeader>
@@ -393,7 +383,7 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                                                 <div className="text-sm text-blue-800 dark:text-blue-200" dangerouslySetInnerHTML={{ __html: bankTransferInstructions.replace(/\n/g, '<br/>') }} />
                                             </div>
                                         )}
-
+                                        
                                         <div>
                                             <Label htmlFor="receipt">{t('Upload Payment Receipt')}</Label>
                                             <Input
@@ -418,21 +408,21 @@ function SubscriptionLayout({ plan, allModules, pricingPeriod, onSubscribe, bank
                     )}
 
                     {/* Subscribe Button */}
-                    <Button
-                        className="w-full"
-                        size="lg"
+                    <Button 
+                        className="w-full" 
+                        size="lg" 
                         onClick={handleSubscribe}
                         disabled={!selectedPaymentMethod || isSubmitting}
                     >
                         {isSubmitting ? t('Submitting...') : `${t('Subscribe to Plan')} - ${formatAdminCurrency(dynamicTotal)}`}
                     </Button>
-
+                    
                     {(paymentButtons.length === 0) && (
                         <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
                             {t('No payment methods available')}
                         </p>
                     )}
-
+                    
                     {(paymentButtons.length > 0 || bankTransferEnabled) && !selectedPaymentMethod && (
                         <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
                             {t('Please select a payment method')}

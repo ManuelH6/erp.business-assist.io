@@ -13,7 +13,7 @@ $baseDirectories = [
 ];
 
 $outputFile = __DIR__ . '/resources/lang/en.json';
-$packagesPath = __DIR__ . '/packages/workdo';
+$packagesPath = __DIR__ . '/packages/workhub';
 
 // Initialize arrays to store translations
 $translations = [];

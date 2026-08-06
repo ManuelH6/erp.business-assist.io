@@ -1,0 +1,25 @@
+{
+    "name": "workhub/pos",
+    "description": "Description for pos package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Pos\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Pos\\Providers\\PosServiceProvider"
+            ]
+        }
+    }
+}

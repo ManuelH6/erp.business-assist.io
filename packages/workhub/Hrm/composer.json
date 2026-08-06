@@ -1,0 +1,25 @@
+{
+    "name": "workhub/hrm",
+    "description": "Description for hrm package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Hrm\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Hrm\\Providers\\HrmServiceProvider"
+            ]
+        }
+    }
+}

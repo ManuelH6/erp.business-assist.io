@@ -64,7 +64,6 @@ class MediaController extends Controller
                         'thumb_url' => $url,
                         'size' => $media->size,
                         'mime_type' => $media->mime_type,
-                        'directory_id' => $media->directory_id,
                         'creator_id' => $media->creator_id,
                         'created_by' => $media->created_by,
                         'created_at' => $media->created_at,
@@ -298,7 +297,7 @@ class MediaController extends Controller
 
             // Permission-based media access
             if ($user->type === 'superadmin') {
-                $query->where('creator_id', creatorId());
+                $query->where('creator_id', $user->id);
             } elseif ($user->can('manage-any-media')) {
                 // Company or user with manage-any-media can see own + team media
                 $query->where('created_by', creatorId());
@@ -313,15 +312,13 @@ class MediaController extends Controller
             $media = $query->firstOrFail();
 
             try {
-                DynamicStorageService::configureDynamicDisks();
-                
-                $path = 'media/' . $media->file_name;
+                $filePath = $media->getPath();
 
-                if (!Storage::disk($media->disk)->exists($path)) {
+                if (!file_exists($filePath)) {
                     abort(404, __('File not found'));
                 }
 
-                return Storage::disk($media->disk)->download($path, $media->file_name);
+                return response()->download($filePath, $media->file_name);
             } catch (\Exception $e) {
                 abort(404, __('File storage unavailable'));
             }

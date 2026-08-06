@@ -27,7 +27,8 @@ class PackageSeed extends Command
 
         if ($seederClass) {
             $this->info("Seeding {$packageName}...");
-            Artisan::call('db:seed', ['--class' => $seederClass, '--force' => true]);
+            $seeder = app($seederClass);
+            $seeder->setContainer(app())->setCommand($this)->__invoke();
             $this->info("{$packageName} Seeder Run Successfully!");
         } else {
             $this->error("Seeder for package {$packageName} not found.");
@@ -44,7 +45,7 @@ class PackageSeed extends Command
 
     protected function getSeederClass($packageName)
     {
-        $seederClass = "Workdo\\{$packageName}\\Database\\Seeders\\{$packageName}DatabaseSeeder";
+        $seederClass = "Workhub\\{$packageName}\\Database\\Seeders\\{$packageName}DatabaseSeeder";
         if (class_exists($seederClass)) {
             return $seederClass;
         }
@@ -55,7 +56,7 @@ class PackageSeed extends Command
     protected function getAllPackages()
     {
         $packages = [];
-        $vendorDir = base_path('packages/workdo');
+        $vendorDir = base_path('packages/workhub');
         
         if (File::exists($vendorDir)) {
             $directories = File::directories($vendorDir);

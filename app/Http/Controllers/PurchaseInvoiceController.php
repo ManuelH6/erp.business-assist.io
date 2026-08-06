@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\Warehouse;
 use App\Http\Requests\StorePurchaseInvoiceRequest;
 use App\Http\Requests\UpdatePurchaseInvoiceRequest;
-use Workdo\ProductService\Models\ProductServiceItem;
+use Workhub\ProductService\Models\ProductServiceItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

@@ -1,24 +1,24 @@
 {
-    "name": "workdo/$PACKAGE_KEBAB$",
+    "name": "workhub/$PACKAGE_KEBAB$",
     "description": "Description for $PACKAGE_KEBAB$ package",
     "type": "library",
     "license": "MIT",
     "require": {},
     "autoload": {
         "psr-4": {
-            "Workdo\\$PACKAGE_NAME$\\": "src/"
+            "Workhub\\$PACKAGE_NAME$\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "WorkDo",
-            "email": "support@workdo.io"
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
         }
     ],
     "extra": {
         "laravel": {
             "providers": [
-                "Workdo\\$PACKAGE_NAME$\\Providers\\$PACKAGE_NAME$ServiceProvider"
+                "Workhub\\$PACKAGE_NAME$\\Providers\\$PACKAGE_NAME$ServiceProvider"
             ]
         }
     }

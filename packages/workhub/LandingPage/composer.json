@@ -1,0 +1,25 @@
+{
+    "name": "workhub/landing-page",
+    "description": "Description for landing-page package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\LandingPage\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\LandingPage\\Providers\\LandingPageServiceProvider"
+            ]
+        }
+    }
+}

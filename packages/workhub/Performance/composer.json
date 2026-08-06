@@ -1,0 +1,25 @@
+{
+    "name": "workhub/performance",
+    "description": "Description for performance package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workhub\\Performance\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkHub",
+            "email": "support@assisthub.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workhub\\Performance\\Providers\\PerformanceServiceProvider"
+            ]
+        }
+    }
+}

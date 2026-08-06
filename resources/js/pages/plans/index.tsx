@@ -130,11 +130,7 @@ export default function PlansIndex({ plans, canCreate, activeModules, bankTransf
 
     const isCurrentlySubscribed = (plan: Plan) => {
         if (!isCompanyUser || !currentSubscription) return false;
-        // If the subscription is lifetime or free, it's considered active on both tabs
-        if (currentSubscription.duration === 'lifetime' || currentSubscription.is_free) {
-            return currentSubscription.plan_name === plan.name;
-        }
-        return currentSubscription.plan_name === plan.name && currentSubscription.duration === pricingPeriod;
+        return currentSubscription.plan_name === plan.name;
     };
 
 

@@ -59,12 +59,12 @@ class PurchaseInvoice extends Model
 
     public function vendorDetails(): BelongsTo
     {
-        return $this->belongsTo(\Workdo\Account\Models\Vendor::class, 'vendor_id', 'user_id');
+        return $this->belongsTo(\Workhub\Account\Models\Vendor::class, 'vendor_id', 'user_id');
     }
 
     public function paymentAllocations(): HasMany
     {
-        return $this->hasMany(\Workdo\Account\Models\VendorPaymentAllocation::class, 'invoice_id');
+        return $this->hasMany(\Workhub\Account\Models\VendorPaymentAllocation::class, 'invoice_id');
     }
 
     public function purchaseReturns(): HasMany
