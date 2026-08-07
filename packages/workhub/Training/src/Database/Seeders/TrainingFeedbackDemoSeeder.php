@@ -172,8 +172,8 @@ class TrainingFeedbackDemoSeeder extends Seeder
                         'comments' => $template['comments'],
                         'creator_id' => 2,
                         'created_by' => 2,
-                        'created_at' => $taskDate->copy()->addDays(rand(1, 7))->addHours(rand(1, 23))->addMinutes(rand(1, 59)),
-                        'updated_at' => $taskDate->copy()->addDays(rand(1, 7))->addHours(rand(1, 23))->addMinutes(rand(1, 59)),
+                        'created_at' => $taskDate->copy()->addDays(rand(1, 7))->addHours(rand(1, 23))->addMinutes(rand(1, 59))->format('Y-m-d H:i:s'),
+                        'updated_at' => $taskDate->copy()->addDays(rand(1, 7))->addHours(rand(1, 23))->addMinutes(rand(1, 59))->format('Y-m-d H:i:s'),
                     ]);
                 }
             }

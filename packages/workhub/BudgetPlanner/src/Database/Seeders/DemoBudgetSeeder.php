@@ -2,9 +2,10 @@
 
 namespace Workhub\BudgetPlanner\Database\Seeders;
 
+use App\Models\User;
+use Illuminate\Database\Seeder;
 use Workhub\BudgetPlanner\Models\Budget;
 use Workhub\BudgetPlanner\Models\BudgetPeriod;
-use Illuminate\Database\Seeder;
 
 class DemoBudgetSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class DemoBudgetSeeder extends Seeder
 
         $budgetPeriod = BudgetPeriod::where('created_by', $userId)->first();
 
-        if (!$budgetPeriod) {
+        if (! $budgetPeriod) {
             return;
         }
 
@@ -60,7 +61,7 @@ class DemoBudgetSeeder extends Seeder
 
         foreach ($budgets as $budget) {
             Budget::create(array_merge($budget, [
-                'approved_by' => \App\Models\User::where('created_by', $userId)->inRandomOrder()->first()?->id,
+                'approved_by' => User::where('created_by', $userId)->inRandomOrder()->first()?->id,
                 'creator_id' => $userId,
                 'created_by' => $userId,
             ]));

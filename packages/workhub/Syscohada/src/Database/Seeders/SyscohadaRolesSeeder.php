@@ -16,7 +16,7 @@ class SyscohadaRolesSeeder extends Seeder
         // S'assurer que le rôle n'existe pas déjà pour cette entreprise
         if ($company_id) {
             $role = Role::where('name', $roleName)
-                        ->where('created_by', $company_id)
+                        ->where('guard_name', 'web')
                         ->first();
 
             if (!$role) {

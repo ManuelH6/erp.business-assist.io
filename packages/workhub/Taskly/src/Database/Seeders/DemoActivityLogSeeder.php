@@ -46,7 +46,7 @@ class DemoActivityLogSeeder extends Seeder
                 'project_id' => $project->id,
                 'log_type' => 'Invite User',
                 'remark' => json_encode(['user_id' => $user->id]),
-                'created_at' => $projectStart->copy()->addDays($index),
+                'created_at' => $projectStart->copy()->addDays($index)->format('Y-m-d H:i:s'),
             ];
         }
         
@@ -58,7 +58,7 @@ class DemoActivityLogSeeder extends Seeder
                 'project_id' => $project->id,
                 'log_type' => 'Share with Client',
                 'remark' => json_encode(['client_id' => $clients->random()->id]),
-                'created_at' => $projectStart->copy()->addDays(1),
+                'created_at' => $projectStart->copy()->addDays(1)->format('Y-m-d H:i:s'),
             ];
         }
         
@@ -71,7 +71,7 @@ class DemoActivityLogSeeder extends Seeder
                 'project_id' => $project->id,
                 'log_type' => 'Upload File',
                 'remark' => json_encode(['file_name' => $file]),
-                'created_at' => $projectStart->copy()->addDays(2 + $index),
+                'created_at' => $projectStart->copy()->addDays(2 + $index)->format('Y-m-d H:i:s'),
             ];
         }
         
@@ -84,7 +84,7 @@ class DemoActivityLogSeeder extends Seeder
                 'project_id' => $project->id,
                 'log_type' => 'Create Milestone',
                 'remark' => json_encode(['title' => $milestone->title]),
-                'created_at' => $projectStart->copy()->addDays(3 + $index * 2),
+                'created_at' => $projectStart->copy()->addDays(3 + $index * 2)->format('Y-m-d H:i:s'),
             ];
         }
         
@@ -116,7 +116,7 @@ class DemoActivityLogSeeder extends Seeder
                         'old_status' => 'todo',
                         'new_status' => 'in progress'
                     ]),
-                    'created_at' => $taskCreateDate->copy()->addDays(rand(1, 3)),
+                    'created_at' => $taskCreateDate->copy()->addDays(rand(1, 3))->format('Y-m-d H:i:s'),
                 ];
                 
                 $activities[] = [
@@ -129,7 +129,7 @@ class DemoActivityLogSeeder extends Seeder
                         'old_status' => 'in progress',
                         'new_status' => 'done'
                     ]),
-                    'created_at' => $taskCreateDate->copy()->addDays(rand(4, 8)),
+                    'created_at' => $taskCreateDate->copy()->addDays(rand(4, 8))->format('Y-m-d H:i:s'),
                 ];
             } elseif ($project->status === 'Ongoing') {
                 // Ongoing tasks - some in progress
@@ -144,7 +144,7 @@ class DemoActivityLogSeeder extends Seeder
                             'old_status' => 'todo',
                             'new_status' => 'in progress'
                         ]),
-                        'created_at' => $taskCreateDate->copy()->addDays(rand(1, 5)),
+                        'created_at' => $taskCreateDate->copy()->addDays(rand(1, 5))->format('Y-m-d H:i:s'),
                     ];
                 }
             }
@@ -177,7 +177,7 @@ class DemoActivityLogSeeder extends Seeder
                             'old_status' => 'new',
                             'new_status' => 'resolved'
                         ]),
-                        'created_at' => $bugCreateDate->copy()->addDays(rand(2, 7)),
+                        'created_at' => $bugCreateDate->copy()->addDays(rand(2, 7))->format('Y-m-d H:i:s'),
                     ];
                 }
             }
@@ -198,7 +198,7 @@ class DemoActivityLogSeeder extends Seeder
                     'project_id' => $project->id,
                     'log_type' => 'Create Timesheet',
                     'remark' => json_encode(['hours' => rand(6, 8)]),
-                    'created_at' => $projectStart->copy()->addDays($i * 5 + rand(1, 3)),
+                    'created_at' => $projectStart->copy()->addDays($i * 5 + rand(1, 3))->format('Y-m-d H:i:s'),
                 ];
             }
         }
@@ -207,7 +207,7 @@ class DemoActivityLogSeeder extends Seeder
         collect($activities)
             ->sortBy('created_at')
             ->filter(function ($activity) {
-                return $activity['created_at']->lte(now()); // Only past activities
+                return \Carbon\Carbon::parse($activity['created_at'])->lte(now()); // Only past activities
             })
             ->each(function ($activity) {
                 ActivityLog::create($activity);

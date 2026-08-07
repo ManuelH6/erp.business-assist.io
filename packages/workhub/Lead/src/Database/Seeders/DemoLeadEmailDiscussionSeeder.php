@@ -501,7 +501,7 @@ class DemoLeadEmailDiscussionSeeder extends Seeder
                         'to' => $lead->email,
                         'subject' => $emailTemplates['subjects'][$templateIndex],
                         'description' => $emailTemplates['descriptions'][$templateIndex],
-                        'created_at' => $lead->created_at->addDays(rand(1, 7))->addHours(rand(1, 23)),
+                        'created_at' => $lead->created_at->copy()->addDays(rand(1, 7))->addHours(rand(1, 23))->format('Y-m-d H:i:s'),
                     ]);
                 }
 
@@ -525,7 +525,7 @@ class DemoLeadEmailDiscussionSeeder extends Seeder
                         'comment' => $discussionTemplates[$templateIndex],
                         'creator_id' => $randomUser,
                         'created_by' => $userId,
-                        'created_at' => $lead->created_at->addDays(rand(2, 10))->addHours(rand(1, 23)),
+                        'created_at' => $lead->created_at->copy()->addDays(rand(2, 10))->addHours(rand(1, 23))->format('Y-m-d H:i:s'),
                     ]);
                 }
             }

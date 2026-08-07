@@ -441,8 +441,8 @@ class TrainingDemoSeeder extends Seeder
                 'status' => $data['status'],
                 'creator_id' => 2,
                 'created_by' => 2,
-                'created_at' => $startDate->subHours(rand(1, 23))->subMinutes(rand(1, 59)),
-                'updated_at' => $startDate->addHours(rand(1, 23))->addMinutes(rand(1, 59)),
+                'created_at' => $startDate->copy()->subHours(rand(1, 23))->subMinutes(rand(1, 59))->format('Y-m-d H:i:s'),
+                'updated_at' => $startDate->copy()->addHours(rand(1, 23))->addMinutes(rand(1, 59))->format('Y-m-d H:i:s'),
             ]);
         }
         }

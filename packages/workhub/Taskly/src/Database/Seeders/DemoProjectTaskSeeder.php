@@ -237,7 +237,7 @@ class DemoProjectTaskSeeder extends Seeder
                 'task_id' => $task->id,
                 'comment' => $comments[array_rand($comments)],
                 'user_id' => collect($teamMembers)->random(),
-                'created_at' => $taskStart->copy()->addDays(rand(1, 5)),
+                'created_at' => $taskStart->copy()->addDays(rand(1, 5))->format('Y-m-d H:i:s'),
             ]);
         }
     }

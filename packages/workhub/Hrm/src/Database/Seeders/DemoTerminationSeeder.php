@@ -95,8 +95,8 @@ class DemoTerminationSeeder extends Seeder
                     'status' => $status,
                     'document' => $document,
                     'approved_by' => $approvedBy,
-                    'created_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59)),
-                    'updated_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59)),
+                    'created_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59))->format('Y-m-d H:i:s'),
+                    'updated_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59))->format('Y-m-d H:i:s'),
                 ];
             }
 

@@ -140,8 +140,8 @@ class DemoComplaintSeeder extends Seeder
                     'document' => $document,
                     'resolved_by' => $resolvedBy,
                     'resolution_date' => $resolutionDate,
-                    'created_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59)),
-                    'updated_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59)),
+                    'created_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59))->format('Y-m-d H:i:s'),
+                    'updated_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59))->format('Y-m-d H:i:s'),
                 ];
             }
 

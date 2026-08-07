@@ -17,11 +17,16 @@ use App\Services\StorageConfigService;
 if (!function_exists('creatorId')) {
     function creatorId()
     {
-        if (Auth::user()->type == 'superadmin' || Auth::user()->type == 'company') {
-            return Auth::user()->id;
-        } else {
-            return Auth::user()->created_by;
+        if (Auth::check()) {
+            if (Auth::user()->type == 'superadmin' || Auth::user()->type == 'company') {
+                return Auth::user()->id;
+            } else {
+                return Auth::user()->created_by;
+            }
         }
+        
+        $company = User::where('email', 'company@example.com')->first();
+        return $company ? $company->id : 1;
     }
 }
 

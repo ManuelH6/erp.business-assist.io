@@ -131,8 +131,8 @@ class TrainingTaskDemoSeeder extends Seeder
                     'assigned_to' => $userIds[array_rand($userIds)],
                     'creator_id' => 2,
                     'created_by' => 2,
-                    'created_at' => $trainingStartDate->copy()->subDays(rand(1, 10))->subHours(rand(1, 23))->subMinutes(rand(1, 59)),
-                    'updated_at' => $trainingStartDate->copy()->addDays(rand(1, 5))->addHours(rand(1, 23))->addMinutes(rand(1, 59)),
+                    'created_at' => $trainingStartDate->copy()->subDays(rand(1, 10))->subHours(rand(1, 23))->subMinutes(rand(1, 59))->format('Y-m-d H:i:s'),
+                    'updated_at' => $trainingStartDate->copy()->addDays(rand(1, 5))->addHours(rand(1, 23))->addMinutes(rand(1, 59))->format('Y-m-d H:i:s'),
                 ]);
             }
         }

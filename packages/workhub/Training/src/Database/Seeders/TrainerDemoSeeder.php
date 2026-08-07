@@ -297,8 +297,8 @@ class TrainerDemoSeeder extends Seeder
                     'qualification' => $data['qualification'],
                     'creator_id' => $userId,
                     'created_by' => $userId,
-                    'created_at' => Carbon::now()->subDays(180 - ($index * 6))->subHours(rand(1, 23))->subMinutes(rand(1, 59)),
-                    'updated_at' => Carbon::now()->subDays(180 - ($index * 6))->subHours(rand(1, 23))->subMinutes(rand(1, 59)),
+                    'created_at' => Carbon::now()->subDays(180 - ($index * 6))->subHours(rand(1, 23))->subMinutes(rand(1, 59))->format('Y-m-d H:i:s'),
+                    'updated_at' => Carbon::now()->subDays(180 - ($index * 6))->subHours(rand(1, 23))->subMinutes(rand(1, 59))->format('Y-m-d H:i:s'),
                 ]);
             }
         }

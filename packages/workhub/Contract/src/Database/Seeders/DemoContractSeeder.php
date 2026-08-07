@@ -128,6 +128,11 @@ class DemoContractSeeder extends Seeder
         $users = User::where('created_by', $userId)
             ->whereIn('type', ['staff', 'client'])
             ->get();
+
+        if ($users->isEmpty()) {
+            $users = User::where('id', $userId)->get();
+        }
+
         $contractTypes = ContractType::where('created_by', $userId)->get();
 
         foreach ($contractData as $index => $data) {
@@ -136,11 +141,14 @@ class DemoContractSeeder extends Seeder
             $startDate = $createdAt->copy()->addDays(rand(1, 30));
             $endDate = $startDate->copy()->addMonths(rand(6, 24));
 
+            $typeId = $contractTypes->isNotEmpty() ? $contractTypes->random()->id : null;
+            $targetUserId = $users->isNotEmpty() ? $users->random()->id : $userId;
+
             $contract = Contract::create([
                 'subject' => $data['subject'],
-                'user_id' => $users->random()->id ?? 1,
+                'user_id' => $targetUserId,
                 'value' => $data['value'],
-                'type_id' => $contractTypes->random()->id ?? 1,
+                'type_id' => $typeId,
                 'start_date' => $startDate->format('Y-m-d'),
                 'end_date' => $endDate->format('Y-m-d'),
                 'description' => $data['description'],
@@ -327,15 +335,21 @@ class DemoContractSeeder extends Seeder
         ];
 
         foreach ($signatures as $signature) {
-            ContractSignature::create([
-                'contract_id' => $contract->id,
-                'user_id' => $signature['user']->id,
-                'signature_type' => ['draw', 'type', 'upload'][array_rand(['draw', 'type', 'upload'])],
-                'signature_data' => $this->generateSignatureData($signature['user']->name),
-                'signed_at' => $now,
-                'creator_id' => $signature['creator_id'],
-                'created_by' => $contract->created_by,
-            ]);
+            if (!$signature['user']) continue;
+
+            ContractSignature::firstOrCreate(
+                [
+                    'contract_id' => $contract->id,
+                    'user_id' => $signature['user']->id,
+                ],
+                [
+                    'signature_type' => ['draw', 'type', 'upload'][array_rand(['draw', 'type', 'upload'])],
+                    'signature_data' => $this->generateSignatureData($signature['user']->name),
+                    'signed_at' => $now,
+                    'creator_id' => $signature['creator_id'],
+                    'created_by' => $contract->created_by,
+                ]
+            );
         }
     }
 

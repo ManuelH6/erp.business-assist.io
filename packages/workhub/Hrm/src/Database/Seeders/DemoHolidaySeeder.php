@@ -115,8 +115,8 @@ class DemoHolidaySeeder extends Seeder
                     'is_paid' => $isPaidArray[$i],
                     'is_sync_google_calendar' => $isGoogleSyncArray[$i],
                     'is_sync_outlook_calendar' => $isOutlookSyncArray[$i],
-                    'created_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59)),
-                    'updated_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59)),
+                    'created_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59))->format('Y-m-d H:i:s'),
+                    'updated_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59))->format('Y-m-d H:i:s'),
                 ];
             }
 

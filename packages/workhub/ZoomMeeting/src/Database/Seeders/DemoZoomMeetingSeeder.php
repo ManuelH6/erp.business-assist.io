@@ -56,7 +56,7 @@ class DemoZoomMeetingSeeder extends Seeder
                 'host_id' => (int)$participants[0],
                 'creator_id' => $userId,
                 'created_by' => $userId,
-                'created_at' => Carbon::now()->subDays(rand(0, 180)),
+                'created_at' => Carbon::now()->subDays(rand(0, 180))->format('Y-m-d H:i:s'),
             ]);
         }
     }
