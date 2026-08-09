@@ -44,50 +44,42 @@ export default function CompanyDashboard({ message, stats, recentDeals, recentLe
             <div className="space-y-6">
                 {/* Summary Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300" onClick={() => router.visit(route('lead.deals.index'))}>
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-blue-50 dark:bg-blue-500/10 rounded-[18px] flex-shrink-0">
-                                    <Rocket className="h-8 w-8 text-blue-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats?.total_deals || 0}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Total Deals')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300" onClick={() => router.visit(route('lead.leads.index'))}>
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-green-50 dark:bg-green-500/10 rounded-[18px] flex-shrink-0">
-                                    <TrendingUp className="h-8 w-8 text-green-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats?.total_leads || 0}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Total Leads')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300" onClick={() => router.visit(route('users.index'))}>
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-purple-50 dark:bg-purple-500/10 rounded-[18px] flex-shrink-0">
-                                    <Users className="h-8 w-8 text-purple-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats?.total_users || 0}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Total Users')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300" onClick={() => router.get(route('users.index'), { role: 'client' })}>
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-orange-50 dark:bg-orange-500/10 rounded-[18px] flex-shrink-0">
-                                    <Users className="h-8 w-8 text-orange-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats?.total_clients || 0}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Total Clients')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                    <Card className="h-full bg-[#EFF6FF] dark:bg-blue-950/20 border border-[#DBEAFE] dark:border-blue-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.visit(route('lead.deals.index'))}>
+                        <CardContent className="p-6 flex items-center justify-between h-full text-[#2563EB] dark:text-blue-400">
+                            <div className="flex flex-col justify-center">
+                                <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Deals')}</p>
+                                <div className="text-3xl font-extrabold tracking-tight mt-2">{stats?.total_deals || 0}</div>
+                            </div>
+                            <Rocket className="h-10 w-10 opacity-80 flex-shrink-0" />
+                        </CardContent>
+                    </Card>
+                    <Card className="h-full bg-[#F0FDF4] dark:bg-emerald-950/20 border border-[#DCFCE7] dark:border-emerald-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.visit(route('lead.leads.index'))}>
+                        <CardContent className="p-6 flex items-center justify-between h-full text-[#16A34A] dark:text-emerald-400">
+                            <div className="flex flex-col justify-center">
+                                <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Leads')}</p>
+                                <div className="text-3xl font-extrabold tracking-tight mt-2">{stats?.total_leads || 0}</div>
+                            </div>
+                            <TrendingUp className="h-10 w-10 opacity-80 flex-shrink-0" />
+                        </CardContent>
+                    </Card>
+                    <Card className="h-full bg-[#FAF5FF] dark:bg-purple-950/20 border border-[#E9D5FF] dark:border-purple-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.visit(route('users.index'))}>
+                        <CardContent className="p-6 flex items-center justify-between h-full text-[#9333EA] dark:text-purple-400">
+                            <div className="flex flex-col justify-center">
+                                <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Users')}</p>
+                                <div className="text-3xl font-extrabold tracking-tight mt-2">{stats?.total_users || 0}</div>
+                            </div>
+                            <Users className="h-10 w-10 opacity-80 flex-shrink-0" />
+                        </CardContent>
+                    </Card>
+                    <Card className="h-full bg-[#FFF7ED] dark:bg-amber-950/20 border border-[#FED7AA] dark:border-amber-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.get(route('users.index'), { role: 'client' })}>
+                        <CardContent className="p-6 flex items-center justify-between h-full text-[#EA580C] dark:text-amber-400">
+                            <div className="flex flex-col justify-center">
+                                <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Clients')}</p>
+                                <div className="text-3xl font-extrabold tracking-tight mt-2">{stats?.total_clients || 0}</div>
+                            </div>
+                            <Users className="h-10 w-10 opacity-80 flex-shrink-0" />
+                        </CardContent>
+                    </Card>
                 </div>
 
                 {/* Main Content Grid */}

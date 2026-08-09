@@ -25,64 +25,55 @@ export default function StaffDashboard({ stats, recentActivities }: StaffProps) 
 
     return (
         <AuthenticatedLayout
-            breadcrumbs={[{label: t('Account')}, {label: t('Dashboard')}]}
+            breadcrumbs={[{ label: t('Account') }, { label: t('Dashboard') }]}
             pageTitle={t('Dashboard')}
-            pageTitleClass="text-lg"
         >
             <Head title={t('Dashboard')} />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-                <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-blue-50 dark:bg-blue-500/10 rounded-[18px] flex-shrink-0">
-                                    <Users className="h-8 w-8 text-blue-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats.total_clients}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Total Clients')}</p>
-                                    <p className="text-xs text-slate-400 mt-1">{t('Active clients')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                <Card className="h-full bg-[#EFF6FF] dark:bg-blue-950/20 border border-[#DBEAFE] dark:border-blue-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                    <CardContent className="p-6 flex items-center justify-between h-full text-[#2563EB] dark:text-blue-400">
+                        <div className="flex flex-col justify-center">
+                            <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Clients')}</p>
+                            <div className="text-3xl font-extrabold tracking-tight mt-2">{stats.total_clients}</div>
+                            <p className="text-xs opacity-80 mt-1">{t('Active clients')}</p>
+                        </div>
+                        <Users className="h-10 w-10 opacity-80 flex-shrink-0" />
+                    </CardContent>
+                </Card>
 
-                <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-purple-50 dark:bg-purple-500/10 rounded-[18px] flex-shrink-0">
-                                    <Building className="h-8 w-8 text-purple-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats.total_vendors}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Total Vendors')}</p>
-                                    <p className="text-xs text-slate-400 mt-1">{t('Active vendors')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                <Card className="h-full bg-[#FAF5FF] dark:bg-purple-950/20 border border-[#E9D5FF] dark:border-purple-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                    <CardContent className="p-6 flex items-center justify-between h-full text-[#9333EA] dark:text-purple-400">
+                        <div className="flex flex-col justify-center">
+                            <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Vendors')}</p>
+                            <div className="text-3xl font-extrabold tracking-tight mt-2">{stats.total_vendors}</div>
+                            <p className="text-xs opacity-80 mt-1">{t('Active vendors')}</p>
+                        </div>
+                        <Building className="h-10 w-10 opacity-80 flex-shrink-0" />
+                    </CardContent>
+                </Card>
 
-                <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-green-50 dark:bg-green-500/10 rounded-[18px] flex-shrink-0">
-                                    <TrendingUp className="h-8 w-8 text-green-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{formatCurrency(stats.monthly_revenue)}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Monthly Revenue')}</p>
-                                    <p className="text-xs text-slate-400 mt-1">{t('Current month')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                <Card className="h-full bg-[#F0FDF4] dark:bg-emerald-950/20 border border-[#DCFCE7] dark:border-emerald-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                    <CardContent className="p-6 flex items-center justify-between h-full text-[#16A34A] dark:text-emerald-400">
+                        <div className="flex flex-col justify-center">
+                            <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Monthly Revenue')}</p>
+                            <div className="text-3xl font-extrabold tracking-tight mt-2">{formatCurrency(stats.monthly_revenue)}</div>
+                            <p className="text-xs opacity-80 mt-1">{t('Current month')}</p>
+                        </div>
+                        <TrendingUp className="h-10 w-10 opacity-80 flex-shrink-0" />
+                    </CardContent>
+                </Card>
 
-                <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-red-50 dark:bg-red-500/10 rounded-[18px] flex-shrink-0">
-                                    <TrendingDown className="h-8 w-8 text-red-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{formatCurrency(stats.monthly_expense)}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Monthly Expense')}</p>
-                                    <p className="text-xs text-slate-400 mt-1">{t('Current month')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                <Card className="h-full bg-[#FEF2F2] dark:bg-rose-950/20 border border-[#FEE2E2] dark:border-rose-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                    <CardContent className="p-6 flex items-center justify-between h-full text-[#DC2626] dark:text-rose-400">
+                        <div className="flex flex-col justify-center">
+                            <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Monthly Expense')}</p>
+                            <div className="text-3xl font-extrabold tracking-tight mt-2">{formatCurrency(stats.monthly_expense)}</div>
+                            <p className="text-xs opacity-80 mt-1">{t('Current month')}</p>
+                        </div>
+                        <TrendingDown className="h-10 w-10 opacity-80 flex-shrink-0" />
+                    </CardContent>
+                </Card>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

@@ -75,44 +75,69 @@ export default function CompanyDashboard() {
     };
 
     const StatCard = ({ title, value, subtitle, color = "blue", icon: Icon }: any) => {
-        const iconBgColors = {
-            blue: "bg-blue-50 dark:bg-blue-500/10",
-            green: "bg-green-50 dark:bg-green-500/10",
-            red: "bg-red-50 dark:bg-red-500/10",
-            purple: "bg-purple-50 dark:bg-purple-500/10",
-            orange: "bg-orange-50 dark:bg-orange-500/10",
-            teal: "bg-teal-50 dark:bg-teal-500/10",
-            emerald: "bg-emerald-50 dark:bg-emerald-500/10",
-            rose: "bg-rose-50 dark:bg-rose-500/10",
-            indigo: "bg-indigo-50 dark:bg-indigo-500/10"
+        const cardColors = {
+            blue: {
+                bg: "bg-[#EFF6FF] dark:bg-blue-950/20",
+                border: "border-[#DBEAFE] dark:border-blue-900/30",
+                text: "text-[#2563EB] dark:text-blue-400"
+            },
+            green: {
+                bg: "bg-[#F0FDF4] dark:bg-emerald-950/20",
+                border: "border-[#DCFCE7] dark:border-emerald-900/30",
+                text: "text-[#16A34A] dark:text-emerald-400"
+            },
+            red: {
+                bg: "bg-[#FEF2F2] dark:bg-rose-950/20",
+                border: "border-[#FEE2E2] dark:border-rose-900/30",
+                text: "text-[#DC2626] dark:text-rose-400"
+            },
+            purple: {
+                bg: "bg-[#FAF5FF] dark:bg-purple-950/20",
+                border: "border-[#E9D5FF] dark:border-purple-900/30",
+                text: "text-[#9333EA] dark:text-purple-400"
+            },
+            orange: {
+                bg: "bg-[#FFF7ED] dark:bg-amber-950/20",
+                border: "border-[#FED7AA] dark:border-amber-900/30",
+                text: "text-[#EA580C] dark:text-amber-400"
+            },
+            teal: {
+                bg: "bg-[#F0FDFA] dark:bg-teal-950/20",
+                border: "border-[#CCFBF1] dark:border-teal-900/30",
+                text: "text-[#0D9488] dark:text-teal-400"
+            },
+            emerald: {
+                bg: "bg-[#F0FDF4] dark:bg-emerald-950/20",
+                border: "border-[#DCFCE7] dark:border-emerald-900/30",
+                text: "text-[#16A34A] dark:text-emerald-400"
+            },
+            rose: {
+                bg: "bg-[#FEF2F2] dark:bg-rose-950/20",
+                border: "border-[#FEE2E2] dark:border-rose-900/30",
+                text: "text-[#DC2626] dark:text-rose-400"
+            },
+            indigo: {
+                bg: "bg-[#EEF2FF] dark:bg-indigo-950/20",
+                border: "border-[#E0E7FF] dark:border-indigo-900/30",
+                text: "text-[#4F46E5] dark:text-indigo-400"
+            }
         };
-        const iconColors = {
-            blue: "text-blue-500",
-            green: "text-green-500",
-            red: "text-red-500",
-            purple: "text-purple-500",
-            orange: "text-orange-500",
-            teal: "text-teal-500",
-            emerald: "text-emerald-500",
-            rose: "text-rose-500",
-            indigo: "text-indigo-500"
-        };
+
+        const config = cardColors[color as keyof typeof cardColors] || cardColors.blue;
+
         return (
-            <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                <CardContent className="p-6 flex items-center space-x-5 h-full">
-                    {Icon && (
-                        <div className={`p-4 rounded-[18px] flex-shrink-0 ${iconBgColors[color as keyof typeof iconBgColors] || iconBgColors.blue}`}>
-                            <Icon className={`h-8 w-8 ${iconColors[color as keyof typeof iconColors] || iconColors.blue}`} />
-                        </div>
-                    )}
+            <Card className={`h-full ${config.bg} border ${config.border} rounded-2xl shadow-sm hover:shadow-md transition-all duration-300`}>
+                <CardContent className={`p-6 flex items-center justify-between h-full ${config.text}`}>
                     <div className="flex flex-col justify-center">
-                        <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{value}</div>
-                        <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{title}</p>
-                        {subtitle && <p className="text-xs text-slate-400 mt-1">{subtitle}</p>}
+                        <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{title}</p>
+                        <div className="text-3xl font-extrabold tracking-tight mt-2">{value}</div>
+                        {subtitle && <p className="text-xs opacity-80 mt-1">{subtitle}</p>}
                     </div>
+                    {Icon && <Icon className="h-10 w-10 opacity-80 flex-shrink-0" />}
                 </CardContent>
             </Card>
-        );    };
+        );
+    };
     return (
         <AuthenticatedLayout
             breadcrumbs={[{ label: t('Project Dashboard') }]}

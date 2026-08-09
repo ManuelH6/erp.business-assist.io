@@ -37,8 +37,7 @@ export default function ClientDashboard({ stats, monthlyPayments, recentReturnIn
 
     return (
         <AuthenticatedLayout
-            breadcrumbs={[{label: t('Account')}, {label: t('Dashboard')}]}
-            pageTitleClass="text-lg"
+            breadcrumbs={[{ label: t('Account') }, { label: t('Dashboard') }]}
             pageTitle={t('Dashboard')}
 
         >
@@ -46,43 +45,43 @@ export default function ClientDashboard({ stats, monthlyPayments, recentReturnIn
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-blue-50 dark:bg-blue-500/10 rounded-[18px] flex-shrink-0">
-                                    <DollarSign className="h-8 w-8 text-blue-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{formatCurrency(stats.total_payments)}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Total Payments Made')}</p>
-                                    <p className="text-xs text-slate-400 mt-1">{t('Total amount paid')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                    <CardContent className="p-6 flex items-center space-x-5 h-full">
+                        <div className="p-4 bg-blue-50 dark:bg-blue-500/10 rounded-[18px] flex-shrink-0">
+                            <DollarSign className="h-8 w-8 text-blue-500" />
+                        </div>
+                        <div className="flex flex-col justify-center">
+                            <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{formatCurrency(stats.total_payments)}</div>
+                            <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Total Payments Made')}</p>
+                            <p className="text-xs text-slate-400 mt-1">{t('Total amount paid')}</p>
+                        </div>
+                    </CardContent>
+                </Card>
 
                 <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-green-50 dark:bg-green-500/10 rounded-[18px] flex-shrink-0">
-                                    <TrendingUp className="h-8 w-8 text-green-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{formatCurrency(stats.total_revenues)}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Total Revenue')}</p>
-                                    <p className="text-xs text-slate-400 mt-1">{t('Revenue generated')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                    <CardContent className="p-6 flex items-center space-x-5 h-full">
+                        <div className="p-4 bg-green-50 dark:bg-green-500/10 rounded-[18px] flex-shrink-0">
+                            <TrendingUp className="h-8 w-8 text-green-500" />
+                        </div>
+                        <div className="flex flex-col justify-center">
+                            <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{formatCurrency(stats.total_revenues)}</div>
+                            <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Total Revenue')}</p>
+                            <p className="text-xs text-slate-400 mt-1">{t('Revenue generated')}</p>
+                        </div>
+                    </CardContent>
+                </Card>
 
                 <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-purple-50 dark:bg-purple-500/10 rounded-[18px] flex-shrink-0">
-                                    <CreditCard className="h-8 w-8 text-purple-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats.payment_count}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Payment Count')}</p>
-                                    <p className="text-xs text-slate-400 mt-1">{t('Total transactions')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                    <CardContent className="p-6 flex items-center space-x-5 h-full">
+                        <div className="p-4 bg-purple-50 dark:bg-purple-500/10 rounded-[18px] flex-shrink-0">
+                            <CreditCard className="h-8 w-8 text-purple-500" />
+                        </div>
+                        <div className="flex flex-col justify-center">
+                            <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats.payment_count}</div>
+                            <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Payment Count')}</p>
+                            <p className="text-xs text-slate-400 mt-1">{t('Total transactions')}</p>
+                        </div>
+                    </CardContent>
+                </Card>
             </div>
 
             <Card className="mb-6">
@@ -91,7 +90,7 @@ export default function ClientDashboard({ stats, monthlyPayments, recentReturnIn
                 </CardHeader>
                 <CardContent>
                     <LineChart
-                        data={monthlyPayments}
+                        data={monthlyPayments || []}
                         height={300}
                         showTooltip={true}
                         showGrid={true}

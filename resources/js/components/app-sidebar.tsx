@@ -22,8 +22,8 @@ import {
   SidebarMenuItem,
   SidebarInput,
 } from "@/components/ui/sidebar"
-import {Link, usePage} from "@inertiajs/react";
-import {PageProps} from "@/types";
+import { Link, usePage } from "@inertiajs/react";
+import { PageProps } from "@/types";
 import { allMenuItems } from "@/utils/menu";
 import { useTranslation } from 'react-i18next';
 import { useBrand } from "@/contexts/brand-context";
@@ -31,21 +31,21 @@ import { useBrand } from "@/contexts/brand-context";
 
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-    const { auth } = usePage<PageProps>().props;
-    const { t } = useTranslation();
-    const { settings, getCompleteSidebarProps } = useBrand();
-    const [searchQuery, setSearchQuery] = React.useState("");
+  const { auth } = usePage<PageProps>().props;
+  const { t } = useTranslation();
+  const { settings, getCompleteSidebarProps } = useBrand();
+  const [searchQuery, setSearchQuery] = React.useState("");
 
-    const sidebarProps = getCompleteSidebarProps();
+  const sidebarProps = getCompleteSidebarProps();
 
-    return (
+  return (
     <Sidebar
-        variant={settings.sidebarVariant as any}
-        side={settings.layoutDirection === 'rtl' ? 'right' : 'left'}
-        collapsible="icon"
-        className={sidebarProps.className}
-        style={sidebarProps.style}
-        {...props}
+      variant={settings.sidebarVariant as any}
+      side={settings.layoutDirection === 'rtl' ? 'right' : 'left'}
+      collapsible="icon"
+      className={sidebarProps.className}
+      style={sidebarProps.style}
+      {...props}
     >
       <SidebarHeader>
         <SidebarMenu>
@@ -69,19 +69,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                           alt="Logo"
                           className="h-9 w-auto transition-all duration-200"
                         />
-                        <span 
+                        <span
                           className="font-bold text-xl tracking-tight"
                           style={isSidebarDark ? { color: '#ffffff' } : { color: primaryColor }}
                         >
-                          Business Assist
+                          ERP Assist
                         </span>
                       </div>
                     ) : (
-                      <div 
+                      <div
                         className="h-12 font-bold flex items-center text-xl tracking-tight"
                         style={isSidebarDark ? { color: '#ffffff' } : { color: primaryColor }}
                       >
-                        {settings.titleText || 'Business Assist'}
+                        {settings.titleText || 'ERP Assist'}
                       </div>
                     );
                   })()}
