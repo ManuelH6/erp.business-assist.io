@@ -101,54 +101,54 @@ export default function HrmIndex({ message, stats }: HrmProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div onClick={() => window.location.href = route('hrm.employees.index')} className="cursor-pointer">
                         <Card className="h-full bg-[#EFF6FF] dark:bg-blue-950/20 border border-[#DBEAFE] dark:border-blue-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                            <CardContent className="p-6 flex items-center justify-between h-full text-[#2563EB] dark:text-blue-400">
+                            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#2563EB] dark:text-blue-400">
                                 <div className="flex flex-col justify-center">
-                                    <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Employees')}</p>
-                                    <div className="text-3xl font-extrabold tracking-tight mt-2">{stats.total_employees}</div>
+                                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Total Employees')}</p>
+                                    <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.total_employees}</div>
                                     <p className="text-xs opacity-80 mt-1">{t('Active employees')}</p>
                                 </div>
-                                <Users className="h-10 w-10 opacity-80 flex-shrink-0" />
+                                <Users className="h-8 w-8 opacity-80 flex-shrink-0" />
                             </CardContent>
                         </Card>
                     </div>
 
                     <div onClick={() => window.location.href = route('hrm.attendances.index')} className="cursor-pointer">
                         <Card className="h-full bg-[#F0FDF4] dark:bg-emerald-950/20 border border-[#DCFCE7] dark:border-emerald-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                            <CardContent className="p-6 flex items-center justify-between h-full text-[#16A34A] dark:text-emerald-400">
+                            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#16A34A] dark:text-emerald-400">
                                 <div className="flex flex-col justify-center">
-                                    <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Present Today')}</p>
-                                    <div className="text-3xl font-extrabold tracking-tight mt-2">{stats.present_today}</div>
+                                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Present Today')}</p>
+                                    <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.present_today}</div>
                                     <p className="text-xs opacity-80 mt-1">{((stats.present_today / stats.total_employees) * 100).toFixed(1)}% {t('attendance rate')}</p>
                                 </div>
-                                <UserCheck className="h-10 w-10 opacity-80 flex-shrink-0" />
+                                <UserCheck className="h-8 w-8 opacity-80 flex-shrink-0" />
                             </CardContent>
                         </Card>
                     </div>
 
                     <div onClick={() => window.location.href = route('hrm.attendances.index')} className="cursor-pointer">
                         <Card className="h-full bg-[#FEF2F2] dark:bg-rose-950/20 border border-[#FEE2E2] dark:border-rose-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                            <CardContent className="p-6 flex items-center justify-between h-full text-[#DC2626] dark:text-rose-400">
+                            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#DC2626] dark:text-rose-400">
                                 <div className="flex flex-col justify-center">
-                                    <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Absent Today')}</p>
-                                    <div className="text-3xl font-extrabold tracking-tight mt-2">{stats.absent_today}</div>
+                                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Absent Today')}</p>
+                                    <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.absent_today}</div>
                                     <p className="text-xs opacity-80 mt-1">
                                         {stats.absent_today - stats.absent_yesterday > 0 ? '+' : ''}{stats.absent_today - stats.absent_yesterday} {t('from yesterday')}
                                     </p>
                                 </div>
-                                <UserX className="h-10 w-10 opacity-80 flex-shrink-0" />
+                                <UserX className="h-8 w-8 opacity-80 flex-shrink-0" />
                             </CardContent>
                         </Card>
                     </div>
 
                     <div onClick={() => window.location.href = route('hrm.leave-applications.index')} className="cursor-pointer">
                         <Card className="h-full bg-[#FAF5FF] dark:bg-purple-950/20 border border-[#E9D5FF] dark:border-purple-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                            <CardContent className="p-6 flex items-center justify-between h-full text-[#9333EA] dark:text-purple-400">
+                            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#9333EA] dark:text-purple-400">
                                 <div className="flex flex-col justify-center">
-                                    <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('On Leave')}</p>
-                                    <div className="text-3xl font-extrabold tracking-tight mt-2">{stats.on_leave}</div>
+                                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('On Leave')}</p>
+                                    <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.on_leave}</div>
                                     <p className="text-xs opacity-80 mt-1">{stats.pending_leaves} {t('pending approvals')}</p>
                                 </div>
-                                <Calendar className="h-10 w-10 opacity-80 flex-shrink-0" />
+                                <Calendar className="h-8 w-8 opacity-80 flex-shrink-0" />
                             </CardContent>
                         </Card>
                     </div>
@@ -158,52 +158,52 @@ export default function HrmIndex({ message, stats }: HrmProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div onClick={() => window.location.href = route('hrm.branches.index')} className="cursor-pointer">
                         <Card className="h-full bg-[#F0FDFA] dark:bg-teal-950/20 border border-[#CCFBF1] dark:border-teal-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                            <CardContent className="p-6 flex items-center justify-between h-full text-[#0D9488] dark:text-teal-400">
+                            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#0D9488] dark:text-teal-400">
                                 <div className="flex flex-col justify-center">
-                                    <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Branch')}</p>
-                                    <div className="text-3xl font-extrabold tracking-tight mt-2">{stats.total_branches}</div>
+                                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Total Branch')}</p>
+                                    <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.total_branches}</div>
                                     <p className="text-xs opacity-80 mt-1">{t('Active branches')}</p>
                                 </div>
-                                <Building className="h-10 w-10 opacity-80 flex-shrink-0" />
+                                <Building className="h-8 w-8 opacity-80 flex-shrink-0" />
                             </CardContent>
                         </Card>
                     </div>
 
                     <div onClick={() => window.location.href = route('hrm.departments.index')} className="cursor-pointer">
                         <Card className="h-full bg-[#EEF2FF] dark:bg-indigo-950/20 border border-[#E0E7FF] dark:border-indigo-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                            <CardContent className="p-6 flex items-center justify-between h-full text-[#4F46E5] dark:text-indigo-400">
+                            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#4F46E5] dark:text-indigo-400">
                                 <div className="flex flex-col justify-center">
-                                    <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Department')}</p>
-                                    <div className="text-3xl font-extrabold tracking-tight mt-2">{stats.total_departments}</div>
+                                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Total Department')}</p>
+                                    <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.total_departments}</div>
                                     <p className="text-xs opacity-80 mt-1">{t('Across all branches')}</p>
                                 </div>
-                                <Briefcase className="h-10 w-10 opacity-80 flex-shrink-0" />
+                                <Briefcase className="h-8 w-8 opacity-80 flex-shrink-0" />
                             </CardContent>
                         </Card>
                     </div>
 
                     <div onClick={() => window.location.href = route('hrm.promotions.index')} className="cursor-pointer">
                         <Card className="h-full bg-[#F0FDF4] dark:bg-emerald-950/20 border border-[#DCFCE7] dark:border-emerald-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                            <CardContent className="p-6 flex items-center justify-between h-full text-[#16A34A] dark:text-emerald-400">
+                            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#16A34A] dark:text-emerald-400">
                                 <div className="flex flex-col justify-center">
-                                    <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Promotions')}</p>
-                                    <div className="text-3xl font-extrabold tracking-tight mt-2">{stats.total_promotions}</div>
+                                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Total Promotions')}</p>
+                                    <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.total_promotions}</div>
                                     <p className="text-xs opacity-80 mt-1">{t('This year')}</p>
                                 </div>
-                                <TrendingUp className="h-10 w-10 opacity-80 flex-shrink-0" />
+                                <TrendingUp className="h-8 w-8 opacity-80 flex-shrink-0" />
                             </CardContent>
                         </Card>
                     </div>
 
                     <div onClick={() => window.location.href = route('hrm.terminations.index')} className="cursor-pointer">
                         <Card className="h-full bg-[#FEF2F2] dark:bg-rose-950/20 border border-[#FEE2E2] dark:border-rose-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                            <CardContent className="p-6 flex items-center justify-between h-full text-[#DC2626] dark:text-rose-400">
+                            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#DC2626] dark:text-rose-400">
                                 <div className="flex flex-col justify-center">
-                                    <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Terminations')}</p>
-                                    <div className="text-3xl font-extrabold tracking-tight mt-2">{stats.terminations}</div>
+                                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Terminations')}</p>
+                                    <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.terminations}</div>
                                     <p className="text-xs opacity-80 mt-1">{t('This month')}</p>
                                 </div>
-                                <TrendingDown className="h-10 w-10 opacity-80 flex-shrink-0" />
+                                <TrendingDown className="h-8 w-8 opacity-80 flex-shrink-0" />
                             </CardContent>
                         </Card>
                     </div>

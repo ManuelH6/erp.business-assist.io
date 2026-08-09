@@ -127,13 +127,13 @@ export default function CompanyDashboard() {
 
         return (
             <Card className={`h-full ${config.bg} border ${config.border} rounded-2xl shadow-sm hover:shadow-md transition-all duration-300`}>
-                <CardContent className={`p-6 flex items-center justify-between h-full ${config.text}`}>
+                <CardContent className={`p-6 flex flex-row items-center justify-between w-full h-full ${config.text}`}>
                     <div className="flex flex-col justify-center">
-                        <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{title}</p>
-                        <div className="text-3xl font-extrabold tracking-tight mt-2">{value}</div>
+                        <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{title}</p>
+                        <div className="text-2xl font-bold tracking-tight mt-1.5">{value}</div>
                         {subtitle && <p className="text-xs opacity-80 mt-1">{subtitle}</p>}
                     </div>
-                    {Icon && <Icon className="h-10 w-10 opacity-80 flex-shrink-0" />}
+                    {Icon && <Icon className="h-8 w-8 opacity-80 flex-shrink-0" />}
                 </CardContent>
             </Card>
         );
