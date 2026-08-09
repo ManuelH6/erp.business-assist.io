@@ -91,63 +91,47 @@ export default function ClientDashboard({ stats, monthlyData, recentTickets, sta
 
         {/* Client-Specific Stats with Rounded Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card className="bg-white shadow-lg rounded-2xl border-0 hover:shadow-xl transition-all duration-300">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-wider text-gray-600">{t('My Tickets')}</p>
-                  <p className="text-3xl font-bold text-blue-600 mt-2">{stats.totalTickets}</p>
-                  <p className="text-xs text-gray-500 mt-1">{t('Total submitted')}</p>
-                </div>
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <TicketIcon className="h-8 w-8 text-blue-600" />
-                </div>
+          <Card className="h-full bg-[#EFF6FF] dark:bg-blue-950/20 border border-[#DBEAFE] dark:border-blue-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#2563EB] dark:text-blue-400">
+              <div className="flex flex-col justify-center">
+                <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('My Tickets')}</p>
+                <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.totalTickets}</div>
+                <p className="text-xs opacity-85 mt-1">{t('Total submitted')}</p>
               </div>
+              <TicketIcon className="h-8 w-8 opacity-80 flex-shrink-0" />
             </CardContent>
           </Card>
 
-          <Card className="bg-white shadow-lg rounded-2xl border-0 hover:shadow-xl transition-all duration-300">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-wider text-gray-600">{t('In Progress')}</p>
-                  <p className="text-3xl font-bold text-amber-600 mt-2">{stats.openTickets}</p>
-                  <p className="text-xs text-gray-500 mt-1">{t('Being resolved')}</p>
-                </div>
-                <div className="bg-amber-100 p-3 rounded-full">
-                  <Clock className="h-8 w-8 text-amber-600" />
-                </div>
+          <Card className="h-full bg-[#FFF7ED] dark:bg-amber-950/20 border border-[#FED7AA] dark:border-amber-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#EA580C] dark:text-amber-400">
+              <div className="flex flex-col justify-center">
+                <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('In Progress')}</p>
+                <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.openTickets}</div>
+                <p className="text-xs opacity-85 mt-1">{t('Being resolved')}</p>
               </div>
+              <Clock className="h-8 w-8 opacity-80 flex-shrink-0" />
             </CardContent>
           </Card>
 
-          <Card className="bg-white shadow-lg rounded-2xl border-0 hover:shadow-xl transition-all duration-300">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-wider text-gray-600">{t('Resolved')}</p>
-                  <p className="text-3xl font-bold text-emerald-600 mt-2">{stats.closedTickets}</p>
-                  <p className="text-xs text-gray-500 mt-1">{stats.resolutionRate}% {t('success rate')}</p>
-                </div>
-                <div className="bg-emerald-100 p-3 rounded-full">
-                  <CheckCircleIcon className="h-8 w-8 text-emerald-600" />
-                </div>
+          <Card className="h-full bg-[#F0FDF4] dark:bg-emerald-950/20 border border-[#DCFCE7] dark:border-emerald-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#16A34A] dark:text-emerald-400">
+              <div className="flex flex-col justify-center">
+                <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Resolved')}</p>
+                <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.closedTickets}</div>
+                <p className="text-xs opacity-85 mt-1">{stats.resolutionRate}% {t('success rate')}</p>
               </div>
+              <CheckCircleIcon className="h-8 w-8 opacity-80 flex-shrink-0" />
             </CardContent>
           </Card>
 
-          <Card className="bg-white shadow-lg rounded-2xl border-0 hover:shadow-xl transition-all duration-300">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-wider text-gray-600">{t('Today')}</p>
-                  <p className="text-3xl font-bold text-violet-600 mt-2">{stats.todayTickets}</p>
-                  <p className="text-xs text-gray-500 mt-1">{t('New requests')}</p>
-                </div>
-                <div className="bg-violet-100 p-3 rounded-full">
-                  <Calendar className="h-8 w-8 text-violet-600" />
-                </div>
+          <Card className="h-full bg-[#FAF5FF] dark:bg-purple-950/20 border border-[#E9D5FF] dark:border-purple-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#9333EA] dark:text-purple-400">
+              <div className="flex flex-col justify-center">
+                <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Today')}</p>
+                <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.todayTickets}</div>
+                <p className="text-xs opacity-85 mt-1">{t('New requests')}</p>
               </div>
+              <Calendar className="h-8 w-8 opacity-80 flex-shrink-0" />
             </CardContent>
           </Card>
         </div>
