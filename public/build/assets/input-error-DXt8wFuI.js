@@ -1,1 +1,0 @@
-import{a as e}from"./rolldown-runtime-B0Z9INg1.js";import{t}from"./react-BQVaxoBa.js";import{r as n}from"./app-BujDEe4w.js";import{t as r}from"./utils-PYjUuRgT.js";var i=e(t(),1),a=n(),o=i.forwardRef(({className:e,message:t,...n},i)=>t&&(0,a.jsx)(`p`,{className:r(`text-sm font-medium text-destructive`,e),ref:i,...n,children:t}));o.displayName=`InputError`;export{o as t};

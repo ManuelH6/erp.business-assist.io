@@ -1704,5 +1704,11 @@
     "You have access to all {{count}} available features as a super admin.": "You have access to all {{count}} available features as a super admin.",
     "You have reached the maximum user limit. Please upgrade your plan.": "You have reached the maximum user limit. Please upgrade your plan.",
     "You have unsaved changes. Do you want to discard them?": "You have unsaved changes. Do you want to discard them?",
-    "items selected for return": "items selected for return"
+    "items selected for return": "items selected for return",
+    "Quick Access": "Quick Access",
+    "Login as Super Admin": "Login as Super Admin",
+    "Login as Company": "Login as Company",
+    "Login as Employee": "Login as Employee",
+    "Login as Customer": "Login as Customer",
+    "Login as Vendor": "Login as Vendor"
 }
