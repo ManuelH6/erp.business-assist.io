@@ -104,47 +104,47 @@ export default function StaffDashboard({ stats, monthlyData, recentTickets, stat
 
             {/* Enhanced Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Card className="bg-gradient-to-br from-white to-blue-50/50 dark:from-slate-900 dark:to-blue-900/20 border-blue-100/50 cursor-pointer hover:shadow-lg transition-all duration-200" onClick={() => router.get(route('support-tickets.index'))}>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-semibold uppercase tracking-wider text-blue-700">{t('Total Tickets')}</CardTitle>
-                  <TicketIcon className="h-6 w-6 text-blue-600" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-extrabold tracking-tight text-blue-700">{stats.totalTickets}</div>
-                  <p className="text-xs text-blue-600 mt-1">{t('My tickets')}</p>
+              <Card className="h-full bg-[#EFF6FF] dark:bg-blue-950/20 border border-[#DBEAFE] dark:border-blue-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.get(route('support-tickets.index'))}>
+                <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#2563EB] dark:text-blue-400">
+                  <div className="flex flex-col justify-center">
+                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Total Tickets')}</p>
+                    <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.totalTickets}</div>
+                    <p className="text-xs opacity-80 mt-1">{t('My tickets')}</p>
+                  </div>
+                  <TicketIcon className="h-8 w-8 opacity-80 flex-shrink-0" />
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-white to-orange-50/50 dark:from-slate-900 dark:to-orange-900/20 border-orange-100/50 cursor-pointer hover:shadow-lg transition-all duration-200" onClick={() => router.get(route('support-tickets.index'))}>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-semibold uppercase tracking-wider text-orange-700">{t('In Progress')}</CardTitle>
-                  <Clock className="h-6 w-6 text-orange-600" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-extrabold tracking-tight text-orange-700">{stats.openTickets}</div>
-                  <p className="text-xs text-orange-600 mt-1">{t('Need attention')}</p>
+              <Card className="h-full bg-[#FFF7ED] dark:bg-amber-950/20 border border-[#FED7AA] dark:border-amber-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.get(route('support-tickets.index'))}>
+                <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#EA580C] dark:text-amber-400">
+                  <div className="flex flex-col justify-center">
+                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('In Progress')}</p>
+                    <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.openTickets}</div>
+                    <p className="text-xs opacity-80 mt-1">{t('Need attention')}</p>
+                  </div>
+                  <Clock className="h-8 w-8 opacity-80 flex-shrink-0" />
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-white to-green-50/50 dark:from-slate-900 dark:to-green-900/20 border-green-100/50 cursor-pointer hover:shadow-lg transition-all duration-200" onClick={() => router.get(route('support-tickets.index'))}>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-semibold uppercase tracking-wider text-green-700">{t('Resolved')}</CardTitle>
-                  <CheckCircleIcon className="h-6 w-6 text-green-600" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-extrabold tracking-tight text-green-700">{stats.closedTickets}</div>
-                  <p className="text-xs text-green-600 mt-1">{stats.resolutionRate}% {t('resolution rate')}</p>
+              <Card className="h-full bg-[#F0FDF4] dark:bg-emerald-950/20 border border-[#DCFCE7] dark:border-emerald-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.get(route('support-tickets.index'))}>
+                <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#16A34A] dark:text-emerald-400">
+                  <div className="flex flex-col justify-center">
+                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Resolved')}</p>
+                    <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.closedTickets}</div>
+                    <p className="text-xs opacity-80 mt-1">{stats.resolutionRate}% {t('resolution rate')}</p>
+                  </div>
+                  <CheckCircleIcon className="h-8 w-8 opacity-80 flex-shrink-0" />
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-white to-purple-50/50 dark:from-slate-900 dark:to-purple-900/20 border-purple-100/50">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-semibold uppercase tracking-wider text-purple-700">{t('Today\'s Tickets')}</CardTitle>
-                  <Calendar className="h-6 w-6 text-purple-600" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-extrabold tracking-tight text-purple-700">{stats.todayTickets}</div>
-                  <p className="text-xs text-purple-600 mt-1">{t('Created today')}</p>
+              <Card className="h-full bg-[#FAF5FF] dark:bg-purple-950/20 border border-[#E9D5FF] dark:border-purple-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#9333EA] dark:text-purple-400">
+                  <div className="flex flex-col justify-center">
+                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t("Today's Tickets")}</p>
+                    <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.todayTickets}</div>
+                    <p className="text-xs opacity-80 mt-1">{t('Created today')}</p>
+                  </div>
+                  <Calendar className="h-8 w-8 opacity-80 flex-shrink-0" />
                 </CardContent>
               </Card>
             </div>

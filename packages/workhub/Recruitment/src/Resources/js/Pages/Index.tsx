@@ -236,56 +236,48 @@ export default function RecruitmentIndex({ message, dashboardData, userSlug, wel
                     {/* Right Side - 4 Stats Cards */}
                     <div className="grid grid-cols-2 gap-4">
                         <Link href={route('recruitment.candidates.index')}>
-                            <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-gray-50 dark:bg-gray-500/10 rounded-[18px] flex-shrink-0">
-                                    <Users className="h-8 w-8 text-gray-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{dashboardData?.overview?.totalCandidates || 0}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Total Candidates')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                            <Card className="h-full bg-[#EFF6FF] dark:bg-blue-950/20 border border-[#DBEAFE] dark:border-blue-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                                <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#2563EB] dark:text-blue-400">
+                                    <div className="flex flex-col justify-center">
+                                        <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Total Candidates')}</p>
+                                        <div className="text-2xl font-bold tracking-tight mt-1.5">{dashboardData?.overview?.totalCandidates || 0}</div>
+                                    </div>
+                                    <Users className="h-8 w-8 opacity-80 flex-shrink-0" />
+                                </CardContent>
+                            </Card>
                         </Link>
                         <Link href={route('recruitment.job-postings.index')}>
-                            <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-blue-50 dark:bg-blue-500/10 rounded-[18px] flex-shrink-0">
-                                    <Briefcase className="h-8 w-8 text-blue-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{dashboardData?.overview?.activeJobPostings || 0}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Active Jobs')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                            <Card className="h-full bg-[#F0FDF4] dark:bg-emerald-950/20 border border-[#DCFCE7] dark:border-emerald-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                                <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#16A34A] dark:text-emerald-400">
+                                    <div className="flex flex-col justify-center">
+                                        <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Active Jobs')}</p>
+                                        <div className="text-2xl font-bold tracking-tight mt-1.5">{dashboardData?.overview?.activeJobPostings || 0}</div>
+                                    </div>
+                                    <Briefcase className="h-8 w-8 opacity-80 flex-shrink-0" />
+                                </CardContent>
+                            </Card>
                         </Link>
                         <Link href={route('recruitment.interviews.index')}>
-                            <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-green-50 dark:bg-green-500/10 rounded-[18px] flex-shrink-0">
-                                    <Calendar className="h-8 w-8 text-green-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{dashboardData?.overview?.pendingInterviews || 0}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Interviews')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                            <Card className="h-full bg-[#FAF5FF] dark:bg-purple-950/20 border border-[#E9D5FF] dark:border-purple-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                                <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#9333EA] dark:text-purple-400">
+                                    <div className="flex flex-col justify-center">
+                                        <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Interviews')}</p>
+                                        <div className="text-2xl font-bold tracking-tight mt-1.5">{dashboardData?.overview?.pendingInterviews || 0}</div>
+                                    </div>
+                                    <Calendar className="h-8 w-8 opacity-80 flex-shrink-0" />
+                                </CardContent>
+                            </Card>
                         </Link>
                         <Link href={route('recruitment.candidate-onboardings.index')}>
-                            <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-orange-50 dark:bg-orange-500/10 rounded-[18px] flex-shrink-0">
-                                    <UserCheck className="h-8 w-8 text-orange-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{dashboardData?.overview?.completedOnboardings || 0}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Onboarded')}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                            <Card className="h-full bg-[#FFF7ED] dark:bg-amber-950/20 border border-[#FED7AA] dark:border-amber-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                                <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#EA580C] dark:text-amber-400">
+                                    <div className="flex flex-col justify-center">
+                                        <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Onboarded')}</p>
+                                        <div className="text-2xl font-bold tracking-tight mt-1.5">{dashboardData?.overview?.completedOnboardings || 0}</div>
+                                    </div>
+                                    <UserCheck className="h-8 w-8 opacity-80 flex-shrink-0" />
+                                </CardContent>
+                            </Card>
                         </Link>
                     </div>
                 </div>
@@ -590,13 +582,13 @@ export default function RecruitmentIndex({ message, dashboardData, userSlug, wel
                         </CardHeader>
                         <CardContent>
                             <div className="space-y-3">
-                                {dashboardData?.onboardingStatus?.pending > 0 && (
+                                {(dashboardData?.onboardingStatus?.pending ?? 0) > 0 && (
                                     <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-amber-200">
                                         <div className="flex items-center gap-3">
                                             <Clock className="h-5 w-5 text-amber-600" />
                                             <div>
                                                 <p className="font-medium text-amber-900">{t('Pending Onboardings')}</p>
-                                                <p className="text-sm text-amber-700">{dashboardData.onboardingStatus.pending} {t('items need attention')}</p>
+                                                <p className="text-sm text-amber-700">{dashboardData?.onboardingStatus?.pending} {t('items need attention')}</p>
                                             </div>
                                         </div>
                                         <Link href={route('recruitment.candidate-onboardings.index')}>
