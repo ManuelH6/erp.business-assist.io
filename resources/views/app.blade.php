@@ -34,7 +34,7 @@
                 <div class="spinner"><div></div><div></div></div>
                 <div style="text-align:center">
                     <h3 style="font-size:1.125rem;font-weight:600;color:#374151">{{ __('Loading...') }}</h3>
-                    <p style="font-size:0.875rem;color:#6b7280">{{ __('Please wait while we prepare your webapp...') }}</p>
+                    <p style="font-size:0.875rem;color:#6b7280">{{ __('Patientez un moment...') }}</p>
                 </div>
             </div>
         </div>

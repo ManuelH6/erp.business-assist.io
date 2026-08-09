@@ -1,48 +1,65 @@
 import { useState } from 'react';
-import { Layers, PieChart, Users, Receipt, Box, Shield, ArrowRight } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { getImagePath } from '@/utils/helpers';
 
-export default function Modules() {
+interface ModulesProps {
+    settings?: any;
+}
+
+export default function Modules({ settings }: ModulesProps) {
     const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState(0);
 
-    const title = 'Des modules conçus pour chaque métier';
-    const subtitle = 'Découvrez comment Assist Hub s\'adapte à vos processus avec des outils spécialisés, parfaitement intégrés dans un écosystème unique.';
+    const title = settings?.config_sections?.sections?.modules?.title || 'Complete Business Solutions';
+    const subtitle = settings?.config_sections?.sections?.modules?.subtitle || 'Discover our comprehensive modules designed to streamline every aspect of your business operations';
 
-    const modules = [
+    const defaultModules = [
         {
-            id: 'erp',
-            title: 'ERP & Opérations',
-            icon: Layers,
-            description: 'Centralisez la gestion de votre entreprise. Suivi en temps réel des ressources, automatisation des processus et optimisation de la chaîne de valeur.',
-            features: ['Gestion des stocks avancée', 'Suivi de la chaîne logistique', 'Tableaux de bord opérationnels'],
-            color: 'from-blue-500 to-cyan-400'
+            key: 'hrm',
+            label: 'Human Resources',
+            title: 'HRM System',
+            description: 'Transform your human resource operations with a comprehensive suite for the entire employee lifecycle. Efficiently manage recruitment, onboarding, attendance, and payroll processing while ensuring compliance.',
+            image: 'packages/workhub/LandingPage/src/Resources/assets/img/hrm.png',
+            icon: 'UserCheck'
         },
         {
-            id: 'accounting',
-            title: 'Comptabilité & Finance',
-            icon: Receipt,
-            description: 'Gardez le contrôle total sur votre santé financière. Facturation automatisée, rapprochement bancaire et rapports financiers complets.',
-            features: ['Facturation et devis', 'Suivi des dépenses et revenus', 'Génération des bilans'],
-            color: 'from-green-500 to-emerald-400'
+            key: 'account',
+            label: 'Accounting & Finance',
+            title: 'Accounting System',
+            description: 'Take command of your financial data with an advanced double-entry accounting system designed for accuracy and speed. Automate complex billing cycles, reconcile bank transactions in seconds, and generate insightful financial reports.',
+            image: 'packages/workhub/LandingPage/src/Resources/assets/img/accounting.png',
+            icon: 'Calculator'
         },
         {
-            id: 'crm',
-            title: 'CRM & Ventes',
-            icon: Users,
-            description: 'Transformez vos prospects en clients fidèles. Suivi du pipeline de vente, gestion des contacts et campagnes marketing ciblées.',
-            features: ['Gestion du pipeline', 'Historique des interactions', 'Analyses de conversion'],
-            color: 'from-purple-500 to-fuchsia-400'
+            key: 'project',
+            label: 'Project Management',
+            title: 'Task & Project System',
+            description: 'Deliver projects on time and within budget using our robust project management tools. Visualize workflows with interactive Kanban boards and Gantt charts, enabling seamless collaboration among teams.',
+            image: 'packages/workhub/LandingPage/src/Resources/assets/img/project.png',
+            icon: 'FolderOpen'
         },
         {
-            id: 'pos',
-            title: 'Point de Vente (POS)',
-            icon: Box,
-            description: 'Une solution d\'encaissement fluide pour vos boutiques. Synchronisation immédiate avec vos stocks et votre comptabilité.',
-            features: ['Encaissement multi-moyens', 'Tickets de caisse numériques', 'Mode hors-ligne'],
-            color: 'from-[#10b77f] to-amber-500'
+            key: 'crm',
+            label: 'CRM & Sales',
+            title: 'CRM System',
+            description: 'Supercharge your sales engine with a customer relationship management (CRM) system that turns leads into loyal clients. Track every interaction, manage sales pipelines with drag-and-drop ease, and automate follow-ups.',
+            image: 'packages/workhub/LandingPage/src/Resources/assets/img/crm.png',
+            icon: 'Users'
+        },
+        {
+            key: 'pos',
+            label: 'Point of Sale',
+            title: 'POS System',
+            description: 'Revolutionize your retail operations with a lightning-fast Point of Sale (POS) system that keeps your business moving. synchronize inventory across multiple warehouses in real-time, process transactions securely.',
+            image: 'packages/workhub/LandingPage/src/Resources/assets/img/pos.png',
+            icon: 'CreditCard'
         }
     ];
+
+    const modules = settings?.config_sections?.sections?.modules?.modules || defaultModules;
+    const activeModule = modules[activeTab] || modules[0] || {};
+    const IconComponent = (LucideIcons as any)[activeModule.icon || 'Layers'] || LucideIcons.Layers;
 
     return (
         <section className="py-24 bg-white relative overflow-hidden">
@@ -55,87 +72,57 @@ export default function Modules() {
                 <div className="flex flex-col lg:flex-row gap-12">
                     {/* Navigation Tabs */}
                     <div className="lg:w-1/3 flex flex-col gap-2">
-                        {modules.map((mod, index) => {
-                            const Icon = mod.icon;
+                        {modules.map((mod: any, index: number) => {
+                            const TabIcon = (LucideIcons as any)[mod.icon || 'Layers'] || LucideIcons.Layers;
                             const isActive = activeTab === index;
                             return (
                                 <button
-                                    key={mod.id}
+                                    key={mod.key || index}
                                     onClick={() => setActiveTab(index)}
-                                    className={`text-left p-6 rounded-2xl transition-all duration-300 flex items-start gap-4 ${isActive
-                                            ? 'bg-[#022B3A] shadow-xl transform scale-105 z-10'
-                                            : 'bg-gray-50 hover:bg-gray-100 border border-gray-100'
-                                        }`}
+                                    className={`flex items-center gap-4 p-4 rounded-xl border transition-all duration-200 text-left ${
+                                        isActive
+                                            ? 'bg-gray-50 border-gray-200 shadow-sm'
+                                            : 'bg-white border-transparent hover:bg-gray-50/50'
+                                    }`}
                                 >
-                                    <div className={`p-3 rounded-xl flex-shrink-0 ${isActive ? 'bg-white/10' : 'bg-white shadow-sm'}`}>
-                                        <Icon className={`w-6 h-6 ${isActive ? 'text-[#10b77f]' : 'text-gray-500'}`} />
+                                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200 ${
+                                        isActive ? 'bg-[#10b77f] text-white' : 'bg-gray-100 text-gray-600'
+                                    }`}>
+                                        <TabIcon className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <h3 className={`font-bold text-lg mb-1 ${isActive ? 'text-white' : 'text-gray-900'}`}>
-                                            {mod.title}
-                                        </h3>
-                                        <p className={`text-sm line-clamp-2 ${isActive ? 'text-gray-300' : 'text-gray-500'}`}>
-                                            {mod.description}
-                                        </p>
+                                        <div className="font-semibold text-gray-900 text-sm">{mod.label}</div>
+                                        <div className="text-xs text-gray-500 font-medium">{mod.title}</div>
                                     </div>
                                 </button>
                             );
                         })}
                     </div>
 
-                    {/* Content Display */}
-                    <div className="lg:w-2/3">
-                        <div className="bg-gray-50 rounded-3xl p-8 md:p-12 h-full border border-gray-100 relative overflow-hidden group">
-                            {/* Decorative Background Gradient */}
-                            <div className={`absolute -right-20 -top-20 w-96 h-96 rounded-full blur-[100px] opacity-20 bg-gradient-to-br ${modules[activeTab].color} transition-all duration-700`}></div>
-
-                            <div className="relative z-10">
-                                <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${modules[activeTab].color} shadow-lg mb-8 text-white`}>
-                                    {(() => {
-                                        const ActiveIcon = modules[activeTab].icon;
-                                        return <ActiveIcon className="w-8 h-8" />;
-                                    })()}
+                    {/* Active Content Preview */}
+                    {activeModule && (
+                        <div className="lg:w-2/3 bg-gray-50 border border-gray-100 rounded-2xl p-8 lg:p-12 flex flex-col justify-between relative overflow-hidden animate-fade-in">
+                            <div className="relative z-10 max-w-xl">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10b77f]/10 text-[#10b77f] text-sm font-semibold mb-6">
+                                    <IconComponent className="w-4 h-4" />
+                                    {activeModule.label}
                                 </div>
-
-                                <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                                    {modules[activeTab].title}
-                                </h3>
-
-                                <p className="text-lg text-gray-600 mb-10 leading-relaxed max-w-2xl">
-                                    {modules[activeTab].description}
-                                </p>
-
-                                <div className="space-y-4 mb-12">
-                                    {modules[activeTab].features.map((feature, i) => (
-                                        <div key={i} className="flex items-center gap-3">
-                                            <Shield className="w-5 h-5 text-[#10b77f]" />
-                                            <span className="text-gray-700 font-medium">{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <a href="/register" className="inline-flex items-center gap-2 font-semibold text-[#022B3A] hover:text-[#10b77f] transition-colors group/link">
-                                    Découvrir le module {modules[activeTab].title}
-                                    <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                                </a>
+                                <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">{activeModule.title}</h3>
+                                <p className="text-gray-600 leading-relaxed mb-8">{activeModule.description}</p>
                             </div>
 
-                            {/* Abstract Mockup Area */}
-                            <div className="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/4 w-[600px] h-[400px] bg-white rounded-tl-3xl shadow-2xl border-t border-l border-gray-100 p-6 hidden md:block">
-                                <div className="h-8 w-full border-b border-gray-100 flex gap-2 mb-6">
-                                    <div className="w-3 h-3 rounded-full bg-gray-200"></div>
-                                    <div className="w-3 h-3 rounded-full bg-gray-200"></div>
-                                    <div className="w-3 h-3 rounded-full bg-gray-200"></div>
+                            {/* Image Showcase */}
+                            {activeModule.image && (
+                                <div className="mt-6 relative rounded-xl border border-gray-200 overflow-hidden bg-white shadow-lg aspect-video max-h-[300px]">
+                                    <img
+                                        src={getImagePath(activeModule.image)}
+                                        alt={activeModule.title}
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
-                                <div className="grid grid-cols-3 gap-4">
-                                    <div className="h-24 bg-gray-50 rounded-xl"></div>
-                                    <div className="h-24 bg-gray-50 rounded-xl"></div>
-                                    <div className="h-24 bg-gray-50 rounded-xl"></div>
-                                    <div className="col-span-3 h-48 bg-gray-50 rounded-xl mt-4"></div>
-                                </div>
-                            </div>
+                            )}
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </section>

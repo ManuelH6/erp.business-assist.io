@@ -1,44 +1,26 @@
-import { Building2, Calculator, Users, CreditCard, PieChart, ShieldCheck } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-export default function Features() {
+interface FeaturesProps {
+    settings?: any;
+}
+
+export default function Features({ settings }: FeaturesProps) {
     const { t } = useTranslation();
 
-    const title = 'Fonctionnalités Puissantes';
-    const subtitle = 'Tout ce dont votre entreprise a besoin, réuni au sein d\'une seule plateforme intuitive et performante.';
+    const title = settings?.config_sections?.sections?.features?.title || 'Why Choose ERPGo?';
+    const subtitle = settings?.config_sections?.sections?.features?.subtitle || 'Everything your business needs in one integrated platform';
 
-    const features = [
-        {
-            title: 'Gestion ERP Complète',
-            description: 'Pilotez l\'ensemble de vos ressources, de la chaîne logistique à la gestion des stocks, en temps réel.',
-            icon: Building2
-        },
-        {
-            title: 'Comptabilité Avancée',
-            description: 'Automatisez vos flux financiers, factures et bilans avec précision et conformité.',
-            icon: Calculator
-        },
-        {
-            title: 'CRM Intelligent',
-            description: 'Gérez vos relations clients, suivez vos leads et boostez vos ventes facilement.',
-            icon: Users
-        },
-        {
-            title: 'Système POS',
-            description: 'Vendez en magasin ou en ligne avec un système de point de vente ultra-réactif.',
-            icon: CreditCard
-        },
-        {
-            title: 'Analytique & Rapports',
-            description: 'Prenez des décisions éclairées grâce à des tableaux de bord et rapports détaillés.',
-            icon: PieChart
-        },
-        {
-            title: 'Sécurité Maximale',
-            description: 'Vos données sont protégées par les standards de sécurité les plus stricts de l\'industrie.',
-            icon: ShieldCheck
-        }
+    const defaultFeatures = [
+        { title: 'ERP System', description: 'Streamline resources and operations with comprehensive enterprise resource planning.', icon: 'Building2' },
+        { title: 'Accounting System', description: 'Manage finances with ease and accuracy through automated accounting tools.', icon: 'Calculator' },
+        { title: 'CRM System', description: 'Strengthen customer relationships and improve sales with powerful CRM tools.', icon: 'Users' },
+        { title: 'POS System', description: 'Fast and reliable point-of-sale solution for retail and service businesses.', icon: 'CreditCard' },
+        { title: 'HRM System', description: 'Simplify employee management and payroll with integrated HR tools.', icon: 'UserCheck' },
+        { title: 'Project System', description: 'Organize and track projects efficiently with comprehensive project management.', icon: 'FolderOpen' }
     ];
+
+    const features = settings?.config_sections?.sections?.features?.features || defaultFeatures;
 
     return (
         <section className="bg-gray-50 py-24 lg:py-32 relative overflow-hidden">
@@ -51,7 +33,7 @@ export default function Features() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
-                    <h2 className="text-[#10b77f] font-semibold tracking-wide uppercase text-sm mb-3">Pourquoi choisir Assist Hub ?</h2>
+                    <h2 className="text-[#10b77f] font-semibold tracking-wide uppercase text-sm mb-3">{t('Features')}</h2>
                     <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#022B3A] mb-6 tracking-tight">
                         {title}
                     </h3>
@@ -61,8 +43,8 @@ export default function Features() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {features.map((feature, index) => {
-                        const IconComponent = feature.icon;
+                    {features.map((feature: any, index: number) => {
+                        const IconComponent = (LucideIcons as any)[feature.icon] || LucideIcons.HelpCircle;
                         return (
                             <div
                                 key={index}

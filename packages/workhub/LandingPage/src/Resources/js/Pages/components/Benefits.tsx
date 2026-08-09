@@ -1,19 +1,24 @@
 import { CheckCircle2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-export default function Benefits() {
+interface BenefitsProps {
+    settings?: any;
+}
+
+export default function Benefits({ settings }: BenefitsProps) {
     const { t } = useTranslation();
 
-    const title = 'Boostez la productivité de votre équipe';
-    const subtitle = 'Assist Hub élimine les tâches répétitives et centralise vos données pour vous permettre de vous concentrer sur ce qui compte vraiment : la croissance.';
+    const title = settings?.config_sections?.sections?.benefits?.title || 'Why Choose ERPGo?';
+    const subtitle = settings?.config_sections?.sections?.benefits?.subtitle || 'Assist Hub eliminates repetitive tasks and centralizes your data so you can focus on growth.';
 
-    const benefitsList = [
-        'Automatisation des tâches chronophages',
-        'Données centralisées et sécurisées',
-        'Collaboration en temps réel',
-        'Analyses et rapports détaillés',
-        'Support technique dédié'
+    const defaultBenefits = [
+        { title: 'Centralized Business Hub', description: 'Eliminate data silos. Our integrated modules for HRM, Accounting, CRM, Projects, and POS work together to provide a single source of truth for your business.' },
+        { title: 'Efficient Workforce Management', description: 'Streamline your team management. Handle recruitment, attendance, and payroll ensuring compliance and empowering your staff with self-service tools.' },
+        { title: 'Financial Clarity & Precision', description: 'Gain absolute control over finances. Automate billing, reconcile transactions, and view enterprise-grade reports for a clear picture of your financial health.' },
+        { title: 'Streamlined Project Execution', description: 'Execute projects with precision. Use Kanban boards and Gantt charts to track progress, allocate resources, and ensure timely delivery of your internal goals.' }
     ];
+
+    const benefits = settings?.config_sections?.sections?.benefits?.benefits || defaultBenefits;
 
     return (
         <section className="py-24 bg-[#022B3A] overflow-hidden relative">
@@ -34,11 +39,11 @@ export default function Benefits() {
                         <div className="relative h-full flex flex-col gap-6">
                             {/* Fake Chart 1 */}
                             <div className="flex-1 rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col justify-end gap-2 overflow-hidden relative">
-                                <div className="absolute top-6 left-6 text-white/80 font-semibold">Croissance Mensuelle</div>
+                                <div className="absolute top-6 left-6 text-white/80 font-semibold">{t('Monthly Growth')}</div>
                                 <div className="absolute top-6 right-6 text-[#10b77f] font-bold">+45%</div>
                                 <div className="flex items-end justify-between h-32 gap-2 mt-8">
                                     {[30, 45, 25, 60, 40, 75, 50, 85].map((h, i) => (
-                                        <div key={i} className="w-full bg-gradient-to-t from-[#10b77f] to-amber-300 rounded-t-sm" style={{ height: `${h}%` }}></div>
+                                        <div key={i} className="w-full bg-gradient-to-t from-[#10b77f] to-emerald-400 rounded-t-sm" style={{ height: `${h}%` }}></div>
                                     ))}
                                 </div>
                             </div>
@@ -46,12 +51,12 @@ export default function Benefits() {
                             {/* Fake Metrics */}
                             <div className="h-32 grid grid-cols-2 gap-6">
                                 <div className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col justify-center">
-                                    <div className="text-white/50 text-sm mb-1">Temps gagné</div>
-                                    <div className="text-3xl font-bold text-white">15h<span className="text-lg text-white/50 font-normal">/sem</span></div>
+                                    <div className="text-white/50 text-sm mb-1">{t('Time Saved')}</div>
+                                    <div className="text-3xl font-bold text-white">15h<span className="text-lg text-white/50 font-normal">/{t('wk')}</span></div>
                                 </div>
                                 <div className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col justify-center">
-                                    <div className="text-white/50 text-sm mb-1">Efficacité</div>
-                                    <div className="text-3xl font-bold text-green-400">98%</div>
+                                    <div className="text-white/50 text-sm mb-1">{t('Efficiency')}</div>
+                                    <div className="text-3xl font-bold text-[#10b77f]">98%</div>
                                 </div>
                             </div>
                         </div>
@@ -67,12 +72,15 @@ export default function Benefits() {
                         </p>
 
                         <div className="space-y-6">
-                            {benefitsList.map((benefit, index) => (
-                                <div key={index} className="flex items-center gap-4">
-                                    <div className="w-8 h-8 rounded-full bg-[#10b77f]/20 flex items-center justify-center flex-shrink-0">
+                            {benefits.map((benefit: any, index: number) => (
+                                <div key={index} className="flex gap-4">
+                                    <div className="w-8 h-8 rounded-full bg-[#10b77f]/20 flex items-center justify-center flex-shrink-0 mt-1">
                                         <CheckCircle2 className="w-5 h-5 text-[#10b77f]" />
                                     </div>
-                                    <span className="text-lg text-gray-200">{benefit}</span>
+                                    <div>
+                                        <h4 className="text-lg font-bold text-white mb-1">{benefit.title}</h4>
+                                        <p className="text-gray-300 text-sm leading-relaxed">{benefit.description}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>

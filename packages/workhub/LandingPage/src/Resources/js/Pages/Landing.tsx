@@ -179,15 +179,15 @@ export default function Landing({ settings }: LandingProps) {
             case 'stats':
                 return null;
             case 'features':
-                return <Features key={sectionKey} />;
+                return <Features key={sectionKey} settings={settings} />;
             case 'modules':
-                return <Modules key={sectionKey} />;
+                return <Modules key={sectionKey} settings={settings} />;
             case 'benefits':
-                return <Benefits key={sectionKey} />;
+                return <Benefits key={sectionKey} settings={settings} />;
             case 'gallery':
                 return <Gallery key={sectionKey} settings={settings} />;
             case 'cta':
-                return <CTA key={sectionKey} />;
+                return <CTA key={sectionKey} settings={settings} />;
             case 'footer':
                 return <Footer key={sectionKey} settings={settings} />;
             default:

@@ -3,14 +3,18 @@ import { useTranslation } from 'react-i18next';
 
 declare const route: any;
 
-export default function CTA() {
+interface CTAProps {
+    settings?: any;
+}
+
+export default function CTA({ settings }: CTAProps) {
     const { t } = useTranslation();
 
-    const title = 'Prêt à transformer votre entreprise ?';
-    const subtitle = 'Rejoignez les entreprises qui font confiance à Assist Hub pour simplifier et accélérer leur croissance. Commencez gratuitement dès aujourd\'hui.';
-    const primaryButtonText = 'Démarrer gratuitement';
+    const title = settings?.config_sections?.sections?.cta?.title || 'Ready to Transform Your Business?';
+    const subtitle = settings?.config_sections?.sections?.cta?.subtitle || 'Join thousands of businesses already using ERPGo to streamline their operations.';
+    const primaryButtonText = settings?.config_sections?.sections?.cta?.primary_button || 'Login';
     const primaryButtonLink = route('register');
-    const secondaryButtonText = 'Contacter les ventes';
+    const secondaryButtonText = settings?.config_sections?.sections?.cta?.secondary_button || 'Contact Us';
     const secondaryButtonLink = route('login');
 
     return (
@@ -25,7 +29,7 @@ export default function CTA() {
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-8">
                     <Sparkles className="w-5 h-5 text-[#10b77f]" />
-                    <span className="text-white font-medium tracking-wide">Passez au niveau supérieur</span>
+                    <span className="text-white font-medium tracking-wide">{t('Take the next step')}</span>
                 </div>
 
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
@@ -39,7 +43,7 @@ export default function CTA() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                     <a
                         href={primaryButtonLink}
-                        className="w-full sm:w-auto px-10 py-5 rounded-xl bg-[#10b77f] hover:bg-[#ea580c] text-white font-bold text-lg transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] hover:-translate-y-1 flex items-center justify-center gap-2 group"
+                        className="w-full sm:w-auto px-10 py-5 rounded-xl bg-[#10b77f] hover:bg-[#0e9f6e] text-white font-bold text-lg transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg shadow-emerald-500/20"
                     >
                         {primaryButtonText}
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -51,10 +55,6 @@ export default function CTA() {
                         {secondaryButtonText}
                     </a>
                 </div>
-
-                <p className="mt-8 text-sm text-gray-400">
-                    Aucune carte de crédit requise. Essai gratuit de 14 jours.
-                </p>
             </div>
         </section>
     );

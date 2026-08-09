@@ -25,10 +25,10 @@ class LandingPageSettingSeeder extends Seeder
     private function getDefaultSettings(): array
     {
         return [
-            'company_name' => 'Assist Hub',
-            'contact_email' => 'support@assisthub.com',
-            'contact_phone' => '+229 01 67 33 40 94',
-            'contact_address' => '123 Business Ave, City, State 12345',
+            'company_name' => 'ERPGo',
+            'contact_email' => 'support@erpgo.com',
+            'contact_phone' => '+1 (555) 123-4567',
+            'contact_address' => '123 Business Rd, Suite 100, Metropolis, NY 10001',
             'config_sections' => $this->getDefaultConfigSections()
         ];
     }
@@ -48,36 +48,39 @@ class LandingPageSettingSeeder extends Seeder
         return [
             'hero' => [
                 'variant' => 'hero1',
-                'title' => 'The Complete Cloud ERP Platform for Modern Enterprises',
-                'subtitle' => 'Streamline your entire business lifecycle, from finance to operations, with Assist Hub. One platform, infinite possibilities.',
-                'primary_button_text' => 'Start Free Trial',
-                'primary_button_link' => route('register'),
-                'secondary_button_text' => 'Login',
-                'secondary_button_link' => route('login'),
-                'highlight_text' => 'Assist Hub',
+                'title' => 'The Complete ERP Solution for Your Business',
+                'subtitle' => 'Streamline your entire business operation, from finance to HR, with ERPGo. A powerful, self-hosted platform designed for your unique needs.',
+                'primary_button_text' => 'Login',
+                'primary_button_link' => route('login'),
+                'secondary_button_text' => 'Contact Us',
+                'secondary_button_link' => '#contact',
+                'highlight_text' => 'ERPGo',
                 'image' => 'packages/workhub/LandingPage/src/Resources/assets/img/hero.png'
             ],
             'header' => [
                 'variant' => 'header1',
-                'company_name' => 'Assist Hub',
-                'cta_text' => 'Get Started',
-                'enable_pricing_link' => true,
+                'company_name' => 'ERPGo',
+                'cta_text' => 'Login',
+                'enable_pricing_link' => false,
                 'navigation_items' => [
-                    ['text' => 'Home', 'href' => route('landing.page')]
+                    ['text' => 'Home', 'href' => route('landing.page'), 'type' => 'link', 'target' => '_self'],
+                    ['text' => 'About Us', 'href' => '/page/about-us', 'type' => 'page', 'target' => '_self'],
+                    ['text' => 'FAQ', 'href' => '/page/faq', 'type' => 'page', 'target' => '_self'],
+                    ['text' => 'Help Center', 'href' => '/page/help-center', 'type' => 'page', 'target' => '_self']
                 ]
             ],
             'stats' => [
                 'variant' => 'stats1',
                 'stats' => [
-                    ['label' => 'Businesses Trust Us', 'value' => '20,000+'],
+                    ['label' => 'Businesses Trust Us', 'value' => '10,000+'],
                     ['label' => 'Uptime Guarantee', 'value' => '99.9%'],
                     ['label' => 'Customer Support', 'value' => '24/7'],
-                    ['label' => 'Countries Worldwide', 'value' => '70+']
+                    ['label' => 'Countries Worldwide', 'value' => '50+']
                 ]
             ],
             'features' => [
                 'variant' => 'features1',
-                'title' => 'Powerful Features',
+                'title' => 'Why Choose ERPGo?',
                 'subtitle' => 'Everything your business needs in one integrated platform',
                 'features' => $this->getDefaultFeatures()
             ],
@@ -91,54 +94,58 @@ class LandingPageSettingSeeder extends Seeder
                         'label' => 'Human Resources',
                         'title' => 'HRM System',
                         'description' => 'Transform your human resource operations with a comprehensive suite for the entire employee lifecycle. Efficiently manage recruitment, onboarding, attendance, and payroll processing while ensuring compliance. foster a positive workplace culture with performance tracking and self-service portals that empower your workforce to thrive.',
-                        'image' => 'packages/workhub/LandingPage/src/Resources/assets/img/hrm.png'
+                        'image' => 'packages/workhub/LandingPage/src/Resources/assets/img/hrm.png',
+                        'icon' => 'UserCheck'
                     ],
                     [
                         'key' => 'account',
                         'label' => 'Accounting & Finance',
                         'title' => 'Accounting System',
                         'description' => 'Take command of your financial data with an advanced double-entry accounting system designed for accuracy and speed. Automate complex billing cycles, reconcile bank transactions in seconds, and generate insightful financial reports that give you a clear picture of your profitability. Securely manage assets, liabilities, and equity with enterprise-grade precision.',
-                        'image' => 'packages/workhub/LandingPage/src/Resources/assets/img/accounting.png'
+                        'image' => 'packages/workhub/LandingPage/src/Resources/assets/img/accounting.png',
+                        'icon' => 'Calculator'
                     ],
                     [
                         'key' => 'taskly',
                         'label' => 'Project Management',
                         'title' => 'Task & Project System',
                         'description' => 'Deliver projects on time and within budget using our robust project management tools. Visualize workflows with interactive Kanban boards and Gantt charts, enabling seamless collaboration among teams. Track milestones, allocate resources effectively, and monitor productivity in real-time to ensure every project is a success story.',
-                        'image' => 'packages/workhub/LandingPage/src/Resources/assets/img/project.png'
+                        'image' => 'packages/workhub/LandingPage/src/Resources/assets/img/project.png',
+                        'icon' => 'FolderOpen'
                     ],
                     [
                         'key' => 'crm',
                         'label' => 'CRM & Sales',
                         'title' => 'CRM System',
                         'description' => 'Supercharge your sales engine with a customer relationship management (CRM) system that turns leads into loyal clients. Track every interaction, manage sales pipelines with drag-and-drop ease, and automate follow-ups to never miss an opportunity. Analyze customer behavior to tailor your strategies and close deals faster than ever before.',
-                        'image' => 'packages/workhub/LandingPage/src/Resources/assets/img/crm.png'
+                        'image' => 'packages/workhub/LandingPage/src/Resources/assets/img/crm.png',
+                        'icon' => 'Users'
                     ],
                     [
                         'key' => 'pos',
                         'label' => 'Point of Sale',
                         'title' => 'POS System',
                         'description' => 'Revolutionize your retail operations with a lightning-fast Point of Sale (POS) system that keeps your business moving. synchronize inventory across multiple warehouses in real-time, process transactions securely, and manage customer loyalty programs effortlessly. From the checkout counter to the back office, ensure smooth, error-free operations.',
-                        'image' => 'packages/workhub/LandingPage/src/Resources/assets/img/pos.png'
+                        'image' => 'packages/workhub/LandingPage/src/Resources/assets/img/pos.png',
+                        'icon' => 'CreditCard'
                     ]
                 ]
             ],
             'benefits' => [
                 'variant' => 'benefits1',
-                'title' => 'Why Choose Assist Hub?',
+                'title' => 'Why Choose ERPGo?',
+                'subtitle' => 'Assist Hub eliminates repetitive tasks and centralizes your data so you can focus on growth.',
                 'benefits' => [
-                    ['title' => 'Unified Business Ecosystem', 'description' => 'Breakdown silos between your business functions. Our integrated modules for HRM, Accounting, CRM, Projects, and POS work in perfect harmony to provide a unified data source for your entire enterprise.'],
-                    ['title' => 'Strategic Human Resource Management', 'description' => 'Transform your workforce management. Efficiently handle recruitment, onboarding, and attendance while ensuring compliant payroll processing. Empower your team with self-service portals and performance tracking.'],
-                    ['title' => 'Professional Financial Precision', 'description' => 'Ensure absolute accuracy with our robust accounting system. Automate billing cycles, reconcile bank transactions, and manage assets with enterprise-grade precision, providing a crystal-clear view of your financial health.'],
-                    ['title' => 'Dynamic Project & Task Mastery', 'description' => 'Deliver projects on time and within budget. Visualize complex workflows with Kanban boards and Gantt charts, enabling seamless collaboration. Track milestones and allocate resources effectively for maximum productivity.'],
-                    ['title' => 'Integrated Sales & CRM Growth Engine', 'description' => 'Supercharge your revenue streams. Track every customer interaction, manage sales pipelines with ease, and streamline retail operations with our lightning-fast POS system to close deals faster.'],
-                    ['title' => 'Comprehensive Reporting & Analytics', 'description' => 'Make informed decisions with real-time insights at your fingertips. Generate detailed reports across finance, sales, and operations. Visualize performance trends through intuitive charts to drive strategic growth.']
+                    ['title' => 'Centralized Business Hub', 'description' => 'Eliminate data silos. Our integrated modules for HRM, Accounting, CRM, Projects, and POS work together to provide a single source of truth for your business.'],
+                    ['title' => 'Efficient Workforce Management', 'description' => 'Streamline your team management. Handle recruitment, attendance, and payroll ensuring compliance and empowering your staff with self-service tools.'],
+                    ['title' => 'Financial Clarity & Precision', 'description' => 'Gain absolute control over finances. Automate billing, reconcile transactions, and view enterprise-grade reports for a clear picture of your financial health.'],
+                    ['title' => 'Streamlined Project Execution', 'description' => 'Execute projects with precision. Use Kanban boards and Gantt charts to track progress, allocate resources, and ensure timely delivery of your internal goals.']
                 ]
             ],
             'gallery' => [
                 'variant' => 'gallery1',
-                'title' => 'Gallery',
-                'subtitle' => 'Explore our product in action',
+                'title' => 'See ERPGo in Action',
+                'subtitle' => 'Experience the intuitive interface designed to optimize your business workflows from day one',
                 'images' => [
                     'packages/workhub/LandingPage/src/Resources/assets/img/gallery1.jpeg',
                     'packages/workhub/LandingPage/src/Resources/assets/img/gallery2.jpeg',
@@ -152,9 +159,9 @@ class LandingPageSettingSeeder extends Seeder
             'cta' => [
                 'variant' => 'cta1',
                 'title' => 'Ready to Transform Your Business?',
-                'subtitle' => 'Join thousands of businesses already using Assist Hub to streamline their operations.',
-                'primary_button' => 'Start Free Trial',
-                'secondary_button' => 'Contact Sales'
+                'subtitle' => 'Join thousands of businesses already using ERPGo to streamline their operations.',
+                'primary_button' => 'Login',
+                'secondary_button' => 'Contact Us'
             ],
             'pricing' => [
                 'title' => 'Flexible Pricing Plans',
@@ -168,8 +175,8 @@ class LandingPageSettingSeeder extends Seeder
             'footer' => [
                 'variant' => 'footer1',
                 'description' => 'The complete business management solution for modern enterprises.',
-                'email' => 'support@assisthub.com',
-                'phone' => '+229 01 67 33 40 94',
+                'email' => 'support@erpgo.com',
+                'phone' => '+1 (555) 123-4567',
                 'newsletter_title' => 'Join Our Community',
                 'newsletter_description' => 'Subscribe to our newsletter for the latest business insights and updates.',
                 'newsletter_button_text' => 'Subscribe',
@@ -179,7 +186,6 @@ class LandingPageSettingSeeder extends Seeder
                         'title' => 'Product',
                         'links' => [
                             ['text' => 'Features', 'href' => '#features'],
-                            ['text' => 'Pricing', 'href' => '#pricing'],
                             ['text' => 'Demo', 'href' => '#demo']
                         ]
                     ],
@@ -220,7 +226,7 @@ class LandingPageSettingSeeder extends Seeder
             'gallery' => true,
             'cta' => true,
             'footer' => true,
-            'pricing' => true
+            'pricing' => false
         ];
     }
 
@@ -233,8 +239,8 @@ class LandingPageSettingSeeder extends Seeder
     {
         return [
             'primary' => '#10b77f',
-            'secondary' => '#022B3A',
-            'accent' => '#DDE5E9'
+            'secondary' => '#059669',
+            'accent' => '#065f46'
         ];
     }
 }
