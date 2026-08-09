@@ -138,8 +138,8 @@ class DemoWarningSeeder extends Seeder
                     'document' => $document,
                     'status' => $status,
                     'employee_response' => $employeeResponse,
-                    'created_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59))->format('Y-m-d H:i:s'),
-                    'updated_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59))->format('Y-m-d H:i:s'),
+                    'created_at' => Carbon::now()->subDays($createdDaysAgo)->setTime(10, rand(0, 59), rand(0, 59))->format('Y-m-d H:i:s'),
+                    'updated_at' => Carbon::now()->subDays($createdDaysAgo)->setTime(15, rand(0, 59), rand(0, 59))->format('Y-m-d H:i:s'),
                 ];
             }
 

@@ -71,12 +71,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                           className="h-9 w-auto transition-all duration-200"
                         />
                         <span className={`font-bold text-xl tracking-tight ${textColorClass}`}>
-                          Assist Hub
+                          Business Assist
                         </span>
                       </div>
                     ) : (
                       <div className={`h-12 font-bold flex items-center text-xl tracking-tight ${textColorClass}`}>
-                        {settings.titleText || 'Assist Hub'}
+                        {settings.titleText || 'Business Assist'}
                       </div>
                     );
                   })()}

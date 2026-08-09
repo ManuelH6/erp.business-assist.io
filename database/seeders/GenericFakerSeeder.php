@@ -51,13 +51,13 @@ class GenericFakerSeeder extends Seeder
                     'due_date' => $dueDate->format('Y-m-d'),
                     'customer_id' => $customer->user_id ?? $customer->id,
                     'warehouse_id' => $warehouseId,
-                    'payment_terms' => fake()->randomElement(['Net 30', 'Paiement à réception', '50% d\'acompte']),
+                    'payment_terms' => fake()->randomElement(['Net 30', 'Paiement a reception', 'Advance 50%']),
                     'subtotal' => 0,
                     'tax_amount' => 0,
                     'discount_amount' => 0,
                     'total_amount' => 0,
                     'status' => fake()->randomElement(['draft', 'sent', 'accepted', 'declined']),
-                    'notes' => fake()->realText(100),
+                    'notes' => fake('en_US')->realText(100),
                     'creator_id' => $companyId,
                     'created_by' => $companyId,
                 ]);
@@ -108,7 +108,7 @@ class GenericFakerSeeder extends Seeder
                     'balance_amount' => 0,
                     'status' => $status,
                     'type' => 'invoice',
-                    'notes' => fake()->sentence(),
+                    'notes' => fake('en_US')->sentence(),
                     'creator_id' => $companyId,
                     'created_by' => $companyId,
                 ]);
@@ -163,7 +163,7 @@ class GenericFakerSeeder extends Seeder
                     'debit_note_applied' => 0,
                     'balance_amount' => 0,
                     'status' => $status,
-                    'notes' => fake()->realText(80),
+                    'notes' => fake('en_US')->realText(80),
                     'creator_id' => $companyId,
                     'created_by' => $companyId,
                 ]);

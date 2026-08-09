@@ -421,7 +421,7 @@ class TrainingDemoSeeder extends Seeder
             $branchDepartments = Department::where('branch_id', $branchId)->pluck('id')->toArray();
             $departmentId = !empty($branchDepartments) ? $branchDepartments[array_rand($branchDepartments)] : 1;
             
-            $startDate = Carbon::now()->subDays(180 - ($index * 6));
+            $startDate = Carbon::now('UTC')->subDays(180 - ($index * 6));
             $endDate = $startDate->copy()->addDays(rand(1, 5));
             if ($branchId && $departmentId) {
             Training::create([
@@ -441,8 +441,8 @@ class TrainingDemoSeeder extends Seeder
                 'status' => $data['status'],
                 'creator_id' => 2,
                 'created_by' => 2,
-                'created_at' => $startDate->copy()->subHours(rand(1, 23))->subMinutes(rand(1, 59))->format('Y-m-d H:i:s'),
-                'updated_at' => $startDate->copy()->addHours(rand(1, 23))->addMinutes(rand(1, 59))->format('Y-m-d H:i:s'),
+                'created_at' => $startDate->copy()->setTime(4, rand(0, 59), rand(0, 59))->format('Y-m-d H:i:s'),
+                'updated_at' => $startDate->copy()->setTime(14, rand(0, 59), rand(0, 59))->format('Y-m-d H:i:s'),
             ]);
         }
         }

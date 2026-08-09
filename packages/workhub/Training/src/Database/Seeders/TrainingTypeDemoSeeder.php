@@ -180,8 +180,8 @@ class TrainingTypeDemoSeeder extends Seeder
                 'department_id' => $departmentId,
                 'creator_id' => 2,
                 'created_by' => 2,
-                'created_at' => Carbon::now()->subDays(180 - ($index * 6))->subHours(rand(1, 23))->subMinutes(rand(1, 59))->format('Y-m-d H:i:s'),
-                'updated_at' => Carbon::now()->subDays(180 - ($index * 6))->subHours(rand(1, 23))->subMinutes(rand(1, 59))->format('Y-m-d H:i:s'),
+                'created_at' => Carbon::now()->subDays(180 - ($index * 6))->setTime(4, rand(0, 59), rand(0, 59))->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->subDays(180 - ($index * 6))->setTime(14, rand(0, 59), rand(0, 59))->format('Y-m-d H:i:s'),
             ]);
         }
         }

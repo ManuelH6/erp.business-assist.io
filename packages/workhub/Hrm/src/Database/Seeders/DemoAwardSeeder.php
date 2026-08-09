@@ -72,8 +72,8 @@ class DemoAwardSeeder extends Seeder
                     'award_date' => Carbon::now()->subDays($awardDaysAgo)->format('Y-m-d'),
                     'description' => $descriptions[$i % count($descriptions)],
                     'certificate' => 'award' . (($i % 4) + 1) . '.png',
-                    'created_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59))->format('Y-m-d H:i:s'),
-                    'updated_at' => Carbon::now()->subDays($createdDaysAgo)->addHours(rand(8, 17))->addMinutes(rand(0, 59))->format('Y-m-d H:i:s'),
+                    'created_at' => Carbon::now()->subDays($createdDaysAgo)->setTime(10, rand(0, 59), rand(0, 59))->format('Y-m-d H:i:s'),
+                    'updated_at' => Carbon::now()->subDays($createdDaysAgo)->setTime(15, rand(0, 59), rand(0, 59))->format('Y-m-d H:i:s'),
                 ];
             }
 
