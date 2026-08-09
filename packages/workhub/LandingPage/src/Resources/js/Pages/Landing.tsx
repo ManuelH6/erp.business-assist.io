@@ -177,7 +177,7 @@ export default function Landing({ settings }: LandingProps) {
             case 'hero':
                 return <Hero key={sectionKey} settings={settings} />;
             case 'stats':
-                return <Stats key={sectionKey} settings={settings} />;
+                return null;
             case 'features':
                 return <Features key={sectionKey} />;
             case 'modules':

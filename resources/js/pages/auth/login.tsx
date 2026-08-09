@@ -66,7 +66,7 @@ export default function Login({
             email: email,
             password: password,
         }));
-        
+
         // Use router directly to ensure we post with the updated values immediately
         // while also showing the values in the input fields for a brief moment.
         router.post(route('login'), {
@@ -176,7 +176,7 @@ export default function Login({
                                     <div className="flex-1 h-px bg-gray-200 dark:bg-gray-600"></div>
                                 </div>
                             </div>
-                            
+
                             <div className="space-y-2">
                                 <div className="relative">
                                     <div className="absolute inset-0 flex items-center">
@@ -217,53 +217,53 @@ export default function Login({
                     </div>
                 )}
 
-                {isDemo && (
-                    <div>
-                        <h3 className="text-sm font-medium text-gray-900 dark:text-gray-300 tracking-wider mb-4 text-center">{t('Quick Access')}</h3>
-                        <div className="grid sm:grid-cols-2 gap-3">
-                            <Button
-                                type="button"
-                                onClick={() => handleQuickLogin('superadmin@example.com', '1234')}
-                                disabled={processing}
-                                className="sm:col-span-2 group h-auto relative py-2 px-4 border text-[13px] font-medium text-white transition-all duration-200 rounded-md shadow-sm hover:shadow-md transform hover:scale-[1.02] bg-primary disabled:opacity-50"
-                            >
-                                {t('Login as Super Admin')}
-                            </Button>
-                            <Button
-                                type="button"
-                                onClick={() => handleQuickLogin('company@example.com', '1234')}
-                                disabled={processing}
-                                className="group h-auto relative py-2 px-4 border text-[13px] font-medium text-white transition-all duration-200 rounded-md shadow-sm hover:shadow-md transform hover:scale-[1.02] bg-primary disabled:opacity-50"
-                            >
-                                {t('Login as Company')}
-                            </Button>
-                            <Button
-                                type="button"
-                                onClick={() => handleQuickLogin('john.smith@company.com', '1234')}
-                                disabled={processing}
-                                className="group h-auto relative py-2 px-4 border text-[13px] font-medium text-white transition-all duration-200 rounded-md shadow-sm hover:shadow-md transform hover:scale-[1.02] bg-primary disabled:opacity-50"
-                            >
-                                {t('Login as Employee')}
-                            </Button>
-                            <Button
-                                type="button"
-                                onClick={() => handleQuickLogin('sarah.johnson@client.com', '1234')}
-                                disabled={processing}
-                                className="group h-auto relative py-2 px-4 border text-[13px] font-medium text-white transition-all duration-200 rounded-md shadow-sm hover:shadow-md transform hover:scale-[1.02] bg-primary disabled:opacity-50"
-                            >
-                                {t('Login as Customer')}
-                            </Button>
-                            <Button
-                                type="button"
-                                onClick={() => handleQuickLogin('alex.vendor@supplier.com', '1234')}
-                                disabled={processing}
-                                className="group h-auto relative py-2 px-4 border text-[13px] font-medium text-white transition-all duration-200 rounded-md shadow-sm hover:shadow-md transform hover:scale-[1.02] bg-primary disabled:opacity-50"
-                            >
-                                {t('Login as Vendor')}
-                            </Button>
-                        </div>
+                {/* {isDemo && ( */}
+                <div>
+                    <h3 className="text-sm font-medium text-gray-900 dark:text-gray-300 tracking-wider mb-4 text-center">{t('Quick Access')}</h3>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                        <Button
+                            type="button"
+                            onClick={() => handleQuickLogin('superadmin@example.com', '1234')}
+                            disabled={processing}
+                            className="sm:col-span-2 group h-auto relative py-2 px-4 border text-[13px] font-medium text-white transition-all duration-200 rounded-md shadow-sm hover:shadow-md transform hover:scale-[1.02] bg-primary disabled:opacity-50"
+                        >
+                            {t('Login as Super Admin')}
+                        </Button>
+                        <Button
+                            type="button"
+                            onClick={() => handleQuickLogin('company@example.com', '1234')}
+                            disabled={processing}
+                            className="group h-auto relative py-2 px-4 border text-[13px] font-medium text-white transition-all duration-200 rounded-md shadow-sm hover:shadow-md transform hover:scale-[1.02] bg-primary disabled:opacity-50"
+                        >
+                            {t('Login as Company')}
+                        </Button>
+                        <Button
+                            type="button"
+                            onClick={() => handleQuickLogin('john.smith@company.com', '1234')}
+                            disabled={processing}
+                            className="group h-auto relative py-2 px-4 border text-[13px] font-medium text-white transition-all duration-200 rounded-md shadow-sm hover:shadow-md transform hover:scale-[1.02] bg-primary disabled:opacity-50"
+                        >
+                            {t('Login as Employee')}
+                        </Button>
+                        <Button
+                            type="button"
+                            onClick={() => handleQuickLogin('sarah.johnson@client.com', '1234')}
+                            disabled={processing}
+                            className="group h-auto relative py-2 px-4 border text-[13px] font-medium text-white transition-all duration-200 rounded-md shadow-sm hover:shadow-md transform hover:scale-[1.02] bg-primary disabled:opacity-50"
+                        >
+                            {t('Login as Customer')}
+                        </Button>
+                        <Button
+                            type="button"
+                            onClick={() => handleQuickLogin('alex.vendor@supplier.com', '1234')}
+                            disabled={processing}
+                            className="group h-auto relative py-2 px-4 border text-[13px] font-medium text-white transition-all duration-200 rounded-md shadow-sm hover:shadow-md transform hover:scale-[1.02] bg-primary disabled:opacity-50"
+                        >
+                            {t('Login as Vendor')}
+                        </Button>
                     </div>
-                )}
+                </div>
+                {/* )} */}
             </form>
         </AuthLayout>
     );
