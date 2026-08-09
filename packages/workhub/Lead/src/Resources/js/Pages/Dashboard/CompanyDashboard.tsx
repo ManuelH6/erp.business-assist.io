@@ -45,39 +45,39 @@ export default function CompanyDashboard({ message, stats, recentDeals, recentLe
                 {/* Summary Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <Card className="h-full bg-[#EFF6FF] dark:bg-blue-950/20 border border-[#DBEAFE] dark:border-blue-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.visit(route('lead.deals.index'))}>
-                        <CardContent className="p-6 flex items-center justify-between h-full text-[#2563EB] dark:text-blue-400">
+                        <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#2563EB] dark:text-blue-400">
                             <div className="flex flex-col justify-center">
-                                <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Deals')}</p>
-                                <div className="text-3xl font-extrabold tracking-tight mt-2">{stats?.total_deals || 0}</div>
+                                <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Total Deals')}</p>
+                                <div className="text-2xl font-bold tracking-tight mt-1.5">{stats?.total_deals || 0}</div>
                             </div>
-                            <Rocket className="h-10 w-10 opacity-80 flex-shrink-0" />
+                            <Rocket className="h-8 w-8 opacity-80 flex-shrink-0" />
                         </CardContent>
                     </Card>
                     <Card className="h-full bg-[#F0FDF4] dark:bg-emerald-950/20 border border-[#DCFCE7] dark:border-emerald-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.visit(route('lead.leads.index'))}>
-                        <CardContent className="p-6 flex items-center justify-between h-full text-[#16A34A] dark:text-emerald-400">
+                        <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#16A34A] dark:text-emerald-400">
                             <div className="flex flex-col justify-center">
-                                <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Leads')}</p>
-                                <div className="text-3xl font-extrabold tracking-tight mt-2">{stats?.total_leads || 0}</div>
+                                <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Total Leads')}</p>
+                                <div className="text-2xl font-bold tracking-tight mt-1.5">{stats?.total_leads || 0}</div>
                             </div>
-                            <TrendingUp className="h-10 w-10 opacity-80 flex-shrink-0" />
+                            <TrendingUp className="h-8 w-8 opacity-80 flex-shrink-0" />
                         </CardContent>
                     </Card>
                     <Card className="h-full bg-[#FAF5FF] dark:bg-purple-950/20 border border-[#E9D5FF] dark:border-purple-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.visit(route('users.index'))}>
-                        <CardContent className="p-6 flex items-center justify-between h-full text-[#9333EA] dark:text-purple-400">
+                        <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#9333EA] dark:text-purple-400">
                             <div className="flex flex-col justify-center">
-                                <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Users')}</p>
-                                <div className="text-3xl font-extrabold tracking-tight mt-2">{stats?.total_users || 0}</div>
+                                <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Total Users')}</p>
+                                <div className="text-2xl font-bold tracking-tight mt-1.5">{stats?.total_users || 0}</div>
                             </div>
-                            <Users className="h-10 w-10 opacity-80 flex-shrink-0" />
+                            <Users className="h-8 w-8 opacity-80 flex-shrink-0" />
                         </CardContent>
                     </Card>
                     <Card className="h-full bg-[#FFF7ED] dark:bg-amber-950/20 border border-[#FED7AA] dark:border-amber-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.get(route('users.index'), { role: 'client' })}>
-                        <CardContent className="p-6 flex items-center justify-between h-full text-[#EA580C] dark:text-amber-400">
+                        <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#EA580C] dark:text-amber-400">
                             <div className="flex flex-col justify-center">
-                                <p className="text-sm font-semibold opacity-90 uppercase tracking-wider">{t('Total Clients')}</p>
-                                <div className="text-3xl font-extrabold tracking-tight mt-2">{stats?.total_clients || 0}</div>
+                                <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Total Clients')}</p>
+                                <div className="text-2xl font-bold tracking-tight mt-1.5">{stats?.total_clients || 0}</div>
                             </div>
-                            <Users className="h-10 w-10 opacity-80 flex-shrink-0" />
+                            <Users className="h-8 w-8 opacity-80 flex-shrink-0" />
                         </CardContent>
                     </Card>
                 </div>
