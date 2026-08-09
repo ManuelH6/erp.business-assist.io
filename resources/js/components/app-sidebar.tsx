@@ -87,6 +87,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   })()}
                 </div>
 
+
                 {/* Icon for collapsed sidebar */}
                 <div className="h-8 w-8 hidden group-data-[collapsible=icon]:block">
                   {(() => {
