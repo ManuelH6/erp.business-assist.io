@@ -74,83 +74,71 @@ export default function Index({ stats, chartData, monthlyData, recentTickets, st
       <div className="space-y-6">
         {/* Enhanced Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-          <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300" onClick={() => router.get(route('support-tickets.index'))}>
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-blue-50 dark:bg-blue-500/10 rounded-[18px] flex-shrink-0">
-                                    <TicketIcon className="h-8 w-8 text-blue-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats.totalTickets}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Total Tickets')}</p>
-                                    <div className="text-xs text-slate-400 mt-1">{t('All time')}</div>
-                                </div>
-                            </CardContent>
-                        </Card>
+          <Card className="h-full bg-[#EFF6FF] dark:bg-blue-950/20 border border-[#DBEAFE] dark:border-blue-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.get(route('support-tickets.index'))}>
+              <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#2563EB] dark:text-blue-400">
+                  <div className="flex flex-col justify-center">
+                      <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Total Tickets')}</p>
+                      <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.totalTickets}</div>
+                      <p className="text-xs opacity-85 mt-1">{t('All time')}</p>
+                  </div>
+                  <TicketIcon className="h-8 w-8 opacity-80 flex-shrink-0" />
+              </CardContent>
+          </Card>
 
-          <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300" onClick={() => router.get(route('support-tickets.index'))}>
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-orange-50 dark:bg-orange-500/10 rounded-[18px] flex-shrink-0">
-                                    <Clock className="h-8 w-8 text-orange-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats.openTickets}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Open Tickets')}</p>
-                                    <div className="text-xs text-slate-400 mt-1">{t('Pending resolution')}</div>
-                                </div>
-                            </CardContent>
-                        </Card>
+          <Card className="h-full bg-[#FFF7ED] dark:bg-amber-950/20 border border-[#FED7AA] dark:border-amber-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.get(route('support-tickets.index'))}>
+              <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#EA580C] dark:text-amber-400">
+                  <div className="flex flex-col justify-center">
+                      <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Open Tickets')}</p>
+                      <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.openTickets}</div>
+                      <p className="text-xs opacity-85 mt-1">{t('Pending resolution')}</p>
+                  </div>
+                  <Clock className="h-8 w-8 opacity-80 flex-shrink-0" />
+              </CardContent>
+          </Card>
 
-          <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300" onClick={() => router.get(route('support-tickets.index'))}>
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-green-50 dark:bg-green-500/10 rounded-[18px] flex-shrink-0">
-                                    <CheckCircleIcon className="h-8 w-8 text-green-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats.closedTickets}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Closed Tickets')}</p>
-                                    <div className="text-xs text-slate-400 mt-1">{stats.resolutionRate}% {t('resolution rate')}</div>
-                                </div>
-                            </CardContent>
-                        </Card>
+          <Card className="h-full bg-[#F0FDF4] dark:bg-emerald-950/20 border border-[#DCFCE7] dark:border-emerald-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.get(route('support-tickets.index'))}>
+              <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#16A34A] dark:text-emerald-400">
+                  <div className="flex flex-col justify-center">
+                      <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Closed Tickets')}</p>
+                      <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.closedTickets}</div>
+                      <p className="text-xs opacity-85 mt-1">{stats.resolutionRate}% {t('resolution rate')}</p>
+                  </div>
+                  <CheckCircleIcon className="h-8 w-8 opacity-80 flex-shrink-0" />
+              </CardContent>
+          </Card>
 
-          <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-purple-50 dark:bg-purple-500/10 rounded-[18px] flex-shrink-0">
-                                    <Calendar className="h-8 w-8 text-purple-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats.todayTickets}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Today\'s Tickets')}</p>
-                                    <div className="text-xs text-slate-400 mt-1">{t('Created today')}</div>
-                                </div>
-                            </CardContent>
-                        </Card>
+          <Card className="h-full bg-[#FAF5FF] dark:bg-purple-950/20 border border-[#E9D5FF] dark:border-purple-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+              <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#9333EA] dark:text-purple-400">
+                  <div className="flex flex-col justify-center">
+                      <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Today\'s Tickets')}</p>
+                      <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.todayTickets}</div>
+                      <p className="text-xs opacity-85 mt-1">{t('Created today')}</p>
+                  </div>
+                  <Calendar className="h-8 w-8 opacity-80 flex-shrink-0" />
+              </CardContent>
+          </Card>
 
-          <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-teal-50 dark:bg-teal-500/10 rounded-[18px] flex-shrink-0">
-                                    <TrendingUp className="h-8 w-8 text-teal-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats.avgResponseTime}h</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Avg Response')}</p>
-                                    <div className="text-xs text-slate-400 mt-1">{t('Response time')}</div>
-                                </div>
-                            </CardContent>
-                        </Card>
+          <Card className="h-full bg-[#F0FDFA] dark:bg-teal-950/20 border border-[#CCFBF1] dark:border-teal-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+              <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#0D9488] dark:text-teal-400">
+                  <div className="flex flex-col justify-center">
+                      <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Avg Response')}</p>
+                      <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.avgResponseTime}h</div>
+                      <p className="text-xs opacity-85 mt-1">{t('Response time')}</p>
+                  </div>
+                  <TrendingUp className="h-8 w-8 opacity-80 flex-shrink-0" />
+              </CardContent>
+          </Card>
 
-          <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300" onClick={() => router.get(route('ticket-category.index'))}>
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-red-50 dark:bg-red-500/10 rounded-[18px] flex-shrink-0">
-                                    <FolderIcon className="h-8 w-8 text-red-500" />
-                                </div>
-                                <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{stats.categories}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Categories')}</p>
-                                    <div className="text-xs text-slate-400 mt-1">{t('Active categories')}</div>
-                                </div>
-                            </CardContent>
-                        </Card>
+          <Card className="h-full bg-[#FEF2F2] dark:bg-rose-950/20 border border-[#FEE2E2] dark:border-rose-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer" onClick={() => router.get(route('ticket-category.index'))}>
+              <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#DC2626] dark:text-rose-400">
+                  <div className="flex flex-col justify-center">
+                      <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Categories')}</p>
+                      <div className="text-2xl font-bold tracking-tight mt-1.5">{stats.categories}</div>
+                      <p className="text-xs opacity-85 mt-1">{t('Active categories')}</p>
+                  </div>
+                  <FolderIcon className="h-8 w-8 opacity-80 flex-shrink-0" />
+              </CardContent>
+          </Card>
         </div>
 
         {/* Quick Actions */}

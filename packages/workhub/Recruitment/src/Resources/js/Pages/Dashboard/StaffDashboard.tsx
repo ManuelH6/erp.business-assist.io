@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Users, CheckCircle, Clock, AlertCircle, FileText, UserCheck, Target, Activity, Star } from "lucide-react";
 import { formatDate } from '@/utils/helpers';
 
-interface StaffDashboardProps {
+interface StaffDashboardProps extends Record<string, any> {
     dashboardData: {
         overview: {
             assignedInterviews: number;
@@ -88,69 +88,61 @@ export default function StaffDashboard() {
                 {/* Overview Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <Link href={route('recruitment.interviews.index')}>
-                        <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-green-50 dark:bg-green-500/10 rounded-[18px] flex-shrink-0">
-                                    <Calendar className="h-8 w-8 text-green-500" />
-                                </div>
+                        <Card className="h-full bg-[#F0FDF4] dark:bg-emerald-950/20 border border-[#DCFCE7] dark:border-emerald-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#16A34A] dark:text-emerald-400">
                                 <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{dashboardData.overview.assignedInterviews}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('My Interviews')}</p>
-                                    <p className="text-xs text-slate-400 mt-1">
-                                    {dashboardData.overview.pendingInterviews} {t('pending')}
-                                </p>
+                                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('My Interviews')}</p>
+                                    <div className="text-2xl font-bold tracking-tight mt-1.5">{dashboardData.overview.assignedInterviews}</div>
+                                    <p className="text-xs opacity-80 mt-1">
+                                        {dashboardData.overview.pendingInterviews} {t('pending')}
+                                    </p>
                                 </div>
+                                <Calendar className="h-8 w-8 opacity-80 flex-shrink-0" />
                             </CardContent>
                         </Card>
                     </Link>
 
                     <Link href={route('recruitment.candidate-onboardings.index')}>
-                        <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-blue-50 dark:bg-blue-500/10 rounded-[18px] flex-shrink-0">
-                                    <UserCheck className="h-8 w-8 text-blue-500" />
-                                </div>
+                        <Card className="h-full bg-[#EFF6FF] dark:bg-blue-950/20 border border-[#DBEAFE] dark:border-blue-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#2563EB] dark:text-blue-400">
                                 <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{dashboardData.overview.assignedOnboardings}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('My Onboardings')}</p>
-                                    <p className="text-xs text-slate-400 mt-1">
-                                    {dashboardData.overview.completedOnboardings} {t('completed')}
-                                </p>
+                                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('My Onboardings')}</p>
+                                    <div className="text-2xl font-bold tracking-tight mt-1.5">{dashboardData.overview.assignedOnboardings}</div>
+                                    <p className="text-xs opacity-80 mt-1">
+                                        {dashboardData.overview.completedOnboardings} {t('completed')}
+                                    </p>
                                 </div>
+                                <UserCheck className="h-8 w-8 opacity-80 flex-shrink-0" />
                             </CardContent>
                         </Card>
                     </Link>
 
                     <Link href={route('recruitment.candidate-assessments.index')}>
-                        <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-purple-50 dark:bg-purple-500/10 rounded-[18px] flex-shrink-0">
-                                    <Target className="h-8 w-8 text-purple-500" />
-                                </div>
+                        <Card className="h-full bg-[#FAF5FF] dark:bg-purple-950/20 border border-[#E9D5FF] dark:border-purple-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#9333EA] dark:text-purple-400">
                                 <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{dashboardData.overview.conductedAssessments}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Assessments')}</p>
-                                    <p className="text-xs text-slate-400 mt-1">
-                                    {t('conducted')}
-                                </p>
+                                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Assessments')}</p>
+                                    <div className="text-2xl font-bold tracking-tight mt-1.5">{dashboardData.overview.conductedAssessments}</div>
+                                    <p className="text-xs opacity-80 mt-1">
+                                        {t('conducted')}
+                                    </p>
                                 </div>
+                                <Target className="h-8 w-8 opacity-80 flex-shrink-0" />
                             </CardContent>
                         </Card>
                     </Link>
 
                     <Link href={route('recruitment.interview-feedbacks.index')}>
-                        <Card className="h-full bg-white dark:bg-slate-900 border-none shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
-                            <CardContent className="p-6 flex items-center space-x-5 h-full">
-                                <div className="p-4 bg-orange-50 dark:bg-orange-500/10 rounded-[18px] flex-shrink-0">
-                                    <Star className="h-8 w-8 text-orange-500" />
-                                </div>
+                        <Card className="h-full bg-[#FFF7ED] dark:bg-amber-950/20 border border-[#FED7AA] dark:border-amber-900/30 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                            <CardContent className="p-6 flex flex-row items-center justify-between w-full h-full text-[#EA580C] dark:text-amber-400">
                                 <div className="flex flex-col justify-center">
-                                    <div className="text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">{dashboardData.overview.submittedFeedbacks}</div>
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">{t('Feedbacks')}</p>
-                                    <p className="text-xs text-slate-400 mt-1">
-                                    {t('submitted')}
-                                </p>
+                                    <p className="text-xs font-semibold opacity-90 uppercase tracking-wider">{t('Feedbacks')}</p>
+                                    <div className="text-2xl font-bold tracking-tight mt-1.5">{dashboardData.overview.submittedFeedbacks}</div>
+                                    <p className="text-xs opacity-80 mt-1">
+                                        {t('submitted')}
+                                    </p>
                                 </div>
+                                <Star className="h-8 w-8 opacity-80 flex-shrink-0" />
                             </CardContent>
                         </Card>
                     </Link>
