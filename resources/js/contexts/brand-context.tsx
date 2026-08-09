@@ -60,7 +60,7 @@ export function BrandProvider({ children }: { children: ReactNode }) {
     blue: '#3b82f6',
     green: '#10b77f',
     purple: '#8b5cf6',
-    orange: '#10b77f',
+    orange: '#F97316',
     red: '#ef4444'
   };
 

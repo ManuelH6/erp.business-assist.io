@@ -34,7 +34,7 @@ export function ThemePreview({
     blue: '#3b82f6',
     green: '#10b77f',
     purple: '#8b5cf6',
-    orange: '#10b77f',
+    orange: '#F97316',
     red: '#ef4444'
   };
 
@@ -127,8 +127,8 @@ export function ThemePreview({
               <div
                 key={i}
                 className={`w-full h-2 rounded ${sidebarStyle === 'plain'
-                    ? (isDark ? 'bg-gray-600' : 'bg-muted-foreground/30')
-                    : 'bg-white/30'
+                  ? (isDark ? 'bg-gray-600' : 'bg-muted-foreground/30')
+                  : 'bg-white/30'
                   }`}
               ></div>
             ))}
