@@ -220,7 +220,7 @@ class DashboardController extends Controller
         $isDemo = config('app.is_demo');
 
         if (count($categoriesChart) > 0) {
-            $defaultColors = ['#3B82F6', '#10b77f', '#F59E0B', '#8B5CF6', '#EF4444', '#06B6D4', '#84CC16', '#F97316'];
+            $defaultColors = ['#3B82F6', '#10b77f', '#F59E0B', '#8B5CF6', '#EF4444', '#06B6D4', '#84CC16', '#10b77f'];
 
             return $categoriesChart->map(function ($category, $index) use ($defaultColors) {
                 return [

@@ -84,7 +84,7 @@ export default function Footer({ settings }: FooterProps) {
     const newsletterDescription = sectionData.newsletter_description || 'Inscrivez-vous pour recevoir les dernières actualités et mises à jour de notre plateforme.';
     const newsletterButtonText = sectionData.newsletter_button_text || 'S\'abonner';
     const copyrightText = sectionData.copyright_text || `© ${new Date().getFullYear()} ${companyName}. Tous droits réservés.`;
-    const colors = settings?.config_sections?.colors || { primary: '#F97316', secondary: '#022B3A', accent: '#f59e0b' };
+    const colors = settings?.config_sections?.colors || { primary: '#10b77f', secondary: '#022B3A', accent: '#f59e0b' };
 
     const handleNewsletterSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

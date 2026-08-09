@@ -49,16 +49,16 @@ export default function Stats({ settings }: StatsProps) {
     const sectionData = settings?.config_sections?.sections?.stats || {};
     const variant = sectionData.variant || 'stats1';
     const config = STATS_VARIANTS[variant as keyof typeof STATS_VARIANTS] || STATS_VARIANTS.stats1;
-    
-    const colors = settings?.config_sections?.colors || { primary: '#F97316', secondary: '#022B3A', accent: '#f59e0b' };
-    
+
+    const colors = settings?.config_sections?.colors || { primary: '#10b77f', secondary: '#022B3A', accent: '#f59e0b' };
+
     const defaultStats = [
         { label: 'Businesses Trust Us', value: '20,000+' },
         { label: 'Uptime Guarantee', value: '99.9%' },
         { label: 'Customer Support', value: '24/7' },
         { label: 'Countries Worldwide', value: '70+' }
     ];
-    
+
     const stats = sectionData.stats?.length > 0 ? sectionData.stats : defaultStats;
 
     const getBackgroundStyle = () => {

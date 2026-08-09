@@ -395,7 +395,7 @@ class CalendarController extends Controller
                                 'description' => 'Meeting',
                                 'event_type' => 'local',
                                 'type' => 'meeting',
-                                'color' => '#f97316',
+                                'color' => '#10b77f',
                                 'raw_id' => $meeting->id,
                             ];
                         }

@@ -303,7 +303,7 @@ export default function BrandSettings({ userSettings, auth }: BrandSettingsProps
                     <Separator className="my-2" />
 
                     <div className="grid grid-cols-6 gap-2">
-                      {Object.entries({ blue: '#3b82f6', green: '#10b77f', purple: '#8b5cf6', orange: '#f97316', red: '#ef4444' }).map(([color, hex]) => (
+                      {Object.entries({ blue: '#3b82f6', green: '#10b77f', purple: '#8b5cf6', orange: '#10b77f', red: '#ef4444' }).map(([color, hex]) => (
                         <Button
                           key={color}
                           type="button"

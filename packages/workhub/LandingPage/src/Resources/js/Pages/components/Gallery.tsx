@@ -49,13 +49,13 @@ export default function Gallery({ settings }: GalleryProps) {
     const sectionData = settings?.config_sections?.sections?.gallery || {};
     const variant = sectionData.variant || 'gallery1';
     const config = GALLERY_VARIANTS[variant as keyof typeof GALLERY_VARIANTS] || GALLERY_VARIANTS.gallery1;
-    
+
     const title = sectionData.title || 'Gallery';
     const subtitle = sectionData.subtitle || 'Explore our product in action';
-    const colors = settings?.config_sections?.colors || { primary: '#F97316', secondary: '#022B3A', accent: '#f59e0b' };
+    const colors = settings?.config_sections?.colors || { primary: '#10b77f', secondary: '#022B3A', accent: '#f59e0b' };
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [lightboxOpen, setLightboxOpen] = useState(false);
-    
+
     const defaultImages = [
         'packages/workhub/LandingPage/src/Resources/assets/img/gallery1.jpeg',
         'packages/workhub/LandingPage/src/Resources/assets/img/gallery2.jpeg',
@@ -65,15 +65,15 @@ export default function Gallery({ settings }: GalleryProps) {
         'packages/workhub/LandingPage/src/Resources/assets/img/gallery6.jpeg',
         'packages/workhub/LandingPage/src/Resources/assets/img/gallery7.jpeg'
     ];
-    
-    const galleryImages = (sectionData.images?.filter((img: string) => img) || []).length > 0 
-        ? sectionData.images.filter((img: string) => img) 
+
+    const galleryImages = (sectionData.images?.filter((img: string) => img) || []).length > 0
+        ? sectionData.images.filter((img: string) => img)
         : defaultImages;
-    
+
     const nextImage = () => {
         setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
     };
-    
+
     const previousImage = () => {
         setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
     };
@@ -81,14 +81,14 @@ export default function Gallery({ settings }: GalleryProps) {
     const renderSlider = () => (
         <div className="relative max-w-6xl mx-auto">
             <div className="overflow-hidden rounded-xl shadow-2xl">
-                <img 
-                    src={galleryImages[currentImageIndex]?.startsWith('http') ? galleryImages[currentImageIndex] : getImagePath(galleryImages[currentImageIndex] || '')} 
+                <img
+                    src={galleryImages[currentImageIndex]?.startsWith('http') ? galleryImages[currentImageIndex] : getImagePath(galleryImages[currentImageIndex] || '')}
                     alt={`Gallery image ${currentImageIndex + 1}`}
                     className="w-full h-[500px] md:h-[600px] object-fill"
                 />
             </div>
-            
-            <button 
+
+            <button
                 onClick={previousImage}
                 className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-xl transition-all hover:scale-110"
             >
@@ -96,8 +96,8 @@ export default function Gallery({ settings }: GalleryProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
             </button>
-            
-            <button 
+
+            <button
                 onClick={nextImage}
                 className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-xl transition-all hover:scale-110"
             >
@@ -105,17 +105,16 @@ export default function Gallery({ settings }: GalleryProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
             </button>
-            
+
             <div className="flex justify-center mt-8 space-x-3">
                 {galleryImages.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
-                        className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                            index === currentImageIndex 
-                                ? 'scale-125' 
+                        className={`w-4 h-4 rounded-full transition-all duration-300 ${index === currentImageIndex
+                                ? 'scale-125'
                                 : 'bg-gray-300 hover:bg-gray-500 hover:scale-110'
-                        }`}
+                            }`}
                         style={index === currentImageIndex ? { backgroundColor: colors.primary } : {}}
                     />
                 ))}
@@ -142,9 +141,8 @@ export default function Gallery({ settings }: GalleryProps) {
         <div className="relative max-w-4xl mx-auto">
             <div className="space-y-8">
                 {galleryImages.map((image, index) => (
-                    <div key={index} className={`relative group ${
-                        index % 2 === 0 ? 'ml-0 mr-16' : 'ml-16 mr-0'
-                    }`}>
+                    <div key={index} className={`relative group ${index % 2 === 0 ? 'ml-0 mr-16' : 'ml-16 mr-0'
+                        }`}>
                         <div className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
                             <img
                                 src={image?.startsWith('http') ? image : getImagePath(image || '')}
@@ -156,9 +154,8 @@ export default function Gallery({ settings }: GalleryProps) {
                                 <div className="text-lg font-semibold">{t('Image')} {index + 1}</div>
                             </div>
                         </div>
-                        <div className={`absolute top-4 w-24 h-24 rounded-full border-4 border-white shadow-xl transition-all duration-500 group-hover:scale-110 ${
-                            index % 2 === 0 ? '-right-12' : '-left-12'
-                        }`} style={{ backgroundColor: colors.primary }}>
+                        <div className={`absolute top-4 w-24 h-24 rounded-full border-4 border-white shadow-xl transition-all duration-500 group-hover:scale-110 ${index % 2 === 0 ? '-right-12' : '-left-12'
+                            }`} style={{ backgroundColor: colors.primary }}>
                             <div className="flex items-center justify-center h-full text-white font-bold text-lg">
                                 {index + 1}
                             </div>
@@ -206,18 +203,18 @@ export default function Gallery({ settings }: GalleryProps) {
             } else {
                 document.body.style.overflow = 'unset';
             }
-            
+
             return () => {
                 document.body.style.overflow = 'unset';
             };
         }, [lightboxOpen]);
-        
+
         return (
             <>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {galleryImages.map((image, index) => (
-                        <div 
-                            key={index} 
+                        <div
+                            key={index}
                             className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer bg-gradient-to-br from-gray-800 to-gray-900 transform hover:-translate-y-2"
                             onClick={() => {
                                 setCurrentImageIndex(index);
@@ -249,7 +246,7 @@ export default function Gallery({ settings }: GalleryProps) {
                         </div>
                     ))}
                 </div>
-                
+
                 {lightboxOpen && (
                     <div className="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setLightboxOpen(false)}>
                         <div className="relative max-w-6xl max-h-full">
@@ -258,7 +255,7 @@ export default function Gallery({ settings }: GalleryProps) {
                                 alt={`Gallery image ${currentImageIndex + 1}`}
                                 className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
                             />
-                            
+
                             {/* Navigation Buttons */}
                             <button
                                 onClick={(e) => {
@@ -271,7 +268,7 @@ export default function Gallery({ settings }: GalleryProps) {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                                 </svg>
                             </button>
-                            
+
                             <button
                                 onClick={(e) => {
                                     e.stopPropagation();
@@ -283,7 +280,7 @@ export default function Gallery({ settings }: GalleryProps) {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
-                            
+
                             {/* Close Button */}
                             <button
                                 onClick={() => setLightboxOpen(false)}
@@ -293,12 +290,12 @@ export default function Gallery({ settings }: GalleryProps) {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
-                            
+
                             {/* Image Counter */}
                             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-md rounded-full px-6 py-3 border border-white/20">
                                 <p className="text-white text-sm font-medium">{currentImageIndex + 1} of {galleryImages.length}</p>
                             </div>
-                            
+
                             {/* Thumbnail Strip */}
                             <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex space-x-2 bg-black/30 backdrop-blur-md rounded-full p-3 border border-white/20">
                                 {galleryImages.slice(Math.max(0, currentImageIndex - 2), currentImageIndex + 3).map((image, idx) => {
@@ -310,11 +307,10 @@ export default function Gallery({ settings }: GalleryProps) {
                                                 e.stopPropagation();
                                                 setCurrentImageIndex(actualIndex);
                                             }}
-                                            className={`w-12 h-12 rounded-lg overflow-hidden transition-all duration-200 ${
-                                                actualIndex === currentImageIndex 
-                                                    ? 'ring-2 ring-white scale-110' 
+                                            className={`w-12 h-12 rounded-lg overflow-hidden transition-all duration-200 ${actualIndex === currentImageIndex
+                                                    ? 'ring-2 ring-white scale-110'
                                                     : 'opacity-60 hover:opacity-100 hover:scale-105'
-                                            }`}
+                                                }`}
                                         >
                                             <img
                                                 src={image?.startsWith('http') ? image : getImagePath(image || '')}
@@ -354,7 +350,7 @@ export default function Gallery({ settings }: GalleryProps) {
                     <h2 className={config.title}>{title}</h2>
                     <p className={config.subtitle}>{subtitle}</p>
                 </div>
-                
+
                 {renderGalleryContent()}
             </div>
         </section>

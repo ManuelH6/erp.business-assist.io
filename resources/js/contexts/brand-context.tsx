@@ -48,8 +48,8 @@ export function BrandProvider({ children }: { children: ReactNode }) {
     sidebarStyle: globalSettings?.sidebarStyle || 'plain',
     layoutDirection: globalSettings?.layoutDirection || 'ltr',
     themeMode: globalSettings?.themeMode || 'light',
-    themeColor: globalSettings?.themeColor || 'orange',
-    customColor: globalSettings?.customColor || '#F97316',
+    themeColor: globalSettings?.themeColor || 'green',
+    customColor: globalSettings?.customColor || '#10b77f',
   };
 
   const getPreviewUrl = (path: string) => {
@@ -57,22 +57,17 @@ export function BrandProvider({ children }: { children: ReactNode }) {
   };
 
   const themeColors = {
-    blue: '#022B3A',
-    green: '#F97316',
+    blue: '#3b82f6',
+    green: '#10b77f',
     purple: '#8b5cf6',
-    orange: '#F97316',
+    orange: '#10b77f',
     red: '#ef4444'
   };
 
   const getPrimaryColor = () => {
     let color = settings.themeColor === 'custom'
-      ? settings.customColor || '#F97316'
-      : themeColors[settings.themeColor as keyof typeof themeColors] || '#F97316';
-
-    // Force override if database still has the default green
-    if (color === '#10b77f') {
-      color = '#F97316';
-    }
+      ? settings.customColor || '#10b77f'
+      : themeColors[settings.themeColor as keyof typeof themeColors] || '#10b77f';
     return color;
   };
 
@@ -148,7 +143,7 @@ export function BrandProvider({ children }: { children: ReactNode }) {
     }
 
     if (settings.sidebarStyle === 'colored' || settings.sidebarStyle === 'gradient') {
-      const sidebarColor = '#022B3A'; // Deep Blue
+      const sidebarColor = primaryColor;
       const sidebarBg = settings.sidebarStyle === 'colored'
         ? sidebarColor
         : `linear-gradient(135deg, ${sidebarColor} 0%, ${sidebarColor}80 100%)`;
@@ -172,7 +167,7 @@ export function BrandProvider({ children }: { children: ReactNode }) {
   }, [settings.themeColor, settings.customColor, settings.layoutDirection, settings.themeMode]);
 
   const getSidebarStyles = (): React.CSSProperties => {
-    const sidebarColor = '#022B3A'; // Deep Blue
+    const sidebarColor = getPrimaryColor();
 
     if (settings.sidebarStyle === 'colored') {
       return { backgroundColor: sidebarColor };

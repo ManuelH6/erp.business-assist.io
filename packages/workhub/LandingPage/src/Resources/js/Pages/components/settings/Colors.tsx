@@ -14,10 +14,10 @@ interface ColorsProps {
 
 export default function Colors({ data, getSectionData, updateSectionData, updateSectionVisibility, setData }: ColorsProps) {
     const { t } = useTranslation();
-    
+
     const colors = data.config_sections?.colors || {
-        primary: '#F97316',
-        secondary: '#022B3A', 
+        primary: '#10b77f',
+        secondary: '#022B3A',
         accent: '#DDE5E9'
     };
 
@@ -30,10 +30,10 @@ export default function Colors({ data, getSectionData, updateSectionData, update
     };
 
     const presetColors = [
-        { name: 'Green', primary: '#F97316', secondary: '#022B3A', accent: '#DDE5E9' },
+        { name: 'Green', primary: '#10b77f', secondary: '#022B3A', accent: '#DDE5E9' },
         { name: 'Blue', primary: '#3b82f6', secondary: '#1d4ed8', accent: '#1e3a8a' },
         { name: 'Purple', primary: '#8b5cf6', secondary: '#7c3aed', accent: '#581c87' },
-        { name: 'Orange', primary: '#f97316', secondary: '#ea580c', accent: '#9a3412' },
+        { name: 'Orange', primary: '#10b77f', secondary: '#ea580c', accent: '#9a3412' },
         { name: 'Red', primary: '#ef4444', secondary: '#dc2626', accent: '#991b1b' }
     ];
 
@@ -101,7 +101,7 @@ export default function Colors({ data, getSectionData, updateSectionData, update
                                 value={colors.accent}
                                 onChange={(e) => updateColors('accent', e.target.value)}
                                 className="flex-1"
-                                placeholder="#F97316"
+                                placeholder="#10b77f"
                             />
                         </div>
                     </div>
@@ -125,28 +125,26 @@ export default function Colors({ data, getSectionData, updateSectionData, update
                                             }
                                         });
                                     }}
-                                    className={`p-3 border-2 rounded-xl hover:shadow-lg transition-all transform hover:scale-105 ${
-                                        isActive ? 'border-blue-500 shadow-lg ring-2 ring-blue-200' : 'border-gray-200 hover:border-gray-300'
-                                    }`}
+                                    className={`p-3 border-2 rounded-xl hover:shadow-lg transition-all transform hover:scale-105 ${isActive ? 'border-blue-500 shadow-lg ring-2 ring-blue-200' : 'border-gray-200 hover:border-gray-300'
+                                        }`}
                                     title={preset.name}
                                 >
                                     <div className="flex justify-center gap-1 mb-2">
-                                        <div 
-                                            className="w-6 h-6 rounded-full shadow-sm" 
+                                        <div
+                                            className="w-6 h-6 rounded-full shadow-sm"
                                             style={{ backgroundColor: preset.primary }}
                                         ></div>
-                                        <div 
-                                            className="w-6 h-6 rounded-full shadow-sm" 
+                                        <div
+                                            className="w-6 h-6 rounded-full shadow-sm"
                                             style={{ backgroundColor: preset.secondary }}
                                         ></div>
-                                        <div 
-                                            className="w-6 h-6 rounded-full shadow-sm" 
+                                        <div
+                                            className="w-6 h-6 rounded-full shadow-sm"
                                             style={{ backgroundColor: preset.accent }}
                                         ></div>
                                     </div>
-                                    <div className={`text-xs font-medium ${
-                                        isActive ? 'text-blue-600' : 'text-gray-600'
-                                    }`}>{preset.name}</div>
+                                    <div className={`text-xs font-medium ${isActive ? 'text-blue-600' : 'text-gray-600'
+                                        }`}>{preset.name}</div>
                                     {isActive && (
                                         <div className="w-2 h-2 bg-blue-500 rounded-full mx-auto mt-1"></div>
                                     )}

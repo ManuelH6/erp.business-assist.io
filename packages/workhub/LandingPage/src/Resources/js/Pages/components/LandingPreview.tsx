@@ -10,25 +10,25 @@ export function LandingPreview({ settings }: LandingPreviewProps) {
   const getSectionData = (key: string) => {
     return settings?.config_sections?.sections?.[key] || {};
   };
-  
+
   const isSectionVisible = (key: string) => {
     return settings?.config_sections?.section_visibility?.[key] !== false;
   };
 
   const colors = settings?.config_sections?.colors || {
-    primary: '#F97316',
+    primary: '#10b77f',
     secondary: '#022B3A',
     accent: '#f59e0b'
   };
 
-  const sectionOrder = settings?.config_sections?.section_order || 
+  const sectionOrder = settings?.config_sections?.section_order ||
     ['header', 'hero', 'stats', 'features', 'modules', 'benefits', 'gallery', 'cta', 'footer'];
 
   const renderMiniSection = (sectionKey: string) => {
     if (!isSectionVisible(sectionKey)) return null;
-    
+
     const sectionData = getSectionData(sectionKey);
-    
+
     switch (sectionKey) {
       case 'header':
         return (
@@ -41,7 +41,7 @@ export function LandingPreview({ settings }: LandingPreviewProps) {
             </div>
           </div>
         );
-        
+
       case 'hero':
         return (
           <div key={sectionKey} className="p-4 text-white text-center relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary}, ${colors.accent})` }}>
@@ -64,7 +64,7 @@ export function LandingPreview({ settings }: LandingPreviewProps) {
             </div>
           </div>
         );
-        
+
       case 'stats':
         return (
           <div key={sectionKey} className="p-4 text-white" style={{ background: `linear-gradient(to right, ${colors.primary}, ${colors.secondary})` }}>
@@ -88,7 +88,7 @@ export function LandingPreview({ settings }: LandingPreviewProps) {
             </div>
           </div>
         );
-        
+
       case 'features':
         return (
           <div key={sectionKey} className="p-4 bg-gray-50">
@@ -99,13 +99,13 @@ export function LandingPreview({ settings }: LandingPreviewProps) {
               {(sectionData.features || [{}, {}, {}, {}]).slice(0, 4).map((feature: any, i: number) => (
                 <div key={i} className="bg-white p-2 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
                   <div className="w-4 h-4 rounded-lg mx-auto mb-1" style={{ background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})` }}></div>
-                  <div className="text-xs text-center font-medium text-gray-700">{feature.title?.substring(0, 10) || `Feature ${i+1}`}</div>
+                  <div className="text-xs text-center font-medium text-gray-700">{feature.title?.substring(0, 10) || `Feature ${i + 1}`}</div>
                 </div>
               ))}
             </div>
           </div>
         );
-        
+
       case 'modules':
         return (
           <div key={sectionKey} className="p-2 bg-white">
@@ -121,7 +121,7 @@ export function LandingPreview({ settings }: LandingPreviewProps) {
             </div>
           </div>
         );
-        
+
       case 'benefits':
         return (
           <div key={sectionKey} className="p-2 bg-gray-50">
@@ -138,7 +138,7 @@ export function LandingPreview({ settings }: LandingPreviewProps) {
             </div>
           </div>
         );
-        
+
       case 'gallery':
         return (
           <div key={sectionKey} className="p-2 bg-white">
@@ -152,7 +152,7 @@ export function LandingPreview({ settings }: LandingPreviewProps) {
             </div>
           </div>
         );
-        
+
       case 'cta':
         return (
           <div key={sectionKey} className="p-2 text-white text-center" style={{ backgroundColor: colors.primary }}>
@@ -169,7 +169,7 @@ export function LandingPreview({ settings }: LandingPreviewProps) {
             </div>
           </div>
         );
-        
+
       case 'footer':
         return (
           <div key={sectionKey} className="p-4 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
@@ -190,7 +190,7 @@ export function LandingPreview({ settings }: LandingPreviewProps) {
             </div>
           </div>
         );
-        
+
       default:
         return null;
     }

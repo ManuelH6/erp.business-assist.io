@@ -19,7 +19,7 @@ class DemoCategorySeeder extends Seeder
                 ['name' => 'Sports & Fitness', 'color' => '#8B5CF6'],
                 ['name' => 'Health & Beauty', 'color' => '#EC4899'],
                 ['name' => 'Fruits & Vegetables', 'color' => '#6B7280'],
-                ['name' => 'Food & Beverages', 'color' => '#F97316'],
+                ['name' => 'Food & Beverages', 'color' => '#10b77f'],
                 ['name' => 'Automotive & Tools', 'color' => '#06B6D4'],
                 ['name' => 'Jewelry & Accessories', 'color' => '#84CC16'],
             ];

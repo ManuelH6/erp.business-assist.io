@@ -51,16 +51,16 @@ export default function Pricing(props: PricingProps) {
     const activeModules = props.activeModules || [];
     const settings = { ...props.settings, is_authenticated: (auth?.user?.id !== undefined && auth?.user?.id !== null) };
     const filters = props.filters || {};
-    const colors = settings?.config_sections?.colors || { primary: '#F97316', secondary: '#022B3A', accent: '#f59e0b' };
+    const colors = settings?.config_sections?.colors || { primary: '#10b77f', secondary: '#022B3A', accent: '#f59e0b' };
     const pricingSettings = settings?.config_sections?.sections?.pricing || {};
-    
+
     const [priceType, setPriceType] = useState(pricingSettings.default_price_type || 'monthly');
 
     // Find the plan with the highest order count for "Most Popular" badge
-    const mostPopularPlanId = plans.length > 0 
-        ? plans.reduce((prev, current) => 
+    const mostPopularPlanId = plans.length > 0
+        ? plans.reduce((prev, current) =>
             (current.orders_count || 0) > (prev.orders_count || 0) ? current : prev
-          ).id
+        ).id
         : null;
 
     return (
@@ -68,9 +68,9 @@ export default function Pricing(props: PricingProps) {
             <Head title="Pricing" >
                 {faviconUrl && <link rel="icon" type="image/x-icon" href={faviconUrl} />}
             </Head>
-            
+
             <Header settings={settings} />
-            
+
             <main className="min-h-screen bg-gray-50 py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
@@ -89,21 +89,19 @@ export default function Pricing(props: PricingProps) {
                                 <div className="flex items-center">
                                     <button
                                         onClick={() => setPriceType('monthly')}
-                                        className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                                            priceType === 'monthly'
+                                        className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${priceType === 'monthly'
                                                 ? 'bg-white text-gray-900 shadow-sm'
                                                 : 'text-gray-600 hover:text-gray-900'
-                                        }`}
+                                            }`}
                                     >
                                         {t("Monthly")}
                                     </button>
                                     <button
                                         onClick={() => setPriceType('yearly')}
-                                        className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                                            priceType === 'yearly'
+                                        className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${priceType === 'yearly'
                                                 ? 'bg-white text-gray-900 shadow-sm'
                                                 : 'text-gray-600 hover:text-gray-900'
-                                        }`}
+                                            }`}
                                     >
                                         {t("Yearly")}
                                     </button>
@@ -126,13 +124,12 @@ export default function Pricing(props: PricingProps) {
 
                                 {/* Plan Header Cards */}
                                 {plans.map((plan) => (
-                                    <div 
-                                        key={plan.id} 
-                                        className={`relative rounded-2xl p-6 border-2 bg-white ${
-                                            plan.id === mostPopularPlanId && plans.length > 1
+                                    <div
+                                        key={plan.id}
+                                        className={`relative rounded-2xl p-6 border-2 bg-white ${plan.id === mostPopularPlanId && plans.length > 1
                                                 ? ''
                                                 : 'border-gray-200'
-                                        }`}
+                                            }`}
                                         style={plan.id === mostPopularPlanId && plans.length > 1 ? {
                                             borderColor: colors.primary,
                                             boxShadow: `0 0 0 2px ${colors.primary}20`
@@ -140,7 +137,7 @@ export default function Pricing(props: PricingProps) {
                                     >
                                         {plan.id === mostPopularPlanId && plans.length > 1 && (
                                             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                                                <div 
+                                                <div
                                                     className="text-white px-4 py-2 text-sm font-bold shadow-lg rounded-md whitespace-nowrap"
                                                     style={{ backgroundColor: colors.primary }}
                                                 >
@@ -148,13 +145,13 @@ export default function Pricing(props: PricingProps) {
                                                 </div>
                                             </div>
                                         )}
-                                        
+
                                         <div className="text-center space-y-4">
                                             <div>
                                                 <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
                                                 <p className="text-sm text-gray-600">{plan.description}</p>
                                             </div>
-                                            
+
                                             <div className="space-y-2">
                                                 {plan.free_plan ? (
                                                     <div>
@@ -178,7 +175,7 @@ export default function Pricing(props: PricingProps) {
                                                     </div>
                                                 )}
                                             </div>
-                                            
+
                                             <div className="space-y-3 py-4">
                                                 <div className="flex items-center space-x-2">
                                                     <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: colors.primary }}></div>
@@ -226,75 +223,75 @@ export default function Pricing(props: PricingProps) {
                                             ))}
                                         </div>
                                     </div>
-                                    
+
                                     {/* Plan Feature Cards */}
                                     {plans.map((plan) => {
                                         const enabledAddOns = activeModules.filter(module => plan.modules?.includes(module.module));
                                         const totalAddOns = activeModules.length;
-                                        
+
                                         return (
-                                        <div key={plan.id} className="bg-white rounded-2xl p-6 border border-gray-200">
-                                            <div className="space-y-3">
-                                                <div className="flex items-center justify-center py-2 h-10 border-b border-gray-200 mb-3">
-                                                    <span className="text-gray-900 font-semibold text-sm">
-                                                        {enabledAddOns.length}/{totalAddOns} {t("Enabled")}
-                                                    </span>
-                                                </div>
-                                                {activeModules.map((module) => (
-                                                    <div key={module.module} className="flex items-center justify-center py-2 h-10">
-                                                        {plan.modules?.includes(module.module) ? (
-                                                            <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100">
-                                                                <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                                                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                                                </svg>
-                                                            </div>
-                                                        ) : (
-                                                            <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-100">
-                                                                <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                                                    <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                                                                </svg>
-                                                            </div>
+                                            <div key={plan.id} className="bg-white rounded-2xl p-6 border border-gray-200">
+                                                <div className="space-y-3">
+                                                    <div className="flex items-center justify-center py-2 h-10 border-b border-gray-200 mb-3">
+                                                        <span className="text-gray-900 font-semibold text-sm">
+                                                            {enabledAddOns.length}/{totalAddOns} {t("Enabled")}
+                                                        </span>
+                                                    </div>
+                                                    {activeModules.map((module) => (
+                                                        <div key={module.module} className="flex items-center justify-center py-2 h-10">
+                                                            {plan.modules?.includes(module.module) ? (
+                                                                <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100">
+                                                                    <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                                                    </svg>
+                                                                </div>
+                                                            ) : (
+                                                                <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-100">
+                                                                    <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                                                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                                                    </svg>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    ))}
+                                                    <div className="pt-4 border-t space-y-2">
+                                                        <button
+                                                            className="w-full py-2 px-4 rounded-md text-white font-medium transition-colors"
+                                                            style={{ backgroundColor: colors.primary }}
+                                                            onClick={() => {
+                                                                if (settings?.is_authenticated) {
+                                                                    router.visit(route('dashboard'));
+                                                                } else {
+                                                                    router.visit(route('register'));
+                                                                }
+                                                            }}
+                                                        >
+                                                            {settings?.is_authenticated ? t('Go to Dashboard') : t('Get Started')}
+                                                        </button>
+                                                        {plan.trial && !settings?.is_authenticated && (
+                                                            <button
+                                                                className="w-full py-2 px-4 rounded-md border font-medium transition-colors"
+                                                                style={{
+                                                                    borderColor: colors.primary,
+                                                                    color: colors.primary,
+                                                                    backgroundColor: 'transparent'
+                                                                }}
+                                                                onMouseEnter={(e) => {
+                                                                    e.currentTarget.style.backgroundColor = colors.primary;
+                                                                    e.currentTarget.style.color = 'white';
+                                                                }}
+                                                                onMouseLeave={(e) => {
+                                                                    e.currentTarget.style.backgroundColor = 'transparent';
+                                                                    e.currentTarget.style.color = colors.primary;
+                                                                }}
+                                                                onClick={() => router.visit(route('register'))}
+                                                            >
+                                                                {t("Start Trial")} ({plan.trial_days}d)
+                                                            </button>
                                                         )}
                                                     </div>
-                                                ))}
-                                                <div className="pt-4 border-t space-y-2">
-                                                    <button 
-                                                        className="w-full py-2 px-4 rounded-md text-white font-medium transition-colors"
-                                                        style={{ backgroundColor: colors.primary }}
-                                                        onClick={() => {
-                                                            if (settings?.is_authenticated) {
-                                                                router.visit(route('dashboard'));
-                                                            } else {
-                                                                router.visit(route('register'));
-                                                            }
-                                                        }}
-                                                    >
-                                                        {settings?.is_authenticated ? t('Go to Dashboard') : t('Get Started')}
-                                                    </button>
-                                                    {plan.trial && !settings?.is_authenticated && (
-                                                        <button 
-                                                            className="w-full py-2 px-4 rounded-md border font-medium transition-colors"
-                                                            style={{ 
-                                                                borderColor: colors.primary, 
-                                                                color: colors.primary,
-                                                                backgroundColor: 'transparent'
-                                                            }}
-                                                            onMouseEnter={(e) => {
-                                                                e.currentTarget.style.backgroundColor = colors.primary;
-                                                                e.currentTarget.style.color = 'white';
-                                                            }}
-                                                            onMouseLeave={(e) => {
-                                                                e.currentTarget.style.backgroundColor = 'transparent';
-                                                                e.currentTarget.style.color = colors.primary;
-                                                            }}
-                                                            onClick={() => router.visit(route('register'))}
-                                                        >
-                                                            {t("Start Trial")} ({plan.trial_days}d)
-                                                        </button>
-                                                    )}
                                                 </div>
                                             </div>
-                                        </div>
                                         );
                                     })}
                                 </div>
@@ -313,7 +310,7 @@ export default function Pricing(props: PricingProps) {
                     )}
                 </div>
             </main>
-            
+
             <Footer settings={settings} />
 
             <CookieConsent settings={adminAllSetting || {}} />

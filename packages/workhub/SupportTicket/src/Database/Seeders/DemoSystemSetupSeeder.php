@@ -24,7 +24,7 @@ class DemoSystemSetupSeeder extends Seeder
             ['name' => 'Bug Report', 'color' => '#EF4444'],
             ['name' => 'Account Management', 'color' => '#06B6D4'],
             ['name' => 'Integration Support', 'color' => '#84CC16'],
-            ['name' => 'Performance Issues', 'color' => '#F97316'],
+            ['name' => 'Performance Issues', 'color' => '#10b77f'],
             ['name' => 'Security Concerns', 'color' => '#DC2626'],
             ['name' => 'Training & Education', 'color' => '#7C3AED'],
             ['name' => 'General Inquiry', 'color' => '#6B7280']

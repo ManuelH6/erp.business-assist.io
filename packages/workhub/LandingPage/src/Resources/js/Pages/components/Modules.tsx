@@ -40,7 +40,7 @@ export default function Modules() {
             icon: Box,
             description: 'Une solution d\'encaissement fluide pour vos boutiques. Synchronisation immédiate avec vos stocks et votre comptabilité.',
             features: ['Encaissement multi-moyens', 'Tickets de caisse numériques', 'Mode hors-ligne'],
-            color: 'from-[#F97316] to-amber-500'
+            color: 'from-[#10b77f] to-amber-500'
         }
     ];
 
@@ -62,14 +62,13 @@ export default function Modules() {
                                 <button
                                     key={mod.id}
                                     onClick={() => setActiveTab(index)}
-                                    className={`text-left p-6 rounded-2xl transition-all duration-300 flex items-start gap-4 ${
-                                        isActive 
-                                        ? 'bg-[#022B3A] shadow-xl transform scale-105 z-10' 
-                                        : 'bg-gray-50 hover:bg-gray-100 border border-gray-100'
-                                    }`}
+                                    className={`text-left p-6 rounded-2xl transition-all duration-300 flex items-start gap-4 ${isActive
+                                            ? 'bg-[#022B3A] shadow-xl transform scale-105 z-10'
+                                            : 'bg-gray-50 hover:bg-gray-100 border border-gray-100'
+                                        }`}
                                 >
                                     <div className={`p-3 rounded-xl flex-shrink-0 ${isActive ? 'bg-white/10' : 'bg-white shadow-sm'}`}>
-                                        <Icon className={`w-6 h-6 ${isActive ? 'text-[#F97316]' : 'text-gray-500'}`} />
+                                        <Icon className={`w-6 h-6 ${isActive ? 'text-[#10b77f]' : 'text-gray-500'}`} />
                                     </div>
                                     <div>
                                         <h3 className={`font-bold text-lg mb-1 ${isActive ? 'text-white' : 'text-gray-900'}`}>
@@ -89,7 +88,7 @@ export default function Modules() {
                         <div className="bg-gray-50 rounded-3xl p-8 md:p-12 h-full border border-gray-100 relative overflow-hidden group">
                             {/* Decorative Background Gradient */}
                             <div className={`absolute -right-20 -top-20 w-96 h-96 rounded-full blur-[100px] opacity-20 bg-gradient-to-br ${modules[activeTab].color} transition-all duration-700`}></div>
-                            
+
                             <div className="relative z-10">
                                 <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${modules[activeTab].color} shadow-lg mb-8 text-white`}>
                                     {(() => {
@@ -97,25 +96,25 @@ export default function Modules() {
                                         return <ActiveIcon className="w-8 h-8" />;
                                     })()}
                                 </div>
-                                
+
                                 <h3 className="text-3xl font-bold text-gray-900 mb-6">
                                     {modules[activeTab].title}
                                 </h3>
-                                
+
                                 <p className="text-lg text-gray-600 mb-10 leading-relaxed max-w-2xl">
                                     {modules[activeTab].description}
                                 </p>
-                                
+
                                 <div className="space-y-4 mb-12">
                                     {modules[activeTab].features.map((feature, i) => (
                                         <div key={i} className="flex items-center gap-3">
-                                            <Shield className="w-5 h-5 text-[#F97316]" />
+                                            <Shield className="w-5 h-5 text-[#10b77f]" />
                                             <span className="text-gray-700 font-medium">{feature}</span>
                                         </div>
                                     ))}
                                 </div>
-                                
-                                <a href="/register" className="inline-flex items-center gap-2 font-semibold text-[#022B3A] hover:text-[#F97316] transition-colors group/link">
+
+                                <a href="/register" className="inline-flex items-center gap-2 font-semibold text-[#022B3A] hover:text-[#10b77f] transition-colors group/link">
                                     Découvrir le module {modules[activeTab].title}
                                     <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                                 </a>

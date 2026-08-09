@@ -65,33 +65,33 @@ export default function Dedication({ settings, title: propTitle, description: pr
     const sectionData = settings?.config_sections?.sections?.dedication || {};
     const variant = sectionData.variant || 'dedication1';
     const config = DEDICATION_VARIANTS[variant as keyof typeof DEDICATION_VARIANTS] || DEDICATION_VARIANTS.dedication1;
-    
+
     const title = propTitle || sectionData.title || 'Dedicated to Excellence';
     const description = propDescription || sectionData.description || 'Our premium packages are crafted with attention to detail, ensuring seamless integration and powerful functionality for your business needs.';
-    const colors = { 
-        primary: settings?.config_sections?.colors?.primary || 'var(--color-primary)' || '#F97316', 
-        secondary: settings?.config_sections?.colors?.secondary || 'var(--color-secondary)' || '#022B3A', 
-        accent: settings?.config_sections?.colors?.accent || 'var(--color-accent)' || '#f59e0b' 
+    const colors = {
+        primary: settings?.config_sections?.colors?.primary || 'var(--color-primary)' || '#10b77f',
+        secondary: settings?.config_sections?.colors?.secondary || 'var(--color-secondary)' || '#022B3A',
+        accent: settings?.config_sections?.colors?.accent || 'var(--color-accent)' || '#f59e0b'
     };
- 
-    
+
+
     const subSections = propSubSections?.length > 0 ? propSubSections : sectionData.subSections?.length > 0 ? sectionData.subSections : [];
-    
+
     const [activeTab, setActiveTab] = useState(0);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-    
+
     // Auto slide functionality for carousel
     useEffect(() => {
         if (!isAutoPlaying || !subSections?.length || config?.layout !== 'carousel') return;
-        
+
         const interval = setInterval(() => {
             setCurrentSlide(prev => {
                 if (!subSections?.length) return 0;
                 return prev < subSections.length - 1 ? prev + 1 : 0;
             });
         }, 5000);
-        
+
         return () => clearInterval(interval);
     }, [isAutoPlaying, subSections, config?.layout]);
 
@@ -154,11 +154,10 @@ export default function Dedication({ settings, title: propTitle, description: pr
                     <button
                         key={index}
                         onClick={() => setActiveTab(index)}
-                        className={`px-6 py-3 font-medium text-sm border-b-2 transition-colors ${
-                            activeTab === index
+                        className={`px-6 py-3 font-medium text-sm border-b-2 transition-colors ${activeTab === index
                                 ? 'text-white rounded-t-lg'
                                 : 'border-transparent text-gray-500 hover:text-gray-700'
-                        }`}
+                            }`}
                         style={activeTab === index ? { backgroundColor: colors.primary, borderColor: colors.primary } : {}}
                     >
                         {section.title}
@@ -223,7 +222,7 @@ export default function Dedication({ settings, title: propTitle, description: pr
     const renderCarousel = () => {
         const currentSection = subSections?.[currentSlide];
         if (!currentSection) return null;
-        
+
         return (
             <div className="relative">
                 <div className="overflow-hidden rounded-xl">
@@ -231,68 +230,67 @@ export default function Dedication({ settings, title: propTitle, description: pr
                         <div>
                             <h3 className="text-2xl font-bold text-gray-900 mb-4">{currentSection.title}</h3>
                             <p className="text-gray-600 mb-6">{currentSection.description}</p>
-                        <div className="space-y-3 mb-6">
-                            {currentSection.keyPoints?.map((point: string, pointIndex: number) => (
-                                <div key={pointIndex} className="flex items-center">
-                                    <CheckCircle className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
-                                    <span className="text-gray-700">{point}</span>
-                                </div>
-                            ))}
-                        </div>
-                        <div className="flex items-center space-x-4">
-                            <button
-                                onClick={() => {
-                                    if (subSections?.length) {
-                                        setCurrentSlide(currentSlide > 0 ? currentSlide - 1 : subSections.length - 1);
-                                        setIsAutoPlaying(false);
-                                    }
-                                }}
-                                className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors"
-                            >
-                                <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            
-                            <div className="flex space-x-2">
-                                {subSections.map((_: any, index: number) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => {
-                                            setCurrentSlide(index);
-                                            setIsAutoPlaying(false);
-                                        }}
-                                        className={`transition-all duration-300 rounded-full ${
-                                            currentSlide === index 
-                                                ? 'w-8 h-3' 
-                                                : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
-                                        }`}
-                                        style={currentSlide === index ? { backgroundColor: colors.primary } : {}}
-                                    />
+                            <div className="space-y-3 mb-6">
+                                {currentSection.keyPoints?.map((point: string, pointIndex: number) => (
+                                    <div key={pointIndex} className="flex items-center">
+                                        <CheckCircle className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                                        <span className="text-gray-700">{point}</span>
+                                    </div>
                                 ))}
                             </div>
-                            
-                            <button
-                                onClick={() => {
-                                    if (subSections?.length) {
-                                        setCurrentSlide(currentSlide < subSections.length - 1 ? currentSlide + 1 : 0);
-                                        setIsAutoPlaying(false);
-                                    }
-                                }}
-                                className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors"
-                            >
-                                <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
+                            <div className="flex items-center space-x-4">
+                                <button
+                                    onClick={() => {
+                                        if (subSections?.length) {
+                                            setCurrentSlide(currentSlide > 0 ? currentSlide - 1 : subSections.length - 1);
+                                            setIsAutoPlaying(false);
+                                        }
+                                    }}
+                                    className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors"
+                                >
+                                    <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                </button>
+
+                                <div className="flex space-x-2">
+                                    {subSections.map((_: any, index: number) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => {
+                                                setCurrentSlide(index);
+                                                setIsAutoPlaying(false);
+                                            }}
+                                            className={`transition-all duration-300 rounded-full ${currentSlide === index
+                                                    ? 'w-8 h-3'
+                                                    : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
+                                                }`}
+                                            style={currentSlide === index ? { backgroundColor: colors.primary } : {}}
+                                        />
+                                    ))}
+                                </div>
+
+                                <button
+                                    onClick={() => {
+                                        if (subSections?.length) {
+                                            setCurrentSlide(currentSlide < subSections.length - 1 ? currentSlide + 1 : 0);
+                                            setIsAutoPlaying(false);
+                                        }
+                                    }}
+                                    className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors"
+                                >
+                                    <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <img src={getImagePath(currentSection.screenshot)} alt={currentSection.title} className="w-full rounded-lg shadow-xl" />
+                        <div>
+                            <img src={getImagePath(currentSection.screenshot)} alt={currentSection.title} className="w-full rounded-lg shadow-xl" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         );
     };
 
@@ -304,7 +302,7 @@ export default function Dedication({ settings, title: propTitle, description: pr
                 </div>
             );
         }
-        
+
         switch (config?.layout) {
             case 'cards':
                 return renderCards();

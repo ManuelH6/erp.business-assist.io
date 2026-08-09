@@ -28,7 +28,7 @@ export default function MarketplaceNotFound({ landingPageSettings }: Marketplace
     const { t } = useTranslation();
     // Apply color settings from landing page
     const colorScheme = landingPageSettings?.config_sections?.colors || {
-        primary: '#F97316',
+        primary: '#10b77f',
         secondary: '#022B3A',
         accent: '#DDE5E9'
     };
@@ -41,9 +41,9 @@ export default function MarketplaceNotFound({ landingPageSettings }: Marketplace
             '--color-accent': colorScheme.accent
         } as React.CSSProperties}>
             <Head title="Package Not Found - Assist Hub Marketplace" />
-            
+
             <Header key="header" settings={updatedLandingPageSettings} />
-            
+
             <section className="py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div className="max-w-md mx-auto">
@@ -65,7 +65,7 @@ export default function MarketplaceNotFound({ landingPageSettings }: Marketplace
                     </div>
                 </div>
             </section>
-            
+
             <Footer key="footer" settings={updatedLandingPageSettings} />
 
             <CookieConsent settings={adminAllSetting || {}} />

@@ -67,7 +67,7 @@ export default function Header({ settings }: HeaderProps) {
     const companyName = sectionData.company_name || settings?.company_name || 'Assist Hub';
     const isAuthenticated = settings?.is_authenticated;
     const ctaText = isAuthenticated ? 'Tableau de bord' : (sectionData.cta_text || 'Démarrer');
-    const colors = settings?.config_sections?.colors || { primary: '#F97316', secondary: '#022B3A', accent: '#f59e0b' };
+    const colors = settings?.config_sections?.colors || { primary: '#10b77f', secondary: '#022B3A', accent: '#f59e0b' };
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const themeMode = getAdminSetting('theme_mode') || 'light';
@@ -145,7 +145,7 @@ export default function Header({ settings }: HeaderProps) {
                 <button
                     onClick={() => router.visit(route('dashboard'))}
                     className={`text-white rounded-md font-medium transition-colors ${isMobile ? 'px-4 py-2 text-sm w-full' :
-                            variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
+                        variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
                         }`}
                     style={{ backgroundColor: colors.primary }}
                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = colors.secondary}
@@ -162,7 +162,7 @@ export default function Header({ settings }: HeaderProps) {
                     <button
                         onClick={() => router.visit(route('login'))}
                         className={`border rounded-md font-medium transition-colors ${isMobile ? 'px-4 py-2 text-sm w-full' :
-                                variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
+                            variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
                             }`}
                         style={{ borderColor: colors.primary, color: colors.primary }}
                         onMouseEnter={(e) => {
@@ -179,7 +179,7 @@ export default function Header({ settings }: HeaderProps) {
                     <button
                         onClick={() => router.visit(route('register'))}
                         className={`text-white rounded-md font-medium transition-colors ${isMobile ? 'px-4 py-2 text-sm w-full' :
-                                variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
+                            variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
                             }`}
                         style={{ backgroundColor: colors.primary }}
                         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = colors.secondary}
@@ -195,7 +195,7 @@ export default function Header({ settings }: HeaderProps) {
             <button
                 onClick={() => router.visit(route('login'))}
                 className={`text-white rounded-md font-medium transition-colors ${isMobile ? 'px-4 py-2 text-sm w-full' :
-                        variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
+                    variant === 'header3' ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'
                     }`}
                 style={{ backgroundColor: colors.primary }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = colors.secondary}
@@ -242,10 +242,10 @@ export default function Header({ settings }: HeaderProps) {
                             <Link
                                 href={route("pricing.page")}
                                 className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg ${variant === 'header4' || variant === 'header5'
-                                        ? 'text-white hover:bg-white/10'
-                                        : variant === 'header2'
-                                            ? 'text-gray-600 hover:bg-white hover:shadow-sm'
-                                            : 'text-gray-600 hover:bg-gray-50'
+                                    ? 'text-white hover:bg-white/10'
+                                    : variant === 'header2'
+                                        ? 'text-gray-600 hover:bg-white hover:shadow-sm'
+                                        : 'text-gray-600 hover:bg-gray-50'
                                     }`}
                                 onMouseEnter={(e) => {
                                     if (variant !== 'header4' && variant !== 'header5') {

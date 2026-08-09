@@ -25,24 +25,24 @@ export default function Benefits() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    
+
                     {/* Abstract Data Visualization */}
                     <div className="relative h-[500px] rounded-3xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 p-8 backdrop-blur-sm">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#F97316] rounded-full mix-blend-multiply filter blur-[80px] opacity-40"></div>
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#10b77f] rounded-full mix-blend-multiply filter blur-[80px] opacity-40"></div>
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-[80px] opacity-40"></div>
-                        
+
                         <div className="relative h-full flex flex-col gap-6">
                             {/* Fake Chart 1 */}
                             <div className="flex-1 rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col justify-end gap-2 overflow-hidden relative">
                                 <div className="absolute top-6 left-6 text-white/80 font-semibold">Croissance Mensuelle</div>
-                                <div className="absolute top-6 right-6 text-[#F97316] font-bold">+45%</div>
+                                <div className="absolute top-6 right-6 text-[#10b77f] font-bold">+45%</div>
                                 <div className="flex items-end justify-between h-32 gap-2 mt-8">
                                     {[30, 45, 25, 60, 40, 75, 50, 85].map((h, i) => (
-                                        <div key={i} className="w-full bg-gradient-to-t from-[#F97316] to-amber-300 rounded-t-sm" style={{ height: `${h}%` }}></div>
+                                        <div key={i} className="w-full bg-gradient-to-t from-[#10b77f] to-amber-300 rounded-t-sm" style={{ height: `${h}%` }}></div>
                                     ))}
                                 </div>
                             </div>
-                            
+
                             {/* Fake Metrics */}
                             <div className="h-32 grid grid-cols-2 gap-6">
                                 <div className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col justify-center">
@@ -65,12 +65,12 @@ export default function Benefits() {
                         <p className="text-lg text-gray-300 mb-10 leading-relaxed">
                             {subtitle}
                         </p>
-                        
+
                         <div className="space-y-6">
                             {benefitsList.map((benefit, index) => (
                                 <div key={index} className="flex items-center gap-4">
-                                    <div className="w-8 h-8 rounded-full bg-[#F97316]/20 flex items-center justify-center flex-shrink-0">
-                                        <CheckCircle2 className="w-5 h-5 text-[#F97316]" />
+                                    <div className="w-8 h-8 rounded-full bg-[#10b77f]/20 flex items-center justify-center flex-shrink-0">
+                                        <CheckCircle2 className="w-5 h-5 text-[#10b77f]" />
                                     </div>
                                     <span className="text-lg text-gray-200">{benefit}</span>
                                 </div>

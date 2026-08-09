@@ -6,14 +6,14 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { LineChart, PieChart, BarChart } from '@/components/charts';
 import CalendarView from "@/components/calendar-view";
-import { 
-    Users, 
-    UserCheck, 
-    UserX, 
-    Clock, 
-    Calendar, 
-    DollarSign, 
-    TrendingUp, 
+import {
+    Users,
+    UserCheck,
+    UserX,
+    Clock,
+    Calendar,
+    DollarSign,
+    TrendingUp,
     TrendingDown,
     Award,
     AlertTriangle,
@@ -86,14 +86,14 @@ interface HrmProps {
 
 export default function HrmIndex({ message, stats }: HrmProps) {
     const { t } = useTranslation();
-    
+
     return (
         <AuthenticatedLayout
-            breadcrumbs={[{label: t('HRM Dashboard')}]}
+            breadcrumbs={[{ label: t('HRM Dashboard') }]}
             pageTitle={t('HRM Dashboard')}
         >
             <Head title={t('HRM Dashboard')} />
-            
+
             <div className="space-y-6">
                 {/* Key Metrics Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -111,7 +111,7 @@ export default function HrmIndex({ message, stats }: HrmProps) {
                             </CardContent>
                         </Card>
                     </div>
-                    
+
                     <div onClick={() => window.location.href = route('hrm.attendances.index')} className="cursor-pointer">
                         <Card className="bg-gradient-to-r from-green-50 to-green-100 border-green-200">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -126,7 +126,7 @@ export default function HrmIndex({ message, stats }: HrmProps) {
                             </CardContent>
                         </Card>
                     </div>
-                    
+
                     <div onClick={() => window.location.href = route('hrm.attendances.index')} className="cursor-pointer">
                         <Card className="bg-gradient-to-r from-red-50 to-red-100 border-red-200">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -146,7 +146,7 @@ export default function HrmIndex({ message, stats }: HrmProps) {
                             </CardContent>
                         </Card>
                     </div>
-                    
+
                     <div onClick={() => window.location.href = route('hrm.leave-applications.index')} className="cursor-pointer">
                         <Card className="bg-gradient-to-r from-purple-50 to-purple-100 border-purple-200">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -179,7 +179,7 @@ export default function HrmIndex({ message, stats }: HrmProps) {
                             </CardContent>
                         </Card>
                     </div>
-                    
+
                     <div onClick={() => window.location.href = route('hrm.departments.index')} className="cursor-pointer">
                         <Card className="bg-gradient-to-r from-indigo-50 to-indigo-100 border-indigo-200">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -194,7 +194,7 @@ export default function HrmIndex({ message, stats }: HrmProps) {
                             </CardContent>
                         </Card>
                     </div>
-                    
+
                     <div onClick={() => window.location.href = route('hrm.promotions.index')} className="cursor-pointer">
                         <Card className="bg-gradient-to-r from-emerald-50 to-emerald-100 border-emerald-200">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -209,7 +209,7 @@ export default function HrmIndex({ message, stats }: HrmProps) {
                             </CardContent>
                         </Card>
                     </div>
-                    
+
                     <div onClick={() => window.location.href = route('hrm.terminations.index')} className="cursor-pointer">
                         <Card className="bg-gradient-to-r from-rose-50 to-rose-100 border-rose-200">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -277,8 +277,8 @@ export default function HrmIndex({ message, stats }: HrmProps) {
                                     stats.department_distribution.map((dept, index) => {
                                         const maxValue = Math.max(...stats.department_distribution.map(d => d.value));
                                         const percentage = (dept.value / maxValue) * 100;
-                                        const colors = ['#3b82f6', '#10b77f', '#f59e0b', '#8b5cf6', '#ef4444', '#06b6d4', '#f97316', '#84cc16'];
-                                        
+                                        const colors = ['#3b82f6', '#10b77f', '#f59e0b', '#8b5cf6', '#ef4444', '#06b6d4', '#10b77f', '#84cc16'];
+
                                         return (
                                             <div key={index} className="space-y-2">
                                                 <div className="flex justify-between items-center">
@@ -286,11 +286,11 @@ export default function HrmIndex({ message, stats }: HrmProps) {
                                                     <span className="text-sm font-bold text-gray-900">{dept.value}</span>
                                                 </div>
                                                 <div className="w-full bg-gray-200 rounded-full h-2">
-                                                    <div 
-                                                        className="h-2 rounded-full transition-all duration-300" 
-                                                        style={{ 
-                                                            width: `${percentage}%`, 
-                                                            backgroundColor: colors[index % 8] 
+                                                    <div
+                                                        className="h-2 rounded-full transition-all duration-300"
+                                                        style={{
+                                                            width: `${percentage}%`,
+                                                            backgroundColor: colors[index % 8]
                                                         }}
                                                     ></div>
                                                 </div>
@@ -321,64 +321,64 @@ export default function HrmIndex({ message, stats }: HrmProps) {
                         </CardHeader>
                         <CardContent>
                             <div className="h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 space-y-3 pr-2">
-                                <Button 
-                                    className="w-full justify-start" 
+                                <Button
+                                    className="w-full justify-start"
                                     variant="outline"
                                     onClick={() => window.location.href = route('hrm.employees.create')}
                                 >
                                     <Users className="h-4 w-4 mr-2" />
                                     {t('Add New Employee')}
                                 </Button>
-                                <Button 
-                                    className="w-full justify-start" 
+                                <Button
+                                    className="w-full justify-start"
                                     variant="outline"
                                     onClick={() => window.location.href = route('hrm.attendances.index')}
                                 >
                                     <Clock className="h-4 w-4 mr-2" />
                                     {t('Mark Attendance')}
                                 </Button>
-                                <Button 
-                                    className="w-full justify-start" 
+                                <Button
+                                    className="w-full justify-start"
                                     variant="outline"
                                     onClick={() => window.location.href = route('hrm.leave-applications.index')}
                                 >
                                     <Calendar className="h-4 w-4 mr-2" />
                                     {t('Apply for Leave')}
                                 </Button>
-                                <Button 
-                                    className="w-full justify-start" 
+                                <Button
+                                    className="w-full justify-start"
                                     variant="outline"
                                     onClick={() => window.location.href = route('hrm.payrolls.index')}
                                 >
                                     <CreditCard className="h-4 w-4 mr-2" />
                                     {t('Process Payroll')}
                                 </Button>
-                                <Button 
-                                    className="w-full justify-start" 
+                                <Button
+                                    className="w-full justify-start"
                                     variant="outline"
                                     onClick={() => window.location.href = route('hrm.promotions.index')}
                                 >
                                     <TrendingUp className="h-4 w-4 mr-2" />
                                     {t('Create Promotion')}
                                 </Button>
-                                <Button 
-                                    className="w-full justify-start" 
+                                <Button
+                                    className="w-full justify-start"
                                     variant="outline"
                                     onClick={() => window.location.href = route('hrm.resignations.index')}
                                 >
                                     <TrendingDown className="h-4 w-4 mr-2" />
                                     {t('Create Resignation')}
                                 </Button>
-                                <Button 
-                                    className="w-full justify-start" 
+                                <Button
+                                    className="w-full justify-start"
                                     variant="outline"
                                     onClick={() => window.location.href = route('hrm.holidays.index')}
                                 >
                                     <CalendarDays className="h-4 w-4 mr-2" />
                                     {t('Create Holiday')}
                                 </Button>
-                                <Button 
-                                    className="w-full justify-start" 
+                                <Button
+                                    className="w-full justify-start"
                                     variant="outline"
                                     onClick={() => window.location.href = route('hrm.warnings.index')}
                                 >
@@ -544,7 +544,7 @@ export default function HrmIndex({ message, stats }: HrmProps) {
                                                         <div>
                                                             <p className="text-sm font-medium">{leave.employee_name} - {leave.leave_type}</p>
                                                             <p className="text-xs text-gray-600">
-                                                                {leave.start_date === leave.end_date 
+                                                                {leave.start_date === leave.end_date
                                                                     ? `${new Date(leave.start_date).toLocaleDateString()} (${leave.total_days} day${leave.total_days > 1 ? 's' : ''})`
                                                                     : `${new Date(leave.start_date).toLocaleDateString()} - ${new Date(leave.end_date).toLocaleDateString()} (${leave.total_days} day${leave.total_days > 1 ? 's' : ''})`
                                                                 }

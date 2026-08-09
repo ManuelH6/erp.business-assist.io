@@ -57,11 +57,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   {(() => {
                     const isDark = document.documentElement.classList.contains('dark');
                     const currentLogo = isDark ? settings.logo_light : settings.logo_dark;
-                    const { getPreviewUrl } = useBrand();
+                    const { getPreviewUrl, getPrimaryColor } = useBrand();
                     const displayUrl = currentLogo ? getPreviewUrl(currentLogo) : '';
-
                     const isSidebarDark = settings.sidebarStyle === 'colored' || settings.sidebarStyle === 'gradient' || isDark;
-                    const textColorClass = isSidebarDark ? 'text-white' : 'text-[#022B3A]';
+                    const primaryColor = getPrimaryColor();
 
                     return displayUrl ? (
                       <div className="flex items-center gap-2">
@@ -70,12 +69,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                           alt="Logo"
                           className="h-9 w-auto transition-all duration-200"
                         />
-                        <span className={`font-bold text-xl tracking-tight ${textColorClass}`}>
+                        <span 
+                          className="font-bold text-xl tracking-tight"
+                          style={isSidebarDark ? { color: '#ffffff' } : { color: primaryColor }}
+                        >
                           Business Assist
                         </span>
                       </div>
                     ) : (
-                      <div className={`h-12 font-bold flex items-center text-xl tracking-tight ${textColorClass}`}>
+                      <div 
+                        className="h-12 font-bold flex items-center text-xl tracking-tight"
+                        style={isSidebarDark ? { color: '#ffffff' } : { color: primaryColor }}
+                      >
                         {settings.titleText || 'Business Assist'}
                       </div>
                     );

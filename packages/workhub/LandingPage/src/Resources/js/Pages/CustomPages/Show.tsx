@@ -38,7 +38,7 @@ export default function Show({ page, landingPageSettings }: ShowProps) {
     const { adminAllSetting } = usePage().props as any;
     // Apply color settings from landing page
     const colorScheme = landingPageSettings?.config_sections?.colors || {
-        primary: '#F97316',
+        primary: '#10b77f',
         secondary: '#022B3A',
         accent: '#DDE5E9'
     };
@@ -49,13 +49,13 @@ export default function Show({ page, landingPageSettings }: ShowProps) {
             '--color-secondary': colorScheme.secondary,
             '--color-accent': colorScheme.accent
         } as React.CSSProperties}>
-            <Head 
+            <Head
                 title={page.meta_title || page.title}
                 description={page.meta_description}
             />
-            
+
             <Header key="header" settings={landingPageSettings} />
-            
+
             <section className="py-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
@@ -63,16 +63,16 @@ export default function Show({ page, landingPageSettings }: ShowProps) {
                             {page.title}
                         </h1>
                     </div>
-                    
+
                     <div className="prose prose-lg max-w-none">
-                        <div 
+                        <div
                             dangerouslySetInnerHTML={{ __html: page.content }}
                             className="text-gray-700 leading-relaxed"
                         />
                     </div>
                 </div>
             </section>
-            
+
             <Footer key="footer" settings={landingPageSettings} />
 
             <CookieConsent settings={adminAllSetting || {}} />
