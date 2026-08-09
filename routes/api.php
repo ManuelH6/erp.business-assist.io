@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthApiController;
 
 Route::middleware('api.json')->group(function () {
 
+    
     Route::post('/login', [AuthApiController::class, 'login']);
 
     Route::middleware('auth:sanctum')->group(function () {
